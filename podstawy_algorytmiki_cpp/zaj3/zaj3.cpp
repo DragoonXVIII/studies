@@ -45,7 +45,7 @@ void sortowanieQuickSort(student* tab, int n, int tryb)
             }
         }
 
-        if(i <= j)
+        if(i<=j)
         {
             swap(tab[i],tab[j]);
             i++;
@@ -53,8 +53,8 @@ void sortowanieQuickSort(student* tab, int n, int tryb)
         }
     }
 
-    sortowanieQuickSort(tab, j + 1, tryb);
-    sortowanieQuickSort(tab + i, n - i, tryb);
+    sortowanieQuickSort(tab, j+1, tryb);
+    sortowanieQuickSort(tab+i, n-i, tryb);
 
 }
 
@@ -63,28 +63,30 @@ void wczytajStudentow(student*& tab, int n) //zczytanie z pliku studentow
 {
     tab = new student[n];
 
-    ifstream plik("studenci.csv");
-    if(!plik.is_open())
+    ifstream dane("studenci.csv");
+    if(!dane.is_open())
     {
-        cout<<"Nie udalo sie otworzyc pliku."<<endl;
+        cout<<"blad pliku"<<endl;
         exit(1);
     }
 
-    string linia;
-    getline(plik, linia);  // pomijamy pierwsz¹ linijkê
+    string wiersz;
+    getline(dane, wiersz);  // pomijamy pierwsz¹ linijkê
 
     int i = 0;
-    while(getline(plik, linia))
+    //while(getline(dane, wiersz))
+    for(int i=0;i<n;i++)
     {
+        getline(dane,wiersz);
         string imie, nazwisko, punkty_str;
         int punkty;
 
-        size_t pozycja1 = linia.find(';'); //arg 1: co szukamy, arg 2: gdzie zaczac szukac
-        size_t pozycja2 = linia.find(';', pozycja1 + 1);
+        size_t pozycja1 = wiersz.find(';'); //arg 1: co szukamy, arg 2: gdzie zaczac szukac
+        size_t pozycja2 = wiersz.find(';', pozycja1 + 1);
 
-        imie = linia.substr(0, pozycja1);
-        nazwisko = linia.substr(pozycja1 + 1, pozycja2 - pozycja1 - 1);
-        punkty_str = linia.substr(pozycja2 + 1);
+        imie = wiersz.substr(0, pozycja1);
+        nazwisko = wiersz.substr(pozycja1 + 1, pozycja2 - pozycja1 - 1);
+        punkty_str = wiersz.substr(pozycja2 + 1);
 
         punkty = stoi(punkty_str);
 
@@ -92,10 +94,10 @@ void wczytajStudentow(student*& tab, int n) //zczytanie z pliku studentow
         tab[i].nazwisko = nazwisko;
         tab[i].punkty = punkty;
 
-        i++;
+        //i++;
     }
 
-    plik.close();
+    dane.close();
 }
 
 
@@ -120,24 +122,24 @@ void wyswietlStudentow(student* tab, int n)
 
 int main()
 {
-    int n;
+    //int n;
     /*cout<<"Podaj liczbe studentow: ";
     cin>>n;
     */
 
-    ifstream plik("studenci.csv");
-    if(!plik.is_open())
+    ifstream dane("studenci.csv");
+    if(!dane.is_open())
     {
-        cout<<"Nie udalo sie otworzyc pliku."<<endl;
+        cout<<"blad pliku"<<endl;
         exit(1);
     }
 
     string hlpvar;
-    getline(plik, hlpvar);
+    getline(dane, hlpvar);
     hlpvar.substr(0,1);
-    n = stoi(hlpvar);
-
-    plik.close();
+    int n = stoi(hlpvar);
+    //cout<<"xd"<<endl;
+    dane.close();
 
     student* tab;
 
@@ -145,5 +147,6 @@ int main()
     wyswietlStudentow(tab,n);
     sortowanieQuickSort(tab,n,1);
     wyswietlStudentow(tab,n);
+    usunTabliceStudentow(tab);
 
 }
