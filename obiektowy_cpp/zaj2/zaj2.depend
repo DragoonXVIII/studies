@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1678377404 source:c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\zaj2.cpp
+	"zaj2.h"
+	<iostream>
+
+1678569310 c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\zaj2.h
+
+1678570340 source:c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\main.cpp
+	<iostream>
+	"zaj2.h"
+	"Tstudent.h"
+	"Tdzialania.h"
+
+1678378004 c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\include\tstudent.h
+
+1678568644 source:c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\src\tstudent.cpp
+	"Tstudent.h"
+	<iostream>
+
+1678570257 c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\include\tdzialania.h
+
+1678570258 source:c:\edu-projects\c++\obiektowy_cpp\zaj2.1\zaj2\src\tdzialania.cpp
+	"Tdzialania.h"
+	<iostream>
+	<cmath>
+
+1678570543 source:c:\edu-projects\c++\obiektowy_cpp\zaj3\src\tdzialania.cpp
+	"Tdzialania.h"
+	<iostream>
+	<cmath>
+
+1678570257 c:\edu-projects\c++\obiektowy_cpp\zaj3\include\tdzialania.h
+
+1678568644 source:c:\edu-projects\c++\obiektowy_cpp\zaj3\src\tstudent.cpp
+	"Tstudent.h"
+	<iostream>
+
+1678378004 c:\edu-projects\c++\obiektowy_cpp\zaj3\include\tstudent.h
+
+1678377404 source:c:\edu-projects\c++\obiektowy_cpp\zaj3\zaj2.cpp
+	"zaj2.h"
+	<iostream>
+
+1678569310 c:\edu-projects\c++\obiektowy_cpp\zaj3\zaj2.h
+

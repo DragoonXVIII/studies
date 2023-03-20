@@ -1,0 +1,13 @@
+Zastosowane próby optymalizacji:
+1. Samo zastowsowanie systemu RNS które w operacjach na dużych liczbach może być optymalnijsze;
+2. Próba zoptymalizowania działania na  RNS (oraz konwersji w obydwie strony) poprzez użycie funkcji asynchronicznych;
+3. Próba zoptymalizowania działania na  RNS (oraz konwersji w obydwie strony) poprzez użycie wielowątkowości;
+
+Wnioski z zastosowanych prób optymalizacji:
+1.1 Działania na tak małych liczbach jakie znajdują się w zakresie 32 bitów nie dają się zoptymalizować poprzez użycie RNS w moim wykonaniu;
+1.1 Czas potrzebny dla dodawania zwyklego jest tak samo znikomy jak przy RNS
+2.1 Funkcje asynchroniczne oraz ich działanie znacząco spowalnia działanie programu w zakresiie 32 bitowym niezależnie od ilości wybranych modułów.
+2.1 Sam koszt stworzenia i utrzymania funkcji asynchronicznych jest znaczący. 
+2.2 W przedstawionym rozwiązaniu zastowanie asynchroniczności jest poprostu zbędne, ponieważ wywołane asynchronicznie funkcje i tak wykonują się liniowo, wobec czego ta implementacja jest w tym przypadku bez sensu.
+3.1 Wielowątkość spróboję zaimplementować po sesji lub w weekend niedługo ponieważ tworzenie procesów ktore jest nie zbędne do stworzenia optymalnego dodawania w RNS
+jest nie dostępna w Mingw z którego korzystam, i muszę wymyślić jak to obejść.
