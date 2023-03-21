@@ -20,7 +20,6 @@ struct data
 class Tosoba
 {
     public:
-        public:
         string imie; //string
         string nazwisko;
         data data_urodzenia;
