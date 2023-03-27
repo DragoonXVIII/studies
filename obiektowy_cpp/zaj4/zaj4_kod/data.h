@@ -22,7 +22,7 @@ class o_data
 
         void load();
         void show();
-        void getY();
+        int getY();
 
     private:
 

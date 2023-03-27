@@ -21,10 +21,15 @@ o_data::~o_data()
 }
 
 
-
 void o_data::load()
 {
-
+    cout<<"Podaj dzien urodzenia: ";
+    cin>>d;
+    cout<<endl<<"Podaj miesiac urodzenia: ";
+    cin>>m;
+    cout<<endl<<"Podaj rok urodzenia: ";
+    cin>>y;
+    cout<<endl;
     return;
 }
 
@@ -43,9 +48,7 @@ void o_data::show()
 }
 
 
-void o_data::getY()
+int o_data::getY()
 {
-
-
-    return;
+    return y;
 }
