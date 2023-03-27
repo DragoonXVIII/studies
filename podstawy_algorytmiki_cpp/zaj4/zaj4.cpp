@@ -107,7 +107,7 @@ void sortujTabliceStudentow(student *tab,int n, int tryb)
 
 void podzielStudentow_dwa(student *tab, int n)
 {
-    int j=n;
+    int j=n-1;
     for(int i=0;i<n;i++)
     {
         while(tab[i].punkty <= 10 && i<j)  //tab[j].punkty>10 && tab[j].punkty<=10
