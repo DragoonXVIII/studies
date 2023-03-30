@@ -29,8 +29,22 @@ osoba::~osoba()
 }
 
 
-void osoba::wyswietl_o()
+void osoba::wczytaj()
 {
+    cout<<"Podaj imie: ";
+    cin>>imie;
+    cout<<"Podaj nazwisko: ";
+    cin>>nazwisko;
+    cout<<"Podaj wiek: ";
+    cin>>wiek;
+
+    return;
+}
+
+
+void osoba::wyswietl()
+{
+    cout<<"+=== OSOBA ===+"<<endl;
     cout<<imie<<" "<<nazwisko<<" "<<wiek<<endl;
     return;
 }

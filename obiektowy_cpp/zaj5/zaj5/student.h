@@ -10,31 +10,23 @@ using namespace std;
 
 
 
-struct oceny
-{
-    int przedmiot1;
-    int przedmiot2;
-    int przedmiot3;
-};
-
-
-
-class student : public osoba
+class student : protected osoba
 {
     public:
         student();
-        student(string imie, string nazwisko, int wiek, string uczelnia, struct oceny oceny);
+        student(string imie, string nazwisko, int wiek, string uczelnia, float *oceny);
         ~student();
 
-        void wyswietl_s();
+        virtual void wyswietl();
+        virtual void wczytaj();
+
         float srednia();
         bool czy_zaliczyl();
 
     private:
         string uczelnia;
-        oceny oceny;
-
-
+        float *oceny;
+        int n;
 };
 
 #endif // STUDENT_H

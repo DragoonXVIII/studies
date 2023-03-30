@@ -11,20 +11,20 @@ using namespace std;
 
 
 
-class pracownikUmyslowy :public pracownik
+class pracownikUmyslowy : private pracownik
 {
-public:
-    pracownikUmyslowy();
-    pracownikUmyslowy(string imie, string nazwisko, int wiek,
-                      string firma,
-                      int stawka_h, int premia); //premia podawana w %
-    ~pracownikUmyslowy();
+    public:
+        pracownikUmyslowy();
+        pracownikUmyslowy(string imie, string nazwisko, int wiek,
+                          string firma,
+                          int stawka_h, int premia); //premia podawana w %
+        ~pracownikUmyslowy();
 
-    void wyswietl_pu();
+        virtual void wyswietl();
 
-private:
-    int wynagordzenie_m;
-    int premia;
+    protected:
+        int wynagordzenie_m;
+
 };
 
 #endif // PRACOWNIKUMYSLOWY_H

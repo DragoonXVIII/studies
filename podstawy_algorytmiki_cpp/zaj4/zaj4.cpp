@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <sstream>
 
 
 using namespace std;
@@ -32,13 +32,12 @@ void wczytajTabliceStudentow(student *&tab)
     string wiersz,imie,nazwisko,punkty;
     getline(dane,wiersz);
     int n = stoi(wiersz.substr(0,2)); //?????
-    N = n;
-
+    cout<<n<<endl;
     tab = new student[n];
 
 
 
-    for(int i=0;i<14;i++)
+    for(int i=0;i<n;i++)
     {
         getline(dane,wiersz);
 
@@ -52,6 +51,40 @@ void wczytajTabliceStudentow(student *&tab)
 
     dane.close();
     return;
+}
+
+
+void wczytajTabliceStudentowZaj(student *&tab)
+{
+
+    string sciezka,linia;
+    int liczbaStudentow;
+    ifstream plik;
+    char sredniki;
+    sciezka="studenci.csv";
+    plik.open(sciezka);
+    plik >> liczbaStudentow;
+    //cout<<liczbaStudentow;
+    tab = new student[liczbaStudentow];
+    for(int i = 0; i < 2; i++)
+        plik >> sredniki;
+
+    string intstring;
+    for(int i=0; i<liczbaStudentow; i++)
+    {
+        plik>>linia;
+        //cout<<linia<<endl;
+        istringstream ss(linia);
+        getline(ss, tab[i].imie, ';');
+        //cout<<tab[i].imie;
+        getline(ss, tab[i].nazwisko, ';');
+        getline(ss, intstring);
+        tab[i].punkty = stoi(intstring);
+        //cout<<tab[i].punkty<<endl;
+    }
+
+    plik.close();
+
 }
 
 
@@ -105,10 +138,12 @@ void sortujTabliceStudentow(student *tab,int n, int tryb)
     return;
 }
 
+
 void podzielStudentow_dwa(student *tab, int n)
 {
     int j=n-1;
-    for(int i=0;i<n;i++)
+    int i=0;
+    while(i<j)
     {
         while(tab[i].punkty <= 10 && i<j)  //tab[j].punkty>10 && tab[j].punkty<=10
             i++;
@@ -116,7 +151,14 @@ void podzielStudentow_dwa(student *tab, int n)
         while(tab[j].punkty >10 && j>i)
             j--;
 
-        swap(tab[j],tab[i]);
+        if (i<j) {
+           // swap(tab[j],tab[i]);
+           student r=tab[i];
+           tab[i]=tab[j];
+           tab[j]=r;
+            i++;
+            j--;
+        }
     }
 
     return;
@@ -159,9 +201,9 @@ void podzielStudentow_trzy(student* tab, int n) // xmod3=0, xmod3=1, xmod3=2;
 }
 
 
-void wyswietlStudentow(student *tab)
+void wyswietlStudentow(student *tab,int n)
 {
-    for(int i=0;i<N;i++)
+    for(int i=0;i<n;i++)
     {
         cout<<i+1<<". ";
         cout<<tab[i].imie<<" ";
@@ -182,10 +224,21 @@ void usunTabliceStudentow(student *&tab)
 
 int main()
 {
-    student *tab;
-    wczytajTabliceStudentow(tab);
-    wyswietlStudentow(tab);
 
+    string sciezka;
+    int liczbaStudentow;
+    ifstream plik;
+    sciezka="studenci.csv";
+    plik.open(sciezka);
+    plik >> liczbaStudentow;
+    //cout<<liczbaStudentow;
+    plik.close();
+
+    student *tab;
+    wczytajTabliceStudentowZaj(tab);
+    //wczytajTabliceStudentow(tab);
+    wyswietlStudentow(tab,liczbaStudentow);
+/*
     //wyswietl sort1
     cout<<"+=== Sort1 ===+"<<endl;
     sortujTabliceStudentow(tab, N, 1);
@@ -194,18 +247,19 @@ int main()
     //wyswietl sort0
     cout<<"+=== Sort0 ===+"<<endl;
     sortujTabliceStudentow(tab, N, 0);
-    wyswietlStudentow(tab);
+    wyswietlStudentow(tab);*/
 
     //wyswietl podziel2
-    cout<<"+=== Podziel2 ===+"<<endl;
-    podzielStudentow_dwa(tab,N);
-    wyswietlStudentow(tab);
 
+    cout<<"+=== Podziel2 ===+"<<endl;
+//    podzielStudentow_dwa(tab,liczbaStudentow);
+    wyswietlStudentow(tab,liczbaStudentow);
+/*
     //wyswietl podziel3
     cout<<"+=== Podziel3 ===+"<<endl;
-    podzielStudentow_trzy(tab,N);
-    wyswietlStudentow(tab);
-
+    podzielStudentow_trzy(tab,liczbaStudentow);
+    wyswietlStudentow(tab,liczbaStudentow);
+*/
     usunTabliceStudentow(tab);
 
     return 0;

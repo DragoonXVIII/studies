@@ -11,18 +11,20 @@ using namespace std;
 
 
 
-class pracownik : public osoba
+class pracownik : protected osoba
 {
     public:
         pracownik();
         pracownik(string imie, string nazwisko, int wiek, string firma);
         ~pracownik();
-        void wyswietl_p();
 
-        string firma;
+        virtual void wyswietl();
 
-    private:
         //string firma;
+
+    protected:
+        string firma;
+        int premia;
 
 };
 

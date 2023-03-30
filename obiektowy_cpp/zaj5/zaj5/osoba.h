@@ -15,12 +15,13 @@ class osoba
         osoba();
         osoba(string imie, string nazwisko, int wiek);
         ~osoba();
+        virtual void wyswietl();
+        virtual void wczytaj();
 
+    protected:
         string imie;
         string nazwisko;
         int wiek;
-
-        void wyswietl_o();
 
 };
 

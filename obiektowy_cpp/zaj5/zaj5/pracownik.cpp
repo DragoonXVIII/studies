@@ -29,11 +29,11 @@ pracownik::~pracownik()
 }
 
 
-void pracownik::wyswietl_p()
+void pracownik::wyswietl()
 {
-
+    cout<<"+=== PRACOWNIK ===+"<<endl;
     cout<<"Dane osobowe: ";
-    wyswietl_o();
+    cout<<imie<<" "<<nazwisko<<" "<<wiek<<endl;
     cout<<"Dane ogolne pracownika: ";
     cout<<"firma: "<<firma<<endl;
 

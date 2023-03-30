@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-class pracownikFizyczny : public pracownik
+class pracownikFizyczny : private pracownik
 {
     public:
         pracownikFizyczny();
@@ -20,11 +20,13 @@ class pracownikFizyczny : public pracownik
                           int stawka_h, int premia); //premia podawana w %
         ~pracownikFizyczny();
 
-        void wyswietl_pf();
+        virtual void wyswietl();
+        void zarobki();
 
-    private:
+    protected:
         int stawka_h;
-        int premia;
+
+
 };
 
 #endif // PRACOWNIKFIZYCZNY_H
