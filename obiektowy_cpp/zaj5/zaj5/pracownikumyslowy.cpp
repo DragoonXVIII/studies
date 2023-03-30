@@ -36,10 +36,13 @@ pracownikUmyslowy::~pracownikUmyslowy()
 }
 
 
-void pracownikUmyslowy::wyswietl_pu()
+void pracownikUmyslowy::wyswietl()
 {
     cout<<"+=== PRACOWNIK UMYSLOWY ===+"<<endl;
-    wyswietl_p();
+    cout<<"Dane osobowe: ";
+    cout<<imie<<" "<<nazwisko<<" "<<wiek<<endl;
+    cout<<"Dane ogolne pracownika: ";
+    cout<<"firma: "<<firma<<endl;
     cout<<"Dane szczegolowe pracownika:"<<endl;
     cout<<"Zarobki: "<<wynagordzenie_m<<"/miesiac ";
     cout<<"Premia: "<<premia<<"%."<<endl;
