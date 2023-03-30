@@ -51,11 +51,11 @@ int main()
 
     for(int i=0;i<n;i++)
     {
-        osoby[i] = new o_osoba("xD","xd",{4,5,6});
-        //osoby[i] = new o_osoba();
-        //osoby[i]->get();
-        osoba = osoby[i]->get_nameandsurname() +";"+ to_string(osoby[i]->birth_date.d) +";"+ to_string(osoby[i]->birth_date.m) +";"+ to_string(osoby[i]->birth_date.y) + "\n";
-        cout<<osoba<<endl;
+        //osoby[i] = new o_osoba("xD","xd",{4,5,6});
+        osoby[i] = new o_osoba();
+        osoby[i]->get();
+        //osoba = osoby[i]->get_nameandsurname() +";"+ to_string(osoby[i]->birth_date.d) +";"+ to_string(osoby[i]->birth_date.m) +";"+ to_string(osoby[i]->birth_date.y) + "\n";
+        //cout<<osoba<<endl;
         plik<<osoba;//<<endl;
         osoba = "0";
     }
