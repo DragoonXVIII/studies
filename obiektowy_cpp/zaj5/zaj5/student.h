@@ -2,7 +2,9 @@
 #define STUDENT_H
 
 #include "osoba.h"
+
 #include <string>
+#include <vector>
 
 
 
@@ -14,7 +16,7 @@ class student : protected osoba
 {
     public:
         student();
-        student(string imie, string nazwisko, int wiek, string uczelnia, float *oceny);
+        student(string imie, string nazwisko, int wiek, string uczelnia, vector <float> oceny);
         ~student();
 
         virtual void wyswietl();
@@ -25,8 +27,8 @@ class student : protected osoba
 
     private:
         string uczelnia;
-        float *oceny;
-        int n;
+        vector <float> oceny;
+        //int n;
 };
 
 #endif // STUDENT_H

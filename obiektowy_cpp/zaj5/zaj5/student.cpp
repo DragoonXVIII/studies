@@ -1,7 +1,7 @@
 #include "student.h"
 
 #include <iostream>
-
+#include <vector>
 
 using namespace std;
 
@@ -13,28 +13,26 @@ student::student()
 }
 
 
-student::student(string imie, string nazwisko, int wiek, string uczelnia, float *oceny)
+student::student(string imie, string nazwisko, int wiek, string uczelnia, vector <float> oceny)
 {
     this->imie=imie;
     this->nazwisko=nazwisko;
     this->wiek=wiek;
     this->uczelnia=uczelnia;
     this->oceny=oceny;
-    this->n=sizeof(oceny)/sizeof(oceny[0]);
     cout<<"Utworzono obiekt klasy <student> konstruktorem <z parametrami>"<<endl;
 }
 
 
 student::~student()
 {
-    delete []oceny;
     cout<<"Usunieto obiekt klasy <student>"<<endl;
 }
 
 
 void student::wczytaj()
 {
-
+    int n;
     cout<<"Podaj imie: ";
     cin>>imie;
     cout<<"Podaj nazwisko: ";
@@ -45,11 +43,12 @@ void student::wczytaj()
     cin>>uczelnia;
     cout<<"Podaj liczbe ocen: ";
     cin>>n;
-    oceny = new float[n];
+    int x;
     for(int i=0;i<n;i++)
     {
-        cout<<"Podaj "<<i+1<<"ocene: ";
-        cin>>oceny[i];
+        cout<<"Podaj "<<i+1<<" ocene: ";
+        cin>>x;
+        oceny.push_back(x);
     }
 
     return;
@@ -62,7 +61,7 @@ void student::wyswietl()
     cout<<imie<<" "<<nazwisko<<" "<<wiek<<endl;
     cout<<"Dane studenta: ";
     cout<<uczelnia<<" ";
-    for(int i=0;i<n;i++)
+    for(int i=0;i<oceny.size();i++)
     {
         cout<<oceny[i]<<";";
     }
@@ -76,17 +75,17 @@ void student::wyswietl()
 float student::srednia()
 {
     float a=0;
-    for(int i=0;i<n;i++)
+    for(int i=0;i<oceny.size();i++)
     {
         a+=oceny[i];
     }
-    return a/n;
+    return a/oceny.size();
 }
 
 
 bool student::czy_zaliczyl()
 {
-    for(int i=0;i<n;i++)
+    for(int i=0;i<oceny.size();i++)
     {
         if(oceny[i]<3)
             return false;

@@ -32,8 +32,7 @@ pracownik::~pracownik()
 void pracownik::wyswietl()
 {
     cout<<"+=== PRACOWNIK ===+"<<endl;
-    cout<<"Dane osobowe: ";
-    cout<<imie<<" "<<nazwisko<<" "<<wiek<<endl;
+    osoba::wyswietl();
     cout<<"Dane ogolne pracownika: ";
     cout<<"firma: "<<firma<<endl;
 

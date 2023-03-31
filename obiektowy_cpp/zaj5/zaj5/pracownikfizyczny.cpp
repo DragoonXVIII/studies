@@ -37,14 +37,13 @@ pracownikFizyczny::~pracownikFizyczny()
 
 void pracownikFizyczny::wyswietl()
 {
+
     cout<<"+=== PRACOWNIK FIZYCZNY ===+"<<endl;
-    cout<<"Dane osobowe: ";
-    cout<<imie<<" "<<nazwisko<<" "<<wiek<<endl;
-    cout<<"Dane ogolne pracownika: ";
-    cout<<"firma: "<<firma<<endl;
+    pracownik::wyswietl();
     cout<<"Dane szczegolowe pracownika:"<<endl;
     cout<<"Zarobki: "<<stawka_h<<"/h ";
     cout<<"Premia: "<<premia<<"%."<<endl;
+    zarobki();
 }
 
 void pracownikFizyczny::zarobki()
@@ -53,6 +52,5 @@ void pracownikFizyczny::zarobki()
     cout<<"podaj ilosc godzin: ";
     cin>>f;
     cout<<"Zarobki wynosza: ";
-    cout<<f*stawka_h;
-
+    cout<<f*stawka_h<<endl;
 }
