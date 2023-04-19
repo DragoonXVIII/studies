@@ -7,6 +7,10 @@
 #include "kolo.h"
 #include "prostokat.h"
 #include "kwadrat.h"
+#include "afigura.h"
+#include "kolo2.h"
+#include "prostokat2.h"
+#include "kwadrat2.h"
 
 
 using namespace std;
@@ -29,6 +33,7 @@ int main()
     v2.muzyka(7);
     */
 
+    /*
     figura f1;
     kolo k1,k2(10);
     prostokat p1,p2(3,4);
@@ -48,6 +53,22 @@ int main()
     cout<<endl;
     s2.wyswietl();
     cout<<endl;
+    */
+
+    afigura *kolo,*prostokat,*kwadrat;
+    kolo = new kolo2(2,"koleczko");
+    prostokat = new prostokat2(2,3,"prostokacik");
+    kwadrat = new kwadrat2(2,"kwadracik");
+    kolo->wyswietl();
+    cout<<endl;
+    prostokat->wyswietl();
+    cout<<endl;
+    kwadrat->wyswietl();
+    cout<<endl;
+
+    delete kolo;
+    delete prostokat;
+    delete kwadrat;
 
     return 0;
 }

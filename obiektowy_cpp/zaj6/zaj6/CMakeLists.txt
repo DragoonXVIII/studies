@@ -13,7 +13,12 @@ add_executable(zaj6 main.cpp
     figura.cpp figura.h
     kolo.cpp kolo.h
     prostokat.cpp prostokat.h
-    kwadrat.cpp kwadrat.h)
+    kwadrat.cpp kwadrat.h
+    afigura.h afigura.cpp
+    kolo2.h kolo2.cpp
+    prostokat2.h prostokat2.cpp
+    kwadrat2.h kwadrat2.cpp
+)
 
 install(TARGETS zaj6
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
