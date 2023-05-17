@@ -2,15 +2,15 @@
 #ifndef TKOLO_H
 #define TKOLO_H
 
-#include "tpunkt.h"
 
+class Tpunkt;
 
 class Tkolo
 {
     public:
         Tkolo();
+        Tkolo(int r): r(r){};
         ~Tkolo();
-        friend bool nalezy(Tpunkt &, Tkolo &);
         int getR();
     private:
         int r;

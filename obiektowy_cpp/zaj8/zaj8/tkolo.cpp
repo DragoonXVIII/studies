@@ -1,5 +1,7 @@
 
-#include "tkolo.h"
+#include "Tpunkt.h"
+#include "Tkolo.h"
+
 #include "iostream"
 
 using namespace std;
@@ -9,12 +11,10 @@ Tkolo::Tkolo()
 
 }
 
-
-bool nalezy(Tpunkt &, Tkolo &)
+Tkolo::~Tkolo()
 {
-    return true;
-}
 
+}
 
 int Tkolo::getR()
 {
