@@ -3,8 +3,7 @@
 #define TPUNKT_H
 
 
-#include "tkolo.h"
-
+class Tkolo;
 
 class Tpunkt
 {
@@ -12,7 +11,7 @@ class Tpunkt
         Tpunkt();
         Tpunkt(int x, int y): x(x), y(y){};
         ~Tpunkt();
-        friend bool nalezy(Tpunkt &, Tkolo &);
+        friend bool nalezy(Tpunkt *punkt, Tkolo *kolo);
         void ruch(int xMove, int yMove);
         int getX();
         int getY();
