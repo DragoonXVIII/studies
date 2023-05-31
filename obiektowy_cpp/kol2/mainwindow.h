@@ -32,6 +32,8 @@ private slots:
 
     void on_pojemnosc_currentIndexChanged(int index);
 
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 
