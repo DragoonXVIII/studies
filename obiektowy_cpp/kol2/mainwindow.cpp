@@ -6,6 +6,7 @@
 #include <random>
 #include <QThread>
 #include <QMessageBox>
+#include <QFile>
 
 
 
@@ -299,5 +300,23 @@ void MainWindow::on_pojemnosc_currentIndexChanged(int index)
     }
     }
 
+}
+
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    QString paramtry[5],path;
+    switch(index)
+    {
+    case 0:
+        path = "dane/Mavicair2.txt";
+        break;
+    case 1:
+        path = "dane/Mini3Pro.txt";
+        break;
+    }
+    QFile file(path);
+    file.open();
+    while()
 }
 

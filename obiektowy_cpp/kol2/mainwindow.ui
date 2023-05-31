@@ -707,7 +707,7 @@ border-radius: 6px;
          </rect>
         </property>
         <property name="text">
-         <string> </string>
+         <string/>
         </property>
        </widget>
       </widget>
@@ -946,6 +946,16 @@ border-radius: 6px;
           <height>24</height>
          </rect>
         </property>
+        <item>
+         <property name="text">
+          <string>Mavic Air 2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mini 3 Pro</string>
+         </property>
+        </item>
        </widget>
        <widget class="QLabel" name="label_12">
         <property name="geometry">
