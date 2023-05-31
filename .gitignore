@@ -35,5 +35,6 @@
 *.idea
 
 obiektowy_cpp/zaj*/build*
+build*
 podstawy_algorytmiki_cpp/zaj*/build*
 *.user
