@@ -305,18 +305,43 @@ void MainWindow::on_pojemnosc_currentIndexChanged(int index)
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
-    QString paramtry[5],path;
+    QString parametry[5], path;
+    qDebug()<<"funkcja dziala";
+
     switch(index)
     {
     case 0:
-        path = "dane/Mavicair2.txt";
+        path = "assets/MavicAir2.txt";
         break;
     case 1:
-        path = "dane/Mini3Pro.txt";
+        path = "assets/Mini3Pro.txt";
         break;
     }
+    qDebug()<<"path:"<<path;
+
     QFile file(path);
-    file.open();
-    while()
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug()<< "plik otwarty";
+        QTextStream pipeline(&file);
+        for (int i = 0; i < 5; ++i)
+        {
+            if (!pipeline.atEnd())
+            {
+                parametry[i] = pipeline.readLine();
+                qDebug()<<parametry[i];
+            }
+            else
+                break;
+        }
+        file.close();
+    }
+
+    for(int i=-1;i<=3;i++)
+    {
+        QTableWidgetItem *item = new QTableWidgetItem(parametry[i+1]);
+        ui->tableWidget->setItem(i,1,item);
+    }
+
 }
 
