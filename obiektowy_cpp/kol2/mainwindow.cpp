@@ -311,10 +311,10 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     switch(index)
     {
     case 0:
-        path = "assets/MavicAir2.txt";
+        path = ":/assets/MavicAir2.txt";
         break;
     case 1:
-        path = "assets/Mini3Pro.txt";
+        path = ":/assets/MavicAir2.txt";
         break;
     }
     qDebug()<<"path:"<<path;
