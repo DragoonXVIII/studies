@@ -4,20 +4,25 @@
 using namespace std;
 
 // Funkcja obliczająca wartość wielomianu i-tego stopnia w punkcie x
-double horner(const vector<double>& wspolczynniki, int stopien, double x) {
+double horner(const vector<double>& wspolczynniki, int stopien, double x)
+{
     double wynik = wspolczynniki[stopien];
-    for (int i = stopien - 1; i >= 0; i--) {
+    for (int i = stopien - 1; i >= 0; i--)
+    {
         wynik = wynik * x + wspolczynniki[i];
     }
     return wynik;
 }
 
 // Funkcja obliczająca pochodną i-tego stopnia wielomianu w punkcie x
-double pochodna(const vector<double>& wspolczynniki, int stopien, double x, int stopienPochodnej) {
-    if (stopienPochodnej > stopien) {
+double pochodna(const vector<double>& wspolczynniki, int stopien, double x, int stopienPochodnej)
+{
+    if (stopienPochodnej > stopien)
+    {
         return 0.0; // Pochodna stopnia wyższego niż stopień wielomianu wynosi 0
     }
-    if (stopienPochodnej == 0) {
+    if (stopienPochodnej == 0)
+    {
         return horner(wspolczynniki, stopien, x); // Pochodna zerowego stopnia to sam wielomian
     }
 
@@ -32,30 +37,32 @@ double pochodna(const vector<double>& wspolczynniki, int stopien, double x, int 
     return horner(wspolczynnikiPochodnej, stopien - stopienPochodnej, x);
 }
 
-int main() {
+int main()
+{
     int stopien;
-    cout << "Podaj stopień wielomianu: ";
-            cin >> stopien;
+    cout << "Podaj stopien wielomianu: ";
+    cin >> stopien;
 
     vector<double> wspolczynniki(stopien + 1);
-    cout << "Podaj współczynniki wielomianu od najwyższej potęgi do stałej: ";
-    for (int i = stopien; i >= 0; i--) {
+    cout << "Podaj wspolczynniki wielomianu od najwyzszej potegi do stalej: ";
+    for (int i = stopien; i >= 0; i--)
+    {
         cin >> wspolczynniki[i];
     }
 
     double x;
-    cout << "Podaj punkt, w którym obliczysz wartość wielomianu i jego pochodnych: ";
+    cout << "Podaj punkt, w którym obliczysz wartosc wielomianu i jego pochodnych: ";
     cin >> x;
 
     double wartosc = horner(wspolczynniki, stopien, x);
-    cout << "Wartość wielomianu w punkcie " << x << " wynosi: " << wartosc << endl;
+    cout << "Wartosc wielomianu w punkcie " << x << " wynosi: " << wartosc << endl;
 
-        int stopienPochodnej;
+    int stopienPochodnej;
     cout << "Podaj stopień pochodnej, którą chcesz obliczyć: ";
     cin >> stopienPochodnej;
 
     double wartoscPochodnej = pochodna(wspolczynniki, stopien, x, stopienPochodnej);
     cout << "Wartość " << stopienPochodnej << "-stopniowej pochodnej w punkcie " << x << " wynosi: " << wartoscPochodnej << endl;
 
-        return 0;
+    return 0;
 }
