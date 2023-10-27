@@ -1,67 +1,87 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+
+
 using namespace std;
 
-struct Element {
+
+struct Element
+{
     int number;
     Element* next;
 };
 
-struct SingleList {
+
+struct SingleList
+{
     Element* head;
     Element* tail;
     int counter;
 };
 
+
 SingleList l;
 
-bool isEmpty() {
+
+bool isEmpty()
+{
     return l.head == nullptr;
 }
 
-void addTail(int value) {
+void addTail(int value)
+{
     Element* el = new Element;
     el->number = value;
     el->next = nullptr;
-    if (isEmpty()) {
+    if(isEmpty())
+    {
         l.head = el;
         l.tail = el;
-    } else {
+    }
+    else
+    {
         l.tail->next = el;
         l.tail = el;
     }
     l.counter++;
 }
 
-void addHead(int value) {
+void addHead(int value)
+{
     Element* el = new Element;
     el->number = value;
     el->next = l.head;
     l.head = el;
-    if (isEmpty()) {
+    if(isEmpty())
+    {
         l.tail = el;
     }
     l.counter++;
 }
 
-void addPosition(int value, int position) {
-    if (position < 0 || position > l.counter) {
+void addPosition(int value, int position)
+{
+    if(position<0 || position>l.counter)
+    {
         cout << "Invalid position." << endl;
         return;
     }
-    if (position == 0) {
+    if(position == 0)
+    {
         addHead(value);
         return;
     }
-    if (position == l.counter) {
+    if(position == l.counter)
+    {
         addTail(value);
         return;
     }
     Element* el = new Element;
     el->number = value;
     Element* temp = l.head;
-    for (int i = 0; i < position - 1; i++) {
+    for(int i=0; i<position-1; i++)
+    {
         temp = temp->next;
     }
     el->next = temp->next;
@@ -69,18 +89,24 @@ void addPosition(int value, int position) {
     l.counter++;
 }
 
-void deleteTail() {
-    if (isEmpty()) {
+void deleteTail()
+{
+    if(isEmpty())
+    {
         cout << "List is empty." << endl;
         return;
     }
-    if (l.counter == 1) {
+    if(l.counter == 1)
+    {
         delete l.tail;
         l.head = nullptr;
         l.tail = nullptr;
-    } else {
+    }
+    else
+    {
         Element* prev = l.head;
-        while (prev->next != l.tail) {
+        while(prev->next != l.tail)
+        {
             prev = prev->next;
         }
         delete l.tail;
@@ -90,39 +116,48 @@ void deleteTail() {
     l.counter--;
 }
 
-void deleteHead() {
-    if (isEmpty()) {
+void deleteHead()
+{
+    if(isEmpty())
+    {
         cout << "List is empty." << endl;
         return;
     }
     Element* temp = l.head;
     l.head = l.head->next;
     delete temp;
-    if (l.counter == 1) {
+    if(l.counter == 1)
+    {
         l.tail = nullptr;
     }
     l.counter--;
 }
 
-void deletePosition(int position) {
-    if (isEmpty()) {
+void deletePosition(int position)
+{
+    if(isEmpty())
+    {
         cout << "List is empty." << endl;
         return;
     }
-    if (position < 0 || position >= l.counter) {
+    if(position < 0 || position >= l.counter)
+    {
         cout << "Invalid position." << endl;
         return;
     }
-    if (position == 0) {
+    if(position == 0)
+    {
         deleteHead();
         return;
     }
-    if (position == l.counter - 1) {
+    if(position == l.counter - 1)
+    {
         deleteTail();
         return;
     }
     Element* prev = l.head;
-    for (int i = 0; i < position - 1; i++) {
+    for (int i = 0; i < position - 1; i++)
+    {
         prev = prev->next;
     }
     Element* temp = prev->next;
@@ -131,38 +166,47 @@ void deletePosition(int position) {
     l.counter--;
 }
 
-int getFirstElement() {
-    if (isEmpty()) {
+int getFirstElement()
+{
+    if (isEmpty())
+    {
         cout << "List is empty." << endl;
         return -1;
     }
     return l.head->number;
 }
 
-int getLastElement() {
-    if (isEmpty()) {
+int getLastElement()
+{
+    if (isEmpty())
+    {
         cout << "List is empty." << endl;
         return -1;
     }
     return l.tail->number;
 }
 
-float calculateAverage() {
-    if (isEmpty()) {
+float calculateAverage()
+{
+    if(isEmpty())
+    {
         cout << "List is empty." << endl;
         return 0.0f;
     }
     int sum = 0;
     Element* temp = l.head;
-    while (temp != nullptr) {
+    while(temp != nullptr)
+    {
         sum += temp->number;
         temp = temp->next;
     }
-    return static_cast<float>(sum) / l.counter;
+    return static_cast<float>(sum)/l.counter;
 }
 
-void findMaxElement() {
-    if (isEmpty()) {
+void findMaxElement()
+{
+    if(isEmpty())
+    {
         cout << "List is empty." << endl;
         return;
     }
@@ -170,8 +214,10 @@ void findMaxElement() {
     int maxElement = temp->number;
     int position = 0;
     int maxPosition = 0;
-    while (temp != nullptr) {
-        if (temp->number > maxElement) {
+    while(temp != nullptr)
+    {
+        if (temp->number > maxElement)
+        {
             maxElement = temp->number;
             maxPosition = position;
         }
@@ -181,29 +227,36 @@ void findMaxElement() {
     cout << "Max element: " << maxElement << " at position: " << maxPosition << endl;
 }
 
-void displayList() {
-    if (isEmpty()) {
+void displayList()
+{
+    if(isEmpty())
+    {
         cout << "List is empty." << endl;
         return;
     }
     Element* temp = l.head;
-    while (temp != nullptr) {
+    while(temp != nullptr)
+    {
         cout << temp->number << " ";
         temp = temp->next;
     }
     cout << endl;
 }
 
-void clearList() {
-    while (!isEmpty()) {
+void clearList()
+{
+    while(!isEmpty())
+    {
         deleteHead();
     }
 }
 
-int main() {
+int main()
+{
     srand(static_cast<unsigned>(time(nullptr)));
     int choice;
-    do {
+    do
+    {
         cout << "1. Check if the list is empty" << endl;
         cout << "2. Add an element at the end" << endl;
         cout << "3. Add an element at the beginning" << endl;
@@ -221,27 +274,37 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
         cout << endl;
-        switch (choice) {
+        switch (choice)
+        {
         case 1:
-            if (isEmpty()) {
+            if(isEmpty())
+            {
                 cout << "List is empty." << endl;
-            } else {
+            }
+            else
+            {
                 cout << "List is not empty." << endl;
             }
             break;
-        case 2: {
+
+        case 2:
+        {
             int value = rand() % 50 + 1;
             addTail(value);
             cout << "Added element " << value << " at the end of the list." << endl;
             break;
         }
-        case 3: {
+
+        case 3:
+        {
             int value = rand() % 50 + 1;
             addHead(value);
             cout << "Added element " << value << " at the beginning of the list." << endl;
             break;
         }
-        case 4: {
+
+        case 4:
+        {
             int value, position;
             cout << "Enter the value: ";
             cin >> value;
@@ -251,15 +314,19 @@ int main() {
             cout << "Added element " << value << " at position " << position << " in the list." << endl;
             break;
         }
+
         case 5:
             deleteTail();
             cout << "Deleted the last element from the list." << endl;
             break;
+
         case 6:
             deleteHead();
             cout << "Deleted the first element from the list." << endl;
             break;
-        case 7: {
+
+        case 7:
+        {
             int position;
             cout << "Enter the position: ";
             cin >> position;
@@ -267,35 +334,45 @@ int main() {
             cout << "Deleted element at position " << position << " from the list." << endl;
             break;
         }
+
         case 8:
             cout << "First element: " << getFirstElement() << endl;
             break;
+
         case 9:
             cout << "Last element: " << getLastElement() << endl;
             break;
+
         case 10:
             cout << "Average: " << calculateAverage() << endl;
             break;
+
         case 11:
             findMaxElement();
             break;
+
         case 12:
             cout << "List: ";
             displayList();
             break;
+
         case 13:
             clearList();
             cout << "List cleared." << endl;
             break;
+
         case 14:
             cout << "Exiting..." << endl;
             break;
+
         default:
             cout << "Invalid choice. Please try again." << endl;
             break;
+
         }
         cout << endl;
-    } while (choice != 14);
+
+    }while(choice!=14);
     return 0;
 }
 
