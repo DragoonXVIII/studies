@@ -39,6 +39,7 @@ string FractionToBase(double fraction, int base, int precision)
         fraction *= base;
         int digit = static_cast<int>(fraction);
         char digitChar;
+        cout<<digit<<endl;
         if (digit < 10)
         {
             digitChar = '0' + digit;
@@ -72,10 +73,10 @@ int main()
 
     // Konwersja części całkowitej i ułamkowej na wybrany system
     string intPart = IntToBase(number, base);
-    string fractionPart = FractionToBase(decimal, base, precision);
+    string floatPart = FractionToBase(decimal, base, precision);
 
     // Wyświetlenie wyniku
-    cout << "Wynik: " << intPart << fractionPart << endl;
+    cout << "Wynik: " << intPart << floatPart << endl;
 
     return 0;
 }
