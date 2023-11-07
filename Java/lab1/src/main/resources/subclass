@@ -1,0 +1,9 @@
+package com.lab1;
+
+public class subclass
+{
+    void subclassPirntout()
+    {
+        System.out.println("subclass printout")
+    }
+}

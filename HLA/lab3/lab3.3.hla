@@ -1,0 +1,16 @@
+program lab3;
+
+#include( "stdlib.hhf" );
+
+static
+
+    zmienna1: int32;
+
+begin lab3;
+
+    stdout.put("Podaj liczbe: ");
+    stdin.geth32();
+    mov(eax,zmienna1);
+    stdout.puth32(zmienna1);
+    
+end lab3;

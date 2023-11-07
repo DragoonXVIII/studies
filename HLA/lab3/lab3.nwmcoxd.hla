@@ -1,0 +1,39 @@
+program lab3;
+
+#include( "stdlib.hhf" );
+
+static
+    //system: boolean;
+    //zmienna1: int32;
+
+begin lab3;
+
+    stdout.put("Konwersja z S10 na S16: 0;");
+    stdout.newln();
+    stdout.put("Konwersja z S16 na S10: 1;");
+    stdin.get(al);
+
+    if(al>1||al<0) then
+        stdout.put("Error");
+    else
+        stdout.put("Wprowadz liczbe: ");
+        if(al==0) then
+            stdin.geti32();
+            stdout.puth32(eax);
+        else
+            stdin.geth32();
+            stdout.puti32(eax);
+        endif;
+        if(eax>)
+    endif;
+
+    /*stdout.put("Podaj liczbe: ");
+    stdin.get(zmienna1);
+    mov(0,al);
+    add(zmienna1,al);
+    
+    stdout.put ( "Wartosc wyswietlana ze zmiennej typu int8 to: ",zmienna1 );
+    stdout.newln();
+    stdout.put ( "Wartosc wyswietlana z rejestru al to: ",al );
+*/
+end lab3;

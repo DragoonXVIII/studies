@@ -1,0 +1,24 @@
+program lab2;
+#include ("stdlib.hhf")
+
+static
+    zmienna1: int8:= 40;
+    zmienna2: int8:= 0;
+    i: int8:= 0;
+    j: int8:= 0;
+
+begin lab2;
+
+    for(mov(0,i);i<8;inc(i)) do
+        for(mov(0,j);j<5;inc(j)) do
+            stdout.put(zmienna1:3);
+            dec(zmienna1);
+            if(j==4) then
+                stdout.newln();
+            else
+                sub(1,zmienna2);
+            endif;
+        endfor;
+    endfor;
+    
+end lab2;

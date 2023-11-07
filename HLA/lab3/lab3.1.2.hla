@@ -1,0 +1,19 @@
+program lab3;
+
+#include( "stdlib.hhf" );
+
+static
+
+    zmienna1: int8;
+
+begin lab3;
+
+    stdout.put("Podaj liczbe s16: ");
+    stdin.get(al);
+    mov(al,zmienna1);
+    stdout.put ("Liczba w s10 to: ",zmienna1 );
+    stdout.newln();
+    mov(zmienna1,al);
+    stdout.put ( "Wartosc wyswietlana z rejestru al to: ",al );
+
+end lab3;

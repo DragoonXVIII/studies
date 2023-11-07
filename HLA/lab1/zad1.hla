@@ -1,0 +1,23 @@
+program Hello;
+
+#include( "stdlib.hhf" )
+
+static
+    zmienna1: int8:= 60;
+    zmienna2: int8;
+    zmienna3: boolean:= true;
+    zmienna4: char;
+    //zmienna5: char:= "wyraz";
+
+begin Hello;
+
+stdout.put("Wprowadz wartosc zmiennej 2 (int8)");
+stdin.get(zmienna2);
+stdin.get(zmienna4);
+stdout.put("Zmienna1: ",zmienna1,nl,"Zmienna2: ",zmienna2,nl,"Wprowadz wartosc zmiennej4");
+
+stdout.put("Zmienna3: ",zmienna3,nl,"Zmienna4: ",zmienna4,nl); //"Zmienna5: ",zmienna5,nl);
+
+
+
+end Hello;

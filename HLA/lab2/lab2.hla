@@ -1,0 +1,19 @@
+program lab2;
+#include ("stdlib.hhf")
+
+static
+    zmienna1: int8:= -7;
+    zmienna2: int16:= -277;
+
+begin lab2;
+
+    mov(0, al);   
+    sub(zmienna1, al); 
+    stdout.put(al); 
+    mov(0, ax);   
+    sub(zmienna2, ax); 
+    stdout.put(ax);
+    stdout.put(zmienna1,zmienna2)
+    
+
+end lab2;

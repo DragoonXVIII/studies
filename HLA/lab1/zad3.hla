@@ -1,0 +1,22 @@
+program lab1;
+
+#include( "stdlib.hhf" )
+
+static
+    a: int8:= -7;
+    b: int8:= 6;
+
+begin lab1;
+
+stdout.put("a: ",a,nl,"b: ",b,nl);
+mov(a,AH);
+sub(b,AH);
+mov(AH,b);
+stdout.put("a - b = ",b,nl);
+mov(b,AH);
+mov(12,AL);
+add(AL,AH);
+mov(AH,b);
+stdout.put("a - b + 12 = ",b,nl);
+
+end lab1;
