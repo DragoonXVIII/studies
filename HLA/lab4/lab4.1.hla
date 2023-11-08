@@ -1,0 +1,28 @@
+program lab4;
+
+    #include( "stdlib.hhf" );
+
+    static
+        zmienna: int8; 
+
+begin lab4;
+
+    stdout.put("Podaj liczbe z przedzialu -128 do 127: ");
+    stdin.geti8();
+    mov(al,zmienna);
+    stdout.put("Podales liczbe: ", zmienna);
+    stdout.newln();
+    stdout.puth8(zmienna);
+    stdout.newln();
+    not(zmienna);
+    stdout.put("Inwersja liczby: ", zmienna);
+    stdout.newln();
+    not(zmienna);
+    neg(zmienna);
+    stdout.put("Negacja liczby: ", zmienna);
+    stdout.newln();
+    stdout.puti8(zmienna);
+    stdout.newln();
+    stdout.put("To samo lmao: ", zmienna);
+
+end lab4;
