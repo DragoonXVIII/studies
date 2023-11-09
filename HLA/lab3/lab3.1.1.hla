@@ -1,0 +1,17 @@
+program lab3;
+
+#include( "stdlib.hhf" );
+
+static
+    zmienna1: int8;
+
+begin lab3;
+
+    stdout.put("Podaj liczbe: ");
+    stdin.get(al);
+    stdout.put("Wartosc wyswietlana z rejestru al to: ",al );
+    stdout.put("Podaj liczbe: ");
+    stdin.get(zmienna1);
+    stdout.put ( "Wartosc wyswietlana ze zmiennej typu int8 to: ",zmienna1 );
+
+end lab3;

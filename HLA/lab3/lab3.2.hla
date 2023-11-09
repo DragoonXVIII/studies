@@ -1,0 +1,19 @@
+program lab3;
+
+#include( "stdlib.hhf" );
+
+static
+
+    zmienna1: int8;
+
+begin lab3;
+
+    stdout.put("Podaj liczbe aby przekonwertowac na s10: ");
+    stdin.get(ax);
+    stdout.puti16(ax);
+
+    stdout.put("Podaj liczbe aby przekonwertowac na s16 ");
+    stdin.geti16();
+    stdout.put(ax);
+
+end lab3;

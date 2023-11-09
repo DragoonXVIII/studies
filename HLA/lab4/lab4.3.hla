@@ -1,0 +1,29 @@
+program lab4;
+
+    #include( "stdlib.hhf" );
+
+    static
+        zmienna: int8:= 0;
+
+begin lab4;
+
+    /*forever
+        stdout.put("Podaj liczbe: ");
+        stdin.();
+        stdout.newln();
+        if (al == 0) then
+            break;
+        else
+            if (al > 0) then
+                stdout.put("Liczba dodatnia");
+            else
+                stdout.put("Liczba ujemna");
+            endif;
+        endif;
+    endfor;*/
+    repeat
+        stdout.put("Podaj liczbe: ");
+        inc(zmienna);
+    until(zmienna == 10);
+
+end lab4;
