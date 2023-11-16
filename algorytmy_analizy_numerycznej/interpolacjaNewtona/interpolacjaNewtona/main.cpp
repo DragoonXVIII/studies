@@ -31,7 +31,8 @@ string interpolacja_newtona(vector<double>& x, vector<double>& y)
         {
             result += " * (x - " + to_string(x[j]) + ")";
         }
-        if (i < n - 1) {
+        if (i < n - 1)
+        {
             result += " + ";
         }
     }
