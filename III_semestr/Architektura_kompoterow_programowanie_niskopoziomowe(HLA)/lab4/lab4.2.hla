@@ -1,0 +1,31 @@
+program lab4;
+
+    #include( "stdlib.hhf" );
+
+    static
+        zmienna: int8;
+
+begin lab4;
+
+    stdout.put("Podaj liczbe w zakresie -128 do 127: ");
+    stdin.get(zmienna);
+    stdout.put("Podana liczba: ", zmienna, "(10), ");
+    mov( zmienna, al );
+    stdout.put(al);
+    stdout.put("(16)");
+    stdout.newln();
+    cbw();
+    stdout.put("Podana liczba: ");
+    stdout.puti16(ax);
+    stdout.put("(10), ");
+    stdout.put(ax);
+    stdout.put("(16)");
+    stdout.newln();
+    movsx(ax,eax);
+    stdout.put("Podana liczba: ");
+    stdout.puti32(eax);
+    stdout.put("(10), ");
+    stdout.put(eax);
+    stdout.put("(16)");
+
+end lab4;

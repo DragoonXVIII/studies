@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1679248780 source:f:\_workspace\studies_projects_github\obiektowy_cpp\zaj3\zaj3\src\tosoba.cpp
+	"Tosoba.h"
+	<iostream>
+	<string>
+
+1679247846 f:\_workspace\studies_projects_github\obiektowy_cpp\zaj3\zaj3\include\tosoba.h
+	<string>
+
+1679248745 source:f:\_workspace\studies_projects_github\obiektowy_cpp\zaj3\zaj3\main.cpp
+	<iostream>
+	<string>
+	"Tosoba.h"
+
+1679249165 source:f:\_workspace\studies_projects_github\obiektowy_cpp\zaj3\main.cpp
+	<iostream>
+	<string>
+	"Tosoba.h"
+
+1679247846 f:\_workspace\studies_projects_github\obiektowy_cpp\zaj3\include\tosoba.h
+	<string>
+
+1679248780 source:f:\_workspace\studies_projects_github\obiektowy_cpp\zaj3\src\tosoba.cpp
+	"Tosoba.h"
+	<iostream>
+	<string>
+

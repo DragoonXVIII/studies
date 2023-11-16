@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1669297646 source:e:\workspace\c\programowanie_strukturalne\test\zaj11\main.c
+	<stdlib.h>
+	<stdio.h>
+	<locale.h>
+	<math.h>
+	<stdbool.h>
+	<float.h>
+	"TabliceDyn.h"
+
+1669297646 e:\workspace\c\programowanie_strukturalne\test\zaj11\tablicedyn.h
+
+1669297759 source:e:\workspace\c\programowanie_strukturalne\test\zaj11\tablicedyn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"TabliceDyn.h"
+
+1669634677 source:e:\workspace\c\programowanie_strukturalne\zaj11\main.c
+	<stdlib.h>
+	<stdio.h>
+	<locale.h>
+	<math.h>
+	<stdbool.h>
+	<float.h>
+	"TabliceDyn.h"
+
+1669594211 e:\workspace\c\programowanie_strukturalne\zaj11\tablicedyn.h
+
+1669634677 source:e:\workspace\c\programowanie_strukturalne\zaj11\tablicedyn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"TabliceDyn.h"
+
+1669391278 source:c:\edu-projects\c\programowanie_strukturalne\zaj11\tablicedyn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"TabliceDyn.h"
+
+1669653197 c:\edu-projects\c\programowanie_strukturalne\zaj11\tablicedyn.h
+
+1670353683 source:c:\edu-projects\c\programowanie_strukturalne\zaj11\main.c
+	<stdlib.h>
+	<stdio.h>
+	<locale.h>
+	<math.h>
+	<stdbool.h>
+	<float.h>
+	"TabliceDyn.h"
+
+1673191594 source:f:\_workspace\c\programowanie_strukturalne\zaj11\main.c
+	<stdlib.h>
+	<stdio.h>
+	<locale.h>
+	<math.h>
+	<stdbool.h>
+	<float.h>
+	"TabliceDyn.h"
+
+1673191594 f:\_workspace\c\programowanie_strukturalne\zaj11\tablicedyn.h
+
+1673191594 source:f:\_workspace\c\programowanie_strukturalne\zaj11\tablicedyn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"TabliceDyn.h"
+

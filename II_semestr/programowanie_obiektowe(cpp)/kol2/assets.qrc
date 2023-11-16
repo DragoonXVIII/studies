@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/szczyt-gorski-w-widoku-z-latajacego-drona-wygenerowanego-przez-sztuczna-inteligencje.jpg</file>
+        <file>assets/MavicAir2.txt</file>
+        <file>assets/Mini3Pro.txt</file>
+    </qresource>
+</RCC>

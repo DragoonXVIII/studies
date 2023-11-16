@@ -1,0 +1,49 @@
+/*Napisz program w którym: 
+• zadeklarowane zostaną zmienne o wartościach 
+-4.87660x10-2
+562.3456x101
+3.14x10-15
+Zmienne te powinny zostać wyświetlone czterokrotnie: 
+• w postaci dziesiętnej za pomocą dwóch procedur
+• w postaci wykładniczej - również dwie procedury*/
+
+program lab5;
+    #include("stdlib.hhf");
+    static
+        z1: real32:= -4.87660e-2;
+        z2: real32:= 562.3456e1;
+        z3: real80:= 3.14e-15;
+
+begin lab5;
+
+    stdout.putr32(z1,10,4, '#');
+    stdout.newln();
+    stdout.put(z1:10:4);
+    stdout.newln();
+    stdout.pute32(z1, 10);
+    stdout.newln();
+    stdout.put(z1);
+    stdout.newln();
+    stdout.newln();
+
+    stdout.putr32(z2,10,4, '#');
+    stdout.newln();
+    stdout.put(z2:10:4);
+    stdout.newln();
+    stdout.pute32(z2, 10);
+    stdout.newln();
+    stdout.put(z2);
+    stdout.newln();
+    stdout.newln();
+
+    stdout.putr80(z3,10,4, '#');
+    stdout.newln();
+    stdout.put(z3:10:4);
+    stdout.newln();
+    stdout.pute80(z3, 10);
+    stdout.newln();
+    stdout.put(z3);
+    stdout.newln();
+    stdout.newln();
+
+end lab5;

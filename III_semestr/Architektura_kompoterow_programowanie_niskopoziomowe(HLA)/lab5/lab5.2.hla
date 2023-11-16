@@ -1,0 +1,18 @@
+program lab5;
+    #include("stdlib.hhf");
+
+begin lab5;
+
+    stdout.put("Podaj duza litere: ");
+    stdin.getc();
+    //stdout.puti8(al);
+    //stdout.put("Wczytano: ", al, nl);
+    add(32, al);
+    stdout.put("Zamieniono na mala: ");
+    stdout.putc(al);
+
+    /*Polecenie 1
+Napisz program, który wczytuje z klawiatury duże litery, zamienia je na małe i wyświetla na 
+ekranie. W programie wykorzystać procedurę stdin.getc()
+*/
+end lab5;

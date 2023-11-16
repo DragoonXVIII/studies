@@ -1,0 +1,18 @@
+program lab4;
+    #include("stdlib.hhf");
+    static
+        z1: int8:= 0;
+
+begin lab4;
+    forever
+        try
+            stdin.get(z1);
+            break;
+        exception(ex.ValueOutOfRange)
+            stdout.put("Value out of range");
+        exception(ex.ConversionError)
+            stdout.put("Invalid conversion");
+        endtry;
+    endfor;
+    
+end lab4;

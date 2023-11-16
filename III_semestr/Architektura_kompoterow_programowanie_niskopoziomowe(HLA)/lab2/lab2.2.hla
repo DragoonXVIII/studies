@@ -1,0 +1,16 @@
+program lab2;
+#include ("stdlib.hhf")
+
+static
+    zmienna1: int8:= 10;
+
+begin lab2;
+
+    while(zmienna1>0) do
+        stdout.put(zmienna1:2);
+        dec(zmienna1);
+    endwhile;
+    
+    
+
+end lab2;
