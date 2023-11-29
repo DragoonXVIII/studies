@@ -73,13 +73,13 @@ Window
         anchors.right: parent.right
         color:"yellow"
 
-        TextField
+        TextEdit
         {
             id: textField
             width: parent.width/8*6
             height: parent.height/8*6
             anchors.centerIn: parent
-            placeholderText: "Wprowadź tekst"
+            color: "white"
         }
 
         Button
@@ -92,7 +92,7 @@ Window
             text: "calculate"
             onClicked:
             {
-                LSMcalculator.getData(textField.text);
+                LSMcalculator.getData(textField.text, formulaComboBox.currentIndex);
             }
         }
     }

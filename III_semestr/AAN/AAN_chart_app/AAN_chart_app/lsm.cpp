@@ -8,13 +8,69 @@ LSM::LSM(QObject *parent)
 
 }
 
+LSM::~LSM()
+{
+
+}
+
 void LSM::getData(QString data, int formulaChoice)
 {
+
+    if (data.endsWith(';'))
+    {
+        data.chop(1);
+    }
+
+    this->points = new QList<QPointF>;
+    // Podziel tekst na elementy używając średnika jako separatora
+    QStringList dataList = data.split('\n');
+    foreach(QString value, dataList)
+    {
+
+    }
+    /*// Lista QPointF do przechowywania punktów
+    this->points = new QList<QPointF>;
+
+    // Przetwórz każdy element i dodaj go do listy punktów
+    foreach (QString value, dataList)
+    {
+        QStringList coordinates = value.split(',');
+
+        if (coordinates.size() == 2)
+        {
+            bool xOk, yOk;
+            double x = coordinates[0].toDouble(&xOk);
+            double y = coordinates[1].toDouble(&yOk);
+
+            if (xOk && yOk)
+            {
+                points->append(QPointF(x, y));
+            }
+            else
+            {
+                qWarning() << "Nie można przekonwertować współrzędnych:" << value;
+            }
+        }
+        else
+        {
+            qWarning() << "Nieprawidłowy format współrzędnych:" << value;
+        }
+    }
+    */
+    // Wyświetl listę punktów
+    //qDebug() << "Lista punktów:" << points;
+    for(int i =0;i<this->points->count();i++)
+    {
+        qDebug()<< i+1<< "."<< this->points->at(i);
+    }
+    this->formulaChoice = formulaChoice;
     qDebug()<< data;
+    qDebug()<< formulaChoice;
 }
 
 QString LSM::fLinear()
 {
+
     return this-> formula;
 }
 

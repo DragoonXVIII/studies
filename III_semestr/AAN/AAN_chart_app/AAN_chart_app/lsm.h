@@ -3,6 +3,7 @@
 
 
 #include <QObject>
+#include <QtCharts>
 #include <QDebug>
 
 
@@ -13,11 +14,15 @@
 class LSM : public QObject
 {
     Q_OBJECT
+
 public:
+
     explicit LSM(QObject *parent = nullptr);
 
 protected:
-    double *points;
+
+    QList<QPointF> *points;
+    int formulaChoice;
     QString formula;
 
     QString fLinear();
@@ -26,9 +31,11 @@ protected:
     QString fFractional();
 
 signals:
+
     void setChart(); //jako abstract obowiązkowy do zaimplementowania w kazdej klasie potomnej
 
 public slots:
+
     void getData(QString data, int formulaChoice); // jako funkcja domyślna w kazdym obiekcie matki, automatycznie procesujaca dane;
 
 
