@@ -1,0 +1,21 @@
+program lab6;
+    #include("stdlib.hhf");
+    static
+        tab1: int8[5]:= [1,2,3,4,5];
+
+begin lab6;
+
+    stdout.put("Podaj indeks tablicy: ");
+    stdin.geti32();
+    stdout.put(tab1[eax]);
+   
+end lab6;
+//0100 0001 a
+//0110 0001 A
+/*
+Polecenie 2
+Napisz program, w którym zadeklarowana zostanie tablica 
+jednowymiarowa o określonej liczbie elementów typu int8.
+Wykorzystując adresowanie indeksowe program powinien 
+wyświetlić zadany element tablicy.
+*/

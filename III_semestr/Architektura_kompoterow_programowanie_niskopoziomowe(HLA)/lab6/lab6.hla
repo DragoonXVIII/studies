@@ -1,0 +1,16 @@
+program lab6;
+    #include("stdlib.hhf");
+    static
+        number1: char:= 'A';
+
+begin lab6;
+
+    stdout.put("znak przed or: ", nl);
+    stdout.put(number1, nl);
+    stdout.put("znak po or: ");
+    or(' ',number1);
+    stdout.put(number1, nl);
+
+end lab6;
+//0100 0001 a
+//0110 0001 A

@@ -15,7 +15,13 @@ begin kol1;
         endtry;
     endfor;
     if(z1>0) then
-        stdout.put("balkbakbalka");
+        stdout.put("PRAXCAa");
+        repeat
+            for(add(0,z3);z3<z1;inc(z3))
+                stdout.puth(z3);
+                if()
+        until(z2==z1);
+
     else
         stdout.put("ujemna");
     endif;

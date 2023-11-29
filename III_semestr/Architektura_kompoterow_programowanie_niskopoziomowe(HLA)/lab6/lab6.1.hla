@@ -1,0 +1,20 @@
+program lab6;
+    #include("stdlib.hhf");
+    static
+        number1: int8:= 10;
+
+begin lab6;
+
+    mov(&number1,ebx);
+    stdout.put("Adres zmiennej statycznej: ", ebx, nl);
+    mov(20,eax);
+    mov(eax,[ebx]);
+    stdout.put("Wartosc zmiennej statycznej: ", number1, nl);
+   
+end lab6;
+//0100 0001 a
+//0110 0001 A
+/*
+Napisz program, w którym zostanie pobrany i wyświetlony adres zmiennej statycznej oraz 
+zostanie do niej zapisana wartość z wykorzystaniem adresowania pośredniego przez rejestr.
+*/
