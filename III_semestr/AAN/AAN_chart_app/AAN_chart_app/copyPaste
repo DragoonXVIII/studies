@@ -1,0 +1,42 @@
+//set bez zmieniania rozmiaru charta
+-0.5;1.2
+0.0;2.4
+1.5;4.0
+
+//set z zmieniamie rozmiaru charta
+-10.5;-7.5
+0.3;2.4
+9.33;4.2
+
+switch(wybor)
+{
+case 1:
+    wzor = "x";
+    break;
+
+case 2:
+    wzor = "sqrt(x)";
+    break;
+
+case 3:
+    wzor = &"x^"[pomocnicza];
+    break;
+
+case 4:
+    wzor = "x^";
+    break;
+
+case 5:
+    wzor = pomocnicza;
+    wzor.append("/x");
+    break;
+}
+
+//set z zadania do domu, na funkcję x^-1/2
+1.0;3.0
+2.0;1.0
+3.0;-1.0
+6.0;-7.0
+//set na funkcję liniową
+
+//set na funkcję

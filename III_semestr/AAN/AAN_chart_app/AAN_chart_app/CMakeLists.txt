@@ -18,6 +18,7 @@ qt_add_qml_module(appAAN_chart_app
     VERSION 1.0
     QML_FILES Main.qml
     SOURCES lsm.cpp lsm.h
+    RESOURCES copyPaste
 
 )
 
