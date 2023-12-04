@@ -14,17 +14,8 @@ public class Main
         //System.out.println(pobierzLiczbe());
         
         //ZAD 3
-        System.out.println(zad3());
+        //System.out.println(zad3());
     }
-
-    /*
-     * Zadanie 6.2. Pobieranie liczby rzeczywistej
-Napisz metodę pobierającą od użytkownika liczbę zmiennoprzecinkową, rozdzielającą 
-liczbę na cechę oraz mantysę, a następnie zwracającą iloraz cechy i mantysy. W przypadku, 
-gdy nie jest to możliwe wypisz komunikat i ponów pobieranie liczby. Załóż, że użytkownik 
-może wprowadzić dowolny znak.
-
-     */
 
     public static double pobierzLiczbe()
     {
@@ -86,20 +77,3 @@ może wprowadzić dowolny znak.
     }
 
 }
-
-/*
- * Napisz prosty program konsolowy realizujący funkcjonalności kalkulatora:
- Wykonywanie podstawowych działań (dodawanie, odejmowanie, mnożenie, dzielenie, 
-pierwiastkowanie, potęgowanie) i wyświetlanie wyniku.
-Zadbaj o odpowiednią obsługę wyjątków. Załóż, że użytkownik może wprowadzić 
-dowolny znak (w przypadku wprowadzenia błędnych danych wyświetl komunikat i ponów 
-prośbę o podanie danych).
-Zadanie 6.2. Pobieranie liczby rzeczywistej
-Napisz metodę pobierającą od użytkownika liczbę zmiennoprzecinkową, rozdzielającą 
-liczbę na cechę oraz mantysę, a następnie zwracającą iloraz cechy i mantysy. W przypadku, 
-gdy nie jest to możliwe wypisz komunikat i ponów pobieranie liczby. Załóż, że użytkownik 
-może wprowadzić dowolny znak.
-Zadanie 6.3. Pobieranie liczby całkowitej
-Napisz metodę pobierającą o użytkownika liczbę całkowitą z zakresu <99,999>. 
-Zwróć sumę kwadratów jej cyfr. Załóż, że użytkownik może wprowadzić dowolny znak
- */
