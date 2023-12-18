@@ -1,13 +1,34 @@
 program lab6;
     #include("stdlib.hhf");
     static
-        tab1: int32[5]:= [1,2,3,4,5];
+        z1: int32:= 0;
+        tab1: int32[20];
+        z2: char;
 
 begin lab6;
 
-    stdout.put("Podaj indeks tablicy: ");
+    /*stdout.put("Podaj indeks tablicy: ");
     stdin.geti32();
-    stdout.put(tab1[eax*4]);
+    stdout.put(tab1[eax*4]);*/
+
+    stdin.getc();
+    xor(32,al);
+    stdout.putc(al);
+    /*
+    mov(z1,ebx);
+    repeat
+        stdin.geti32();
+        mov(eax,tab1[ebx*4]);
+        //stdout.put("ebx:",ebx, nl);
+        inc(ebx);
+    until(ebx==5);
+
+    mov(0,ebx);
+    repeat
+        stdout.put(tab1[ebx*4],nl);
+        inc(ebx);
+    until(ebx==5);
+    */
    
 end lab6;
 //0100 0001 a
