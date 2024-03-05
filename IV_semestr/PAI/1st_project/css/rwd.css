@@ -1,0 +1,115 @@
+body 
+{
+  background: #d4c7b9;
+}
+
+h1,
+h2,
+footer 
+{
+  padding: 0.2em;
+  text-align: center;
+}
+
+.srodek 
+{
+  text-align: center;
+}
+
+nav 
+{
+  float: left;
+  width: 100%;
+}
+nav, footer 
+{
+  background: #45525a;
+  color: #ffe9ba;
+  border-radius: 10px;
+}
+nav a
+{
+  float: left;
+  display: block;
+  width: 23%;
+  padding: 1%;
+  font-size: 110%;
+  color: #ffe9ba;
+  text-align: center;
+}
+
+section 
+{
+  clear: both;
+}
+
+img 
+{
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.slajd 
+{
+  float: left;
+  display: block;
+  width: 13%;
+  text-align: center;
+  border-radius: 10px;
+  background: #ffe9ba;
+  padding: 1% 0.5%;
+  margin: 1%;
+}
+.slajd:hover 
+{
+  background: #45525a;
+}
+
+footer 
+{
+  clear: both;
+}
+
+.galeria 
+{
+  margin: auto;
+  width: 90%;
+}
+
+@media screen and (max-width: 720px) 
+{ 
+    nav a 
+    { 
+        width: 48%;
+        padding: 10px 0; 
+        font-size:140%; 
+    } 
+    .slajd { width: 45%; }
+} 
+@media screen and (min-width: 481px) and (max-width: 720px) 
+{ 
+    body { font-size: 13px; } 
+    h1 { font-size: 23px; } 
+    h2 { font-size: 18px; } 
+}
+@media screen and (max-width: 480px) 
+{ 
+    nav a { width: 90%; padding: 10px 0; font-size: 140%; } 
+    .slajd { width: 90%; } 
+}
+@media only screen and (min-width : 768px) 
+ and (max-width : 1024px) 
+ and (orientation : landscape) 
+ { 
+    nav a { width: 23%; padding: 1%; font-size: 110%; } 
+    .slajd { width: 13%; }
+ }
+ @media only screen and (min-width : 768px) 
+ and (max-width : 1024px) 
+ and (orientation : horizontal) 
+ { 
+    nav a { width: 40%; padding: 1%; font-size: 110%; } 
+    .slajd { width: 13%; }
+ }
+

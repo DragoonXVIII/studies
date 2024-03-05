@@ -1,0 +1,344 @@
+:root
+{
+    --kolor-tla: #23ac8a;
+    --kolor-tekstu : #1A281F;
+    --kolor-tla-element: #B8D3D1;
+    --kolor-tekstu-element: red;
+    --kolor-tla-hf: #CE7B91;
+    --kolor-tekst-hf: #1A281F;
+    --kolor-ramek: #635255;
+    --kolor-tekstu-link: #FDF0D5;
+}
+
+
+body 
+{
+    color:#FDF0D5;
+}
+
+
+#kontener
+{
+    background: var(--kolor-tla);
+} 
+
+@media screen and (max-width: 960px)
+{
+    main
+    {
+        flex-direction: column;
+        justify-content: center
+    }
+    
+    section
+    {
+        width: 80%;
+        justify-content: center
+    }
+
+    aside
+    { 
+        width: 80%;
+        padding:2%;
+        text-align: center;
+        font-size: x-large;
+        color: var(--kolor-tekstu-element);
+        background-color: var(--kolor-tla-element);
+        border-radius: 20px;
+        border-style: solid;
+        border-color: var(--kolor-ramek);
+        display: flex;
+        flex-direction: row;
+        
+    }
+}
+
+#kontener a
+{
+    color: var(--kolor-tekstu-link);
+}
+
+    header
+    {
+        background: var(--kolor-tla-hf);
+        color: var(--kolor-tekstu);
+        text-align:center;
+    }
+
+    nav
+    {
+        text-align: left;
+        overflow: hidden;
+        font-family: "Comic Sans MS";
+        font-weight: bold;
+        padding: 5px 0 5px 0;
+        color: var(--kolor-tekst-hf);
+        background-color: var(--kolor-tla);
+        box-sizing: border-box;
+    }
+    
+
+    nav ul
+    {
+        color: var(--kolor-tekst-hf);
+        background-color: var(--kolor-tla);
+        display: flex;
+        box-sizing: border-box;
+    }
+
+    nav li
+    {
+        background: var(--kolor-tla-hf); 
+        border: 3px solid; 
+        border-radius: 10px;
+        list-style-type: none; 
+        margin-left: 3px;
+        border-color: var(--kolor-ramek);
+    }
+
+    nav li a 
+    { 
+        display : block; 
+        padding : 4pt;
+        text-decoration : none; 
+    } 
+    nav li li a 
+    { 
+        width: 160px; 
+    } 
+    nav li li:hover 
+    { 
+        background: white; 
+    } 
+
+    nav li:hover
+    {
+        background-color: white;
+    }
+    nav li ul
+    {
+        display: none;
+        position: absolute;
+        background-color: var(--kolor-tla-hf);
+        border: var(--kolor-ramek);
+        border-style: solid;
+    }
+
+    nav li:hover ul
+    {
+        display: block;
+        background-color:transparent;
+        border: none;
+        
+    }
+    
+
+    main
+    {
+        display: flex;
+        clear: both;
+    }
+
+        section
+        {
+            width:80%;
+            padding:2%;
+            color: var(--kolor-tekstu);
+            background-color: var(--kolor-tla-element);
+            border-radius: 20px;
+            border-style: solid;
+            border-color: var(--kolor-ramek);
+        }
+
+        aside
+        {
+            width:20%; 
+            padding:2%;
+            text-align: center;
+            font-size: x-large;
+            color: var(--kolor-tekstu-element);
+            background-color: var(--kolor-tla-element);
+            border-radius: 20px;
+            border-style: solid;
+            border-color: var(--kolor-ramek);
+            display: column; /*flex-direction: column;*/
+        }
+
+            *.box 
+            { 
+                color: var(--kolor-tekstu-element);
+                background-color:var(--kolor-tla);
+                border-radius: 20px;
+                border-style: solid;
+                border-color: var(--kolor-ramek);
+                padding:5px;
+                margin:5px;
+                font-size:90%;
+                
+                
+            }
+            *.box a
+            {
+                color:var(--kolor-tekstu-link);
+            }
+
+        footer
+        {
+            clear:both;
+            width:100%;
+            padding:5px 0 5px 0;
+            text-align: right;
+            color: var(--kolor-tekst-hf);
+            background-color: var(--kolor-tla-hf);
+        }
+
+
+
+/*:root
+{
+    --kolor-tla: #23ac8a;
+    --kolor-tekstu : #1A281F;
+    --kolor-tla-element: #B8D3D1;
+    --kolor-tekstu-element: red;
+    --kolor-tla-hf: #CE7B91;
+    --kolor-tekst-hf: #1A281F;
+    --kolor-ramek: #635255;
+    --kolor-tekstu-link: #FDF0D5;
+
+}
+
+
+body 
+{
+    color:#FDF0D5;
+}
+
+
+#kontener
+{
+    background: var(--kolor-tla);
+} 
+
+#kontener a
+{
+    color: var(--kolor-tekstu-link);
+}
+
+    header
+    {
+        background: var(--kolor-tla-hf);
+        color: var(--kolor-tekstu);
+        text-align:center;
+    }
+
+    nav 
+    { 
+        text-align: left; 
+        overflow: hidden; 
+        font-family: Comic Sans MS;
+        font-weight: bold;
+    } 
+    nav li 
+    { 
+        float: left; 
+        background: var(--kolor-tla-hf); 
+        border: 3px solid; 
+        border-radius: 10px;
+        list-style-type: none; 
+        margin-left: 3px; 
+        border-color: var(--kolor-ramek);
+    } 
+    nav li:hover 
+    { 
+        float: left; 
+        background: white;
+        border: 1px solid #d5d5d5; 
+        list-style-type: none; 
+        margin-left: 3px; 
+    } 
+    nav li a 
+    { 
+        display : block; 
+        padding : 4pt; 
+        text-decoration : none; 
+    } 
+    nav li li a 
+    { 
+        width: 160px; 
+    } 
+    nav li li:hover 
+    { 
+        background: white; 
+    } 
+    nav li ul 
+    { 
+        overflow: hidden; 
+        display: none; 
+    } 
+    nav li:hover ul 
+    { 
+        position: absolute; 
+        background: transparent; 
+        padding: 0; 
+        display: block; 
+        width: 177px; 
+    }
+
+    main
+    {
+        display: flex;
+        clear: both;
+    }
+
+        section
+        {
+            width:80%;
+            padding:2%;
+            color: var(--kolor-tekstu);
+            background-color: var(--kolor-tla-element);
+            border-radius: 20px;
+            border-style: solid;
+            border-color: var(--kolor-ramek);
+        }
+
+        aside
+        {
+            width:20%; 
+            padding:2%;
+            text-align: center;
+            font-size: x-large;
+            color: var(--kolor-tekstu-element);
+            background-color: var(--kolor-tla-element);
+            border-radius: 20px;
+            border-style: solid;
+            border-color: var(--kolor-ramek);
+        }
+
+            *.box 
+            { 
+                color: var(--kolor-tekstu-element);
+                background-color:var(--kolor-tla);
+                border-radius: 20px;
+                border-style: solid;
+                border-color: var(--kolor-ramek);
+                padding:5px;
+                margin:5px;
+                font-size:90%;
+                
+                
+            }
+            *.box a
+            {
+                color:var(--kolor-tekstu-link);
+            }
+
+        footer
+        {
+            clear:both;
+            width:100%;
+            padding:5px 0 5px 0;
+            text-align: right;
+            color: var(--kolor-tekst-hf);
+            background-color: var(--kolor-tla-hf);
+        }
+*/

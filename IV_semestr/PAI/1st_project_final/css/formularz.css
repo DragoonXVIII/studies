@@ -1,0 +1,66 @@
+#kontener h1
+{
+    background-color: #14be55;
+    color: #b130b1;
+    margin: 5px;
+    padding: 5px;
+    border-left: 2px solid #ff9900; 
+    border-right: 2px solid #5e4f9e;
+    border-radius: 2px;
+}
+
+#formularz
+{
+    background: #3b3b3b;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#formularz h2 
+{
+    background-color: #3b3b3b;
+    color: #ffffff;
+    margin: 5px;
+    padding: 5px;
+    border-top: 2px solid #ffffff; 
+    border-bottom: 2px solid #ffffff;
+    border-radius: 2px;
+}
+
+/* to juz klasy */
+
+*.element
+{
+    background-color: #3b3b3b;
+    color: #ffffff;
+    margin: 5px;
+    padding: 5px;
+    border-top: 1px solid #ffffff; 
+    border-bottom: 1px solid #ffffff; 
+    border-radius: 2px;
+}
+*.element:hover
+{
+    background-color: #ffffff;
+    color: #3b3b3b;
+    margin: 5px;
+    padding: 5px;
+    border-top: 1px solid #3b3b3b; 
+    border-bottom: 1px solid #3b3b3b; 
+    border-radius: 2px;
+}
+
+*.input
+{
+    color: #ff0000;
+    background-color: #ffe600;
+}
+
+*.list
+{
+    color: #0400ff;
+    background-color: green
+}

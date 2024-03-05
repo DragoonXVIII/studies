@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Formularz rejestracyjny</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+    <div id="kontener">
+        <div id="baner"><h1>Szybki kurs HTML</h1></div>
+        <div id="menu">
+            <ul id="nav"> 
+                <li><a href="index.html">Podstawy</a></li> 
+                <li><a href="tabele.html">Tabele</a></li> 
+                <li><a href="">Formularze</a> 
+                    <ul> 
+                        <li><a href="formularz.html" >Pola formularza</a></li> 
+                        <li><a href="obliczenia.html" >Obliczenia w formularzu</a></li> 
+                    </ul> 
+                </li> 
+                <li><a href="galeria.html">Galeria</a></li> 
+                <li><a href="zamowienie.html">Kreator zamówienia</a></li>
+                <li><a href="walidacja.html">Walidacja</a></li>
+            </ul> 
+        </div>
+        <main>
+            <form action="#" method="get"> 
+                <p>
+                    Imię*:<br />
+                    <input type="text" name="imie" required="true"><br />
+                    Nazwisko*:<br />
+                    <input type="text" name="nazwisko" required="true"><br />
+                    Email*:<br />
+                    <input type="email" name="email" required="true"><br />
+                    Data urodzenia:<br />
+                    <input type="date" name="data"><br />
+                    Hasło*:<br />
+                    <input type="password" name="haslo" required="true"><br />
+                </p>
+                <p>
+                    Uczeń: <input type="radio" name="kto" value="uczen"> 
+                    Student: <input type="radio" name="kto" value="student"> 
+                    Pracownik: <input type="radio" name="kto" value="pracownik"></br>
+                    </br>
+                    Zainteresowania: 
+                    <select name="zainteresowania" multiple size="3">
+                        <option value="sport">Sport</option>
+                        <option value="muzyka">Muzyka</option>
+                        <option value="film">Film</option>
+                        <option value="motoryzacja">Motoryzacja</option>
+                        <option value="taniec">Taniec</option>
+                        <option value="podróże">Podróże</option>
+                    </select><br/>
+                    <input type="checkbox" name="akceptacja" required="true">*Akceptuję regulamin <br />
+                    <input type="submit" value="Rejestruj">
+                    <input type="reset" value="Wyczyść">
+                </p>
+            </form>
+        </main>
+        <div id="stopka"> &copy;BP </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+body 
+{
+    color:#000040;
+}
+
+main
+{
+    display: flex;
+    clear: both;
+}
+
+#kontener
+{
+    background:#ffffff;
+}
+
+
+#baner
+{
+    background: #000040;
+    color: #8080ff;
+    text-align:center;
+}
+
+
+#nav 
+{ 
+    text-align: left; 
+    overflow: hidden; 
+    font-family: calibri, tahoma; 
+} 
+    ul#nav li 
+    { 
+        border: 1px solid #d5d5d5; 
+        list-style-type: none; 
+        float: left; 
+        background: #98bed8; 
+        margin-left: 3px; 
+    } 
+
+    ul#nav li:hover 
+    { 
+        border: 1px solid #d5d5d5; 
+        list-style-type: none; 
+        float: left; 
+        background: #f0f0f0; 
+        margin-left: 3px; 
+    } 
+    ul#nav li a 
+    { 
+        display : block; 
+        padding : 4pt; 
+        text-decoration : none; 
+    } 
+    ul#nav li li a 
+    { 
+        width: 160px; 
+    } 
+    ul#nav li li:hover 
+    { 
+        background: white; 
+    } 
+    ul#nav li ul 
+    { 
+        overflow: hidden; 
+        display: none; 
+    } 
+    ul#nav li:hover ul 
+    { 
+        position: absolute; 
+        background: #aaa; 
+        padding: 0; 
+        display: block; 
+        width: 177px; 
+    }
+   
+
+#tresc
+{
+    width:80%;
+    padding:2%;
+    background-color: lightblue;
+}
+
+#pasek
+{
+    width:20%; 
+    padding:2%;
+    text-align:left;
+}
+
+*.box 
+{ 
+    background:#0000a0;
+    color:#dbffff;
+    padding:5px;
+    margin:5px;
+    font-size:90%;
+}
+*.box a
+{
+    color:#ffffb0
+}
+
+#stopka
+{
+    clear:both;
+    width:100%;
+    padding:5px 0 5px 0;
+    text-align:center;
+    color:#ffffff;
+    background-color:#000040;
+}
+    
+
+
+    

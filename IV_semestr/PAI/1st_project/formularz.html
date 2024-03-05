@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>formularz</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/formularz.css" type="text/css"/>
+</head>
+<body>
+    <div id="kontener">
+        <div id="baner"><h1>Szybki kurs HTML</h1></div>
+        <div id="menu">
+            <ul id="nav"> 
+                <li><a href="index.html">Podstawy</a></li> 
+                <li><a href="tabele.html">Tabele</a></li> 
+                <li><a href="">Formularze</a> 
+                    <ul> 
+                        <li><a href="formularz.html" >Pola formularza</a></li> 
+                        <li><a href="obliczenia.html" >Obliczenia w formularzu</a></li> 
+                    </ul> 
+                </li> 
+                <li><a href="galeria.html">Galeria</a></li> 
+                <li><a href="zamowienie.html">Kreator zamówienia</a></li>
+                <li><a href="walidacja.html">Walidacja</a></li>
+            </ul> 
+        </div>
+        <main>
+            <div id="tresc">
+                <h2>Podstawowe znaczniki formularza HTML to:</h2>
+                <ul>
+                    <li> &lt;form&gt; - korzeń dokumentu</li>
+                    <li> &lt;input&gt; - nagłówek strony z informacjami dla przeglądarek</li>
+                    <li> &lt;select&gt; - właściwa treśćdokumentu widoczna w oknie przeglądarki</li>
+                    <li> &lt;textarea&gt; - element blokowy</li>
+                    <li> &lt;button&gt; - akapit</li>
+                </ul>
+                <div id="formularz">
+                    <h2>Przykładowy formularz HTML:</h2>
+                    <form action="mailto:euacta20@gmail.com" method="post">
+                        Nazwisko : <label><input class="input" type="text" name="nazwisko"></label> </br>
+                        Wiek : <label><input class="input" type="number" name="wiek" min="16" max="99"></label></br>
+                        Państwo: <select class="list" name="panstwo">
+                            <option value="polska">Polska</option>
+                            <option value="niemcy">Białoruś</option>
+                            <option value="francja">Litwa</option>
+                        </select> </br>
+                        Adres e-mail: <label><input class="input" type="email" name="email"></label> 
+                        </br>
+                        <p class="element"><b>Zamawiam tutorial z języka:</b></p>
+                        <input type="checkbox" name="PHP" value="PHP"> PHP 
+                        <input type="checkbox" name="C" value="C"> C/C++
+                        <input type="checkbox" name="Java" value="J"> Java 
+                        </br>
+                        <p class="element"><b>Sposób zapłaty:</b></p>
+                        <input type="radio" name="platnosc" value="eurocard"> eurocard
+                        <input type="radio" name="platnosc" value="visa"> visa
+                        <input type="radio" name="platnosc" value="przelew_bankowy"> przelew bankowy 
+                        </br></br>
+                        <input type="submit" value="Wyślij">
+                        <input type="reset" value="Wyczyść">
+                        </br></br>
+                    </form>       
+                </div>
+            </div>
+            <div id="pasek">
+                <div class="box">
+                    <h3>Walidatory:</h3>
+                    <ul>
+                    <li> <a href="http://validator.w3.org/">HTML </a></li>
+                    <li> <a href="http://jigsaw.w3.org/css-validator/">CSS</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h3>Kursy:</h3>
+                    <ul>
+                        <li> <a href="https://www.w3schools.com/html/"> HTML </a></li>
+                        <li> <a href="https://www.w3schools.com/css/"> CSS </a></li>
+                        <li> <a href="https://www.w3schools.com/js/"> JS </a></li>
+                        <li> <a href="https://www.w3schools.com/php/"> PHP </a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <div id="stopka"> &copy;BP </div>
+    </div>
+</body>
+</html>
