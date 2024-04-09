@@ -25,16 +25,28 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.3166807"
-     inkscape:cx="316.32574"
-     inkscape:cy="380.12253"
+     inkscape:cx="252.9087"
+     inkscape:cy="532.01965"
      inkscape:window-width="1920"
-     inkscape:window-height="974"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
+     inkscape:window-height="1129"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="path2" />
   <defs
      id="defs1">
+    <linearGradient
+       id="linearGradient5"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
     <linearGradient
        id="linearGradient3"
        inkscape:collect="always">
@@ -85,7 +97,16 @@
        x2="110.11909"
        y2="141.56732"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(0.60284168,-2.0094723)" />
+       gradientTransform="translate(-1.6075777,-1.0047362)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5"
+       id="linearGradient6"
+       x1="91.073853"
+       y1="76.310341"
+       x2="91.589729"
+       y2="113.75136"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      inkscape:label="Warstwa 1"
@@ -105,20 +126,29 @@
     <circle
        style="fill:url(#linearGradient4);fill-opacity:1;stroke-width:0.264583"
        id="path3"
-       cx="109.61671"
-       cy="123.28113"
+       cx="107.40628"
+       cy="124.28586"
        r="13.764885" />
     <text
        xml:space="preserve"
        style="font-size:28.4734px;fill:#000000;fill-opacity:1;stroke-width:0.444897"
-       x="92.024963"
-       y="145.01312"
+       x="91.655731"
+       y="145.66931"
        id="text3"
-       transform="scale(1.0884582,0.91873075)"><tspan
+       transform="scale(1.0884582,0.91873074)"><tspan
          sodipodi:role="line"
          id="tspan3"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.4734px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#000000;fill-opacity:1;stroke-width:0.444897"
-         x="92.024963"
-         y="145.01312">1</tspan></text>
+         x="91.655731"
+         y="145.66931">1</tspan></text>
+    <g
+       id="path2"
+       transform="translate(-0.15071042,-0.55260487)">
+      <path
+         id="path5"
+         style="fill:url(#linearGradient6);stroke-width:0.488702;stroke-opacity:0.2"
+         d="m 122.75405,100.96316 c 2.80252,9.13862 -14.69544,12.90272 -31.11423,12.90272 -16.418786,0 -35.799013,-4.24208 -32.073348,-13.04481 C 63.296364,92.008347 74.44015,80.566331 91.106979,80.387509 107.80961,80.208303 120.0188,92.043871 122.75405,100.96316 Z"
+         sodipodi:nodetypes="sssss" />
+    </g>
   </g>
 </svg>
