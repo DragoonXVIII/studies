@@ -1,0 +1,24 @@
+<xs: schema attributeFormDefault="unqualified" version = "1.0"  standalone="yes"?>
+<formularz>
+    <dane_osobowe>
+        <imie_i_nazwisko> Jan Kowalski</imie_i_nazwisko>
+        <adres>Aleje Jerozolimskie 24/3</adres>
+        <e-mail>jan.kowalski@person.org</e-mail>
+        <telefon_komorkowy>123 456 789</telefon_komorkowy>
+    </dane_osobowe>
+    <zwracany_towar>
+        <numer_dokumentu_zakupu>paragon/faktura</numer_dokumentu_zakupu>
+        <nazwa_towaru>Laptop_Acer_14"_R5_5600+16+1024</nazwa_towaru>
+        <powody_zwrotu>nie dziala</powody_zwrotu>
+        <wartosc_zwracanego_towaru>3999</wartosc_zwracanego_towaru>
+        <data_zakupu>17.04.2024</data_zakupu>
+        <podpis>Jan Kowalski</podpis>
+    </zwracany_towar>
+    <dane_potrzebne_do_zwrotu_srodkow>
+        <numer_rachunku_bankowego>81 9000 8000 7000 6000 5000</numer_rachunku_bankowego>
+        <imie_i_nazwisko>Jan Kowalski</imie_i_nazwisko>
+        <adres>Aleje Jerozolimskie 24/3</adres>
+        <data>20.04.2024</data>
+        <podpis>Jan Kowalski</podpis>    
+    </dane_potrzebne_do_zwrotu_srodkow>
+</formularz>
