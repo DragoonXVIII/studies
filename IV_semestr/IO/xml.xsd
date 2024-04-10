@@ -1,24 +1,169 @@
-<xs: schema attributeFormDefault="unqualified" version = "1.0"  standalone="yes"?>
-<formularz>
-    <dane_osobowe>
-        <imie_i_nazwisko> Jan Kowalski</imie_i_nazwisko>
-        <adres>Aleje Jerozolimskie 24/3</adres>
-        <e-mail>jan.kowalski@person.org</e-mail>
-        <telefon_komorkowy>123 456 789</telefon_komorkowy>
-    </dane_osobowe>
-    <zwracany_towar>
-        <numer_dokumentu_zakupu>paragon/faktura</numer_dokumentu_zakupu>
-        <nazwa_towaru>Laptop_Acer_14"_R5_5600+16+1024</nazwa_towaru>
-        <powody_zwrotu>nie dziala</powody_zwrotu>
-        <wartosc_zwracanego_towaru>3999</wartosc_zwracanego_towaru>
-        <data_zakupu>17.04.2024</data_zakupu>
-        <podpis>Jan Kowalski</podpis>
-    </zwracany_towar>
-    <dane_potrzebne_do_zwrotu_srodkow>
-        <numer_rachunku_bankowego>81 9000 8000 7000 6000 5000</numer_rachunku_bankowego>
-        <imie_i_nazwisko>Jan Kowalski</imie_i_nazwisko>
-        <adres>Aleje Jerozolimskie 24/3</adres>
-        <data>20.04.2024</data>
-        <podpis>Jan Kowalski</podpis>    
-    </dane_potrzebne_do_zwrotu_srodkow>
-</formularz>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="formularz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="dane_osobowe">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="imie_i_nazwisko">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+              <xs:element name="adres">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+              <xs:element name="e-mail">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+              <xs:element name="telefon_komorkowy">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="\d{9}"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+
+        <xs:element name="zwracany_towar">
+          <xs:complexType>
+            <xs:sequence>
+              
+              <xs:element name="numer_dokumentu_zakupu">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="21"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+
+              <xs:element name="nazwa_towaru" maxOccurs="5">
+                <xs:complexType>
+                  <xs:sequence>
+
+                    <xs:element name="nazwa">
+                      <xs:simpleType>
+   						<xs:restriction base="xs:string">
+                          <xs:maxLength value="64"/>
+                	 	</xs:restriction>
+  					  </xs:simpleType>
+			 		</xs:element>
+
+                    <xs:element name="ilosc">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="\d{1,9}"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                    <xs:element name="cena">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="\d+"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="powody_zwrotu">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="1500"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+              <xs:element name="wartosc_zwracanego_towaru">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="\d+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+
+              <xs:element name="data_zakupu" type="xs:date"/>
+
+              <xs:element name="podpis">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="dane_potrzebne_do_zwrotu_srodkow">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="numer_rachunku_bankowego">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="\d{22}"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+
+              <xs:element name="imie_i_nazwisko">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+              <xs:element name="adres">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+              <xs:element name="data" type="xs:date"/>
+
+              <xs:element name="podpis">
+  				<xs:simpleType>
+   				 <xs:restriction base="xs:string">
+     				 <xs:maxLength value="64"/>
+                  </xs:restriction>
+  				</xs:simpleType>
+			  </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
