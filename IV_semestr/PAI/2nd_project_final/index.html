@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="style.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Todo</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-item"><a href="/">Todo</a></div>
+      <div class="nav-item"><a href="/about.html">About</a></div>
+    </nav>
+    <main></main>
+
+    <!-- Plus button -->
+    <div class="plus-button"><i class="gg-math-plus"></i></div>
+
+    <!-- Modal -->
+    <div class="overlay">
+      <div class="modal">
+        <h3>Add new task</h3>
+        <form>
+          <div>
+            <label>Title:<span class="form-required">*</span></label>
+            <input
+              type="text"
+              class="title-input"
+              maxlength="32"
+              required />
+          </div>
+          <div>
+            <label>Description:<span class="form-required">*</span></label>
+            <textarea
+              class="desc-input"
+              maxlength="256"
+              required></textarea>
+          </div>
+          <div>
+            <label
+              >Language
+              <br />
+            </label>
+            <select class="language-combo">
+              <option
+                value="qt"
+                selected>
+                QT
+              </option>
+              <option value="c++">C++</option>
+              <option value="java">Java</option>
+              <option value="python">Python</option>
+              <option value="ruby">Ruby</option>
+            </select>
+          </div>
+          <div>
+            <div>
+              <div>
+                <input
+                  class="deadline-checkbox"
+                  type="checkbox" />
+                <label>Deadline</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <input
+              type="date"
+              class="form-control" />
+          </div>
+          <div>
+            <label>Purpose<span class="form-required">*</span></label>
+            <div>
+              <div>
+                <input
+                  value="Univeristy"
+                  type="radio"
+                  name="purpose"
+                  checked />
+                <label>Univeristy</label>
+              </div>
+              <div>
+                <input
+                  value="Private"
+                  type="radio"
+                  name="purpose" />
+                <label>Private</label>
+              </div>
+            </div>
+          </div>
+        </form>
+        <i class="gg-close-o"></i>
+        <i class="gg-check-o"></i>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
