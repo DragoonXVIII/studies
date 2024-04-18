@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_15lebfz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.21.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.4.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_15lebfz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.4.0">
   <bpmn:collaboration id="Collaboration_18989wy">
     <bpmn:participant id="Participant_11xyp6b" name="SPRZEDAWCA" processRef="Process_0kopd6p" />
   </bpmn:collaboration>
@@ -169,6 +169,8 @@
     <bpmn:sequenceFlow id="Flow_0yyt7nh" sourceRef="Activity_1luk24q" targetRef="Event_1l9i1l7" />
     <bpmn:sequenceFlow id="Flow_1t19rxp" sourceRef="Event_024g26v" targetRef="Activity_0f7xhfu" />
     <bpmn:sequenceFlow id="Flow_0pk9ah0" sourceRef="Activity_0f7xhfu" targetRef="Event_0a77ej7" />
+    <bpmn:task id="Activity_12jovu1" name="wygeneruj dokument zamówienia" />
+    <bpmn:task id="Activity_1mgy84v" name="zaktualizuj dokument zamówienia" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_18989wy">
@@ -319,6 +321,14 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="2818" y="375" width="64" height="27" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12jovu1_di" bpmnElement="Activity_12jovu1">
+        <dc:Bounds x="1630" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mgy84v_di" bpmnElement="Activity_1mgy84v">
+        <dc:Bounds x="1789" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_1k91kel" bpmnElement="Flow_0iy0u7z">
         <di:waypoint x="218" y="350" />

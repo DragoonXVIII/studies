@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="zamowienie">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="klient">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="imie_i_nazwisko">
+                                <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="64"/>
+                                </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="numer_telefonu">
+                                <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="\d{9}"/>
+                                </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="pozycje">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="pozycja">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nazwa" type="xs:string" />
+                                        <xs:element name="ilosc" type="xs:int" />
+                                        <xs:element name="cena_jednostkowa" type="xs:float" />
+                                        <xs:element name="cena_lacznie" type="xs:float"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="koszt_pozycji" type="xs:float"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="dostawa">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="adres_dostawy">
+                                <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:maxLength value="64"/>
+                                </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="rodzaj_dostawy" />
+                            <xs:element name="koszt_dostawy" type="xs:float" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="platnosc">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="rodzaj_platnosci" />
+                            <xs:element name="naleznosc" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

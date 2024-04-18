@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<?xml-model href="sushi.xsd"?>
+<zamowienie>
+    <klient>
+        <imie_i_nazwisko>Jan Kowalski</imie_i_nazwisko>
+        <numer_telefonu>123456789</numer_telefonu>
+    </klient>
+    <pozycje>
+        <pozycja>
+            <nazwa>rolka z Ohio</nazwa>
+            <ilosc>5</ilosc>
+            <cena_jednostkowa>50</cena_jednostkowa>
+            <cena_lacznie>280</cena_lacznie>
+        </pozycja>
+        <koszt_pozycji>250</koszt_pozycji>
+    </pozycje>
+    <dostawa>
+        <adres_dostawy>Wiejska 11</adres_dostawy>
+        <rodzaj_dostawy>dostawa</rodzaj_dostawy>
+        <koszt_dostawy>30</koszt_dostawy>
+    </dostawa>
+    <platnosc>
+        <rodzaj_platnosci>BLIK</rodzaj_platnosci>
+        <naleznosc>280</naleznosc>
+    </platnosc>
+</zamowienie>
