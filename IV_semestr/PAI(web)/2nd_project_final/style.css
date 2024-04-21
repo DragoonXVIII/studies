@@ -201,7 +201,8 @@ form textarea {
 /*  About Page */
 
 .about {
-
+  width: 50%;
+  height: auto;
   margin-top: 3rem;
   color: #f1f1f1;
 }
@@ -215,12 +216,10 @@ form textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
   height: auto;
 }
 
-#content
-{
+#content{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -228,16 +227,68 @@ form textarea {
   height: 100%;
 }
 
+
+
+#video {
+  width: 100%; 
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#video h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  display: flex;
+  justify-content: center;
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.przycisk {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center; /* Centrowanie tekstu */
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin-top: 2rem;
+  
+}
+
+
+
 #text {
   width: 50%; 
   height: auto;
   justify-content: center;
   align-items: center;
-  
+  text-align: right;
 }
 
 #img_contener {
-  width: 50%; /* Ustawienie szerokości kontenera na 10% szerokości strony */
+  width: 30%; /* Ustawienie szerokości kontenera na 10% szerokości strony */
   height: auto;
   margin: 0 auto; /*srodkowanie*/
 }
@@ -246,4 +297,10 @@ form textarea {
   display: block;
   width: 100%; 
   height: auto; 
+  border-radius: 50%;
+}
+
+#img_contener p{
+  margin-top: 1rem;
+  text-align: center;
 }

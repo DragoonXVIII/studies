@@ -37,12 +37,25 @@
               This is a simple todo app built with HTML, CSS, and JavaScript.
             </p>
             <p>
-              The app uses the browser's local storage to store the todo items.
+              The app uses the browser's local storage to store the todo items. 
+            </p>
+            <p>
+              It also uses lanyard API to display the user's discord profile picture and nickname.
             </p>
           </div> 
           <div id="img_contener">
-            <img src="profiloweee.png" alt="pfp">
+            <img id="pfp" alt="pfp">
+            <p id="nickname">Hello World</p>
           </div>
+
+        </div>
+        <div id="video">
+          <h2> What did I listen to doing this project? </h2>
+          <div class="container">
+            <iframe class="responsive-iframe" id="yt-player" src="https://www.youtube.com/embed/8-suz3SPaGA" data-external="1"></iframe>
+          </div>
+          <button class="przycisk" id="next-button" onclick="sourceSwap()">Next</button>
+          <script src="about.js"></script>
         </div>
       </section>
     </main>
