@@ -1,5 +1,7 @@
-/*#include <fstream>
-#include <iostream>
+/*#include <iostream>
+#include <fstream>
+#include <string>
+#include <chrono>
 
 void generate_combinations(std::ofstream& file, std::string str, int length)
 {
@@ -34,145 +36,187 @@ void generate_combinationsaZ(std::ofstream& file, std::string str, int length)
     }
 }
 
-int main()
+void generate_combinations_elo(std::ofstream& file, std::string str, int length)
 {
-    std::cout<<"Sprawozdanie:"<<std::endl;
-    std::string name3az = "passwords_3_az.txt";
-    std::ofstream file3az(name3az);
-    //zacznij liczyc czas;
-    generate_combinations(file3az, "", 3);
-    //zakoncz liczyc czas;
-    file3az.close();
-    //wyswietl formule "generowanie hasel: 3 znaki, a-z czas: <czas_w_sekundach>;
-
-    std::string name4az = "passwords_4_az.txt";
-    std::ofstream file4az(name4az);
-    //zacznij liczyc czas;
-    generate_combinations(file4az, "", 4);
-    //zakoncz liczyc czas;
-    file4az.close();
-    //wyswietl formule "generowanie hasel: 4 znaki, a-z czas: <czas_w_sekundach>;
-
-    std::string name5az = "passwords_5_az.txt";
-    std::ofstream file5az(name5az);
-    //zacznij liczyc czas;
-    generate_combinations(file5az, "", 5);
-    //zakoncz liczyc czas;
-    file5az.close();
-    //wyswietl formule "generowanie hasel: 5 znaki, a-z czas: <czas_w_sekundach>;
-
-    std::string name6az = "passwords_6_az.txt";
-    std::ofstream file6az(name6az);
-    //zacznij liczyc czas;
-    generate_combinations(file6az, "", 6);
-    //zakoncz liczyc czas;
-    file6az.close();
-    //wyswietl formule "generowanie hasel: 6 znaki, a-z czas: <czas_w_sekundach>;
-
-    std::cout<<"zakonczono zadanie 1"<<std::endl;
-
-
-    /*
-    std::string name3aZ = "passwords_3_aZ.txt";
-    std::ofstream file3aZ(name3aZ);
-    //zacznij liczyc czas;
-    generate_combinationsaZ(file3aZ, "", 3);
-    //zakoncz liczyc czas;
-    file3aZ.close();
-    //wyswietl formule "generowanie hasel: 3 znaki, a-Z czas: <czas_w_sekundach>;
-    std::cout<<"zakonczono 3aZ"<<std::endl;
-
-    std::string name4aZ = "passwords_4_aZ.txt";
-    std::ofstream file4aZ(name4aZ);
-    //zacznij liczyc czas;
-    generate_combinationsaZ(file4aZ, "", 4);
-    //zakoncz liczyc czas;
-    file4aZ.close();
-    //wyswietl formule "generowanie hasel: 4 znaki, a-Z czas: <czas_w_sekundach>;
-
-    std::string name5aZ = "passwords_5_aZ.txt";
-    std::ofstream file5aZ(name5aZ);
-    //zacznij liczyc czas;
-    generate_combinationsaZ(file5aZ, "", 5);
-    //zakoncz liczyc czas;
-    file5aZ.close();
-    //wyswietl formule "generowanie hasel: 5 znaki, a-Z czas: <czas_w_sekundach>;
-
-    std::string name6aZ = "passwords_6_aZ.txt";
-    std::ofstream file6aZ(name6aZ);
-    //zacznij liczyc czas;
-    generate_combinationsaZ(file6aZ, "", 6);
-    //zakoncz liczyc czas;
-    file6aZ.close();
-    //wyswietl formule "generowanie hasel: 6 znaki, a-Z czas: <czas_w_sekundach>;
-
-    std::cout<<"zakonczono zadanie 2"<<std::endl;
-    /
-    return 0;
-}*/
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <chrono> // Biblioteka do pomiaru czasu
-
-// Funkcja generująca kombinacje znaków a-z o zadanej długości i zapisująca je do pliku
-void generate_combinations(std::ofstream& file, std::string str, int length)
-{
-    // Jeśli osiągnięto żądaną długość kombinacji, zapisz ją do pliku
-    if (length == 0)
+    if(length == 0)
     {
         file << str << std::endl;
         return;
     }
 
-    // Wygeneruj kombinacje dodając kolejne małe litery do ciągu
-    for (char i = 'a'; i <= 'z'; i++)
+    for(char i = 33; i <= 126; i++)
     {
-        generate_combinations(file, str + i, length - 1);
+        generate_combinations_elo(file, str + i, length - 1);
     }
-}
-
-void generate_PESEL(std::ofstream& file)
-{
-    //zmniejszyc 7zipem wielkosc bazy danych peseli chociaz do:  61 MB (kilku kilobajtow)
 }
 
 int main()
 {
-    std::cout << "Sprawozdanie:" << std::endl;
+    std::cout<<"Sprawozdanie:"<<std::endl;
 
-    // Mierz czas dla generowania haseł dla długości 3, 4, 5 i 6 znaków z zakresem a-z
-    for (int length = 3; length <= 6; ++length)
-    {
-        std::string name = "passwords_" + std::to_string(length) + "_az.txt";
-        std::ofstream file(name);
+    std::string name3az = "passwords_3_az.txt";
+    std::ofstream file3az(name3az);
+    auto start = std::chrono::high_resolution_clock::now();
+    generate_combinations(file3az, "", 3);
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = end - start;
+    file3az.close();
+    std::cout << "generowanie hasel: 3 znaki, a-z czas: " << duration.count() << " sekund" << std::endl;
 
-        // Rozpocznij mierzenie czasu
-        auto start = std::chrono::steady_clock::now();
+    std::string name4az = "passwords_4_az.txt";
+    std::ofstream file4az(name4az);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations(file4az, "", 4);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file4az.close();
+    std::cout << "generowanie hasel: 4 znaki, a-z czas: " << duration.count() << " sekund" << std::endl;
 
-        // Wygeneruj kombinacje haseł i zapisz je do pliku
-        generate_combinations(file, "", length);
+    std::string name5az = "passwords_5_az.txt";
+    std::ofstream file5az(name5az);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations(file5az, "", 5);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file5az.close();
+    std::cout << "generowanie hasel: 5 znakow, a-z czas: " << duration.count() << " sekund" << std::endl;
 
-        // Zakończ mierzenie czasu
-        auto end = std::chrono::steady_clock::now();
+    std::string name6az = "passwords_6_az.txt";
+    std::ofstream file6az(name6az);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations(file6az, "", 6);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file6az.close();
+    std::cout << "generowanie hasel: 6 znakow, a-z czas: " << duration.count() << " sekund" << std::endl;
 
-        // Oblicz czas trwania w sekundach
-        double duration = std::chrono::duration<double>(end - start).count();
+    std::cout<<"zakonczono zadanie 1"<<std::endl;
 
-        // Zapisz czas generowania haseł do pliku
-        file << "Czas generowania: " << duration << " sekund" << std::endl;
 
-        // Wyświetl komunikat o generowaniu haseł
-        std::cout << "Wygenerowano hasla: " << length << " znaki, a-z czas: " << duration << " sekund" << std::endl;
 
-        // Zamknij plik
-        file.close();
-    }
+    std::string name3aZ = "passwords_3_aZ.txt";
+    std::ofstream file3aZ(name3aZ);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinationsaZ(file3aZ, "", 3);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file3aZ.close();
+    std::cout << "generowanie hasel: 3 znaki, a-Z czas: " << duration.count() << " sekund" << std::endl;
+    std::cout<<"zakonczono 3aZ"<<std::endl;
 
-    std::cout << "Zakończono zadanie 1" << std::endl;
+    std::string name4aZ = "passwords_4_aZ.txt";
+    std::ofstream file4aZ(name4aZ);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinationsaZ(file4aZ, "", 4);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file4aZ.close();
+    std::cout << "generowanie hasel: 4 znaki, a-Z czas: " << duration.count() << " sekund" << std::endl;
+
+    std::string name5aZ = "passwords_5_aZ.txt";
+    std::ofstream file5aZ(name5aZ);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinationsaZ(file5aZ, "", 5);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file5aZ.close();
+    std::cout << "generowanie hasel: 5 znakow, a-Z czas: " << duration.count() << " sekund" << std::endl;
+
+    std::string name6aZ = "passwords_6_aZ.txt";
+    std::ofstream file6aZ(name6aZ);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinationsaZ(file6aZ, "", 6);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file6aZ.close();
+    std::cout << "generowanie hasel: 6 znakow, a-Z czas: " << duration.count() << " sekund" << std::endl;
+
+    std::cout<<"zakonczono zadanie 2"<<std::endl;
+
+
+
+    auto start = std::chrono::high_resolution_clock::now();
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = end - start;
+
+    std::string name3 = "passwords_3_elo.txt";
+    std::ofstream file3(name3);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations_elo(file3, "", 3);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file3.close();
+    std::cout << "generowanie hasel: 3 znaki,  !-~  czas: " << duration.count() << " sekund" << std::endl;
+
+    std::string name4 = "passwords_4_elo.txt";
+    std::ofstream file4(name4);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations_elo(file4, "", 4);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file4.close();
+    std::cout << "generowanie hasel: 4 znaki, !-~ czas: " << duration.count() << " sekund" << std::endl;
+
+    std::string name5 = "passwords_5_elo.txt";
+    std::ofstream file5(name5);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations_elo(file5, "", 5);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file5.close();
+    std::cout << "generowanie hasel: 5 znakow, !-~  czas: " << duration.count() << " sekund" << std::endl;
+
+    std::string name6 = "passwords_6_elo.txt";
+    std::ofstream file6(name6);
+    start = std::chrono::high_resolution_clock::now();
+    generate_combinations_elo(file6, "", 6);
+    end = std::chrono::high_resolution_clock::now();
+    duration = end - start;
+    file6.close();
+    std::cout << "generowanie hasel: 6 znakow, !-~  czas: " << duration.count() << " sekund" << std::endl;
+
+    std::cout<<"zakonczono zadanie 1"<<std::endl;
+
 
     return 0;
 }
+*/
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+
+int main() {
+    std::ofstream outputFile("wyniki.txt");
+    for (int RR = 0; RR <= 99; RR++) {
+        for (int MM = 1; MM <= 12; MM++) {
+            for (int DD = 1; DD <= 31; DD++) {
+                for (int PPPP = 1; PPPP <= 9999; PPPP++) {
+                    for (int K = 1; K <= 9; K++) {
+                        std::string PPPP_str = std::to_string(PPPP);
+                        std::string formatted_PPPP = std::string(4 - PPPP_str.length(), '0') + PPPP_str;
+                        outputFile << std::setw(2) << std::setfill('0') << RR
+                                   << std::setw(2) << std::setfill('0') << MM
+                                   << std::setw(2) << std::setfill('0') << DD
+                                   << formatted_PPPP
+                                   << K << std::endl;
+                    }
+                }
+            }
+        }
+    }
+
+    outputFile.close();
+
+    std::cout << "Wyniki zostały zapisane do pliku 'wyniki.txt'." << std::endl;
+
+    return 0;
+}
+
+
 
 /*
     W dowolnym języku programowania napisz program generujący (lub próbujący to zrobić) wszystkie hasła 3, 4, 5
@@ -189,3 +233,4 @@ int main()
     K - 1-9
 
 */
+
