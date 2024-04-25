@@ -50,7 +50,14 @@
                                 </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
-                            <xs:element name="rodzaj_dostawy" />
+                            <xs:element name="rodzaj_dostawy">
+                                <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="dowoz"/>
+                                    <xs:enumeration value="odbior na miejscu"/>
+                                </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                             <xs:element name="koszt_dostawy" type="xs:float" />
                         </xs:sequence>
                     </xs:complexType>
@@ -58,7 +65,14 @@
                 <xs:element name="platnosc">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="rodzaj_platnosci" />
+                            <xs:element name="rodzaj_platnosci">
+                                <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="BLIK"/>
+                                    <xs:enumeration value="przy odbiorze"/>
+                                </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                             <xs:element name="naleznosc" />
                         </xs:sequence>
                     </xs:complexType>
