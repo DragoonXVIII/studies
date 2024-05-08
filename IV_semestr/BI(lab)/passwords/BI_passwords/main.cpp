@@ -1,4 +1,6 @@
-/*#include <iostream>
+//ZADANIE 1 - HASLA
+/*
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <chrono>
@@ -184,53 +186,75 @@ int main()
 */
 
 
+//ZADANIE 2 - PESELE
+
+// Funkcja do obliczania cyfry kontrolnej numeru PESEL
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <iomanip>
 
-int main() {
-    std::ofstream outputFile("wyniki.txt");
-    for (int RR = 0; RR <= 99; RR++) {
-        for (int MM = 1; MM <= 12; MM++) {
-            for (int DD = 1; DD <= 31; DD++) {
-                for (int PPPP = 1; PPPP <= 9999; PPPP++) {
-                    for (int K = 1; K <= 9; K++) {
-                        std::string PPPP_str = std::to_string(PPPP);
-                        std::string formatted_PPPP = std::string(4 - PPPP_str.length(), '0') + PPPP_str;
-                        outputFile << std::setw(2) << std::setfill('0') << RR
-                                   << std::setw(2) << std::setfill('0') << MM
-                                   << std::setw(2) << std::setfill('0') << DD
-                                   << formatted_PPPP
-                                   << K << std::endl;
-                    }
+// Funkcja obliczająca cyfrę kontrolną na podstawie ciągu PESEL
+int control_number(const std::string& pesel) {
+    int weights[10] = {1, 3, 7, 9, 1, 3, 7, 9, 1, 3};
+    int sum = 0;
+
+    for (int i = 0; i < 10; ++i) {
+        sum += (pesel[i] - '0') * weights[i];
+    }
+
+    int remainder = sum % 10;
+    int control_number = (10 - remainder) % 10;
+
+    return control_number;
+}
+
+// Funkcja generująca wszystkie możliwe numery PESEL
+void generate_pesel(std::ofstream& file) {
+    for (int RR = 0; RR <= 99; ++RR) {
+        for (int MM = 1; MM <= 12; ++MM) {
+            for (int DD = 1; DD <= 31; ++DD) {
+                for (int PPPP = 0; PPPP <= 9999; ++PPPP) {
+                    // Formatowanie liczby PPPP na 4 cyfry
+                    std::string PPPP_str = std::to_string(PPPP);
+                    std::string formatted_PPPP = std::string(4 - PPPP_str.length(), '0') + PPPP_str;
+
+                    // Obliczenie cyfry kontrolnej
+                    std::string pesel = std::to_string(RR) + std::to_string(MM) + std::to_string(DD) + formatted_PPPP;
+                    int control = control_number(pesel);
+
+                    // Zapisanie numeru PESEL do pliku
+                    file << std::setw(2) << std::setfill('0') << RR
+                         << std::setw(2) << std::setfill('0') << MM
+                         << std::setw(2) << std::setfill('0') << DD
+                         << formatted_PPPP << control << std::endl;
                 }
             }
         }
     }
+}
 
-    outputFile.close();
+int main() {
+    std::ofstream outputFile("pesel_numbers.txt"); // Otwieramy plik wynikowy
 
-    std::cout << "Wyniki zostały zapisane do pliku 'wyniki.txt'." << std::endl;
+    if (outputFile.is_open()) {
+        generate_pesel(outputFile); // Generujemy numery PESEL i zapisujemy do pliku
+        outputFile.close(); // Zamykamy plik
+        std::cout << "Wszystkie możliwe numery PESEL zostały wygenerowane i zapisane do pliku 'pesel_numbers.txt'." << std::endl;
+    } else {
+        std::cerr << "Błąd podczas otwierania pliku wynikowego." << std::endl;
+        return 1;
+    }
 
     return 0;
 }
 
 
-
+//ZADANIE 3 - SZPIEG
 /*
-    W dowolnym języku programowania napisz program generujący (lub próbujący to zrobić) wszystkie hasła 3, 4, 5
-    i 6 znakowe (zapisz je do pliku) z następującymi założeniami:
-    1.1. Hasła składa się tylko z małych liter.
-    1.2. Hasło składa się z małych i dużych liter.
-    1.3. Hasło składa się z małych i dużych liter, cyfr i pozostałych znaków ASCI (kody ASCI od 32 do 126))
 
-    RRMMDDPPPPK
-    RR - 00-99
-    MM - 01-12
-    DD - 01-31
-    PPPP - 0-9999
-    K - 1-9
+
+
+
 
 */
-
