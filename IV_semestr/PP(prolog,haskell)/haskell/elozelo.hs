@@ -98,7 +98,68 @@ sgn x =
                 True -> -1
                 False -> 0
 -}
-sgn x =
-    
+
+-- lab 4
+
+mul a b
+    | b == 0 = 0                                        -- Jeśli drugi argument to 0, iloczyn wynosi 0
+    | b < 0 = -mul a (-b)                               -- Jeśli drugi argument jest mniejszy od zera, zmień jego znak i rekurencyjnie wywołaj funkcję
+    | otherwise = a + mul a (b-1)                       -- W przeciwnym razie kontynuuj standardowe dodawanie
+
+czyUp a = a `elem` ['A'..'Z']
+
+--Napisz funkcję obliczającą liczbę wszystkich nieparzystych kwadratów liczb od 1 do 10000.
+pNK = length [x | x <- [1..10000], odd (x^2)]
+
+--Napisz funkcję uDL usuwającą z napisu duże litery używając elem i list comprehensions
+uDL str = [c | c <- str, not (czyUp c)]
+
+uDL2 str = [c | c <- str, c `elem` ['a'..'z']]
+
+--Napisz kod, który zwróci największą wartość poniżej 1000000 podzielną przez 3829 bez reszty. Zastosuj klasyczne rozwiązanie. Napisz drugą wersję funkcji wykorzystując leniwość Haskella. Która jest szybsza.
+nWP =  maximum [ n | n <- [1..10000], n `mod` 3829 == 0]
+
+mP limit  = last [x | x <- [1..limit], x `mod` 3829 == 0]
+
+mPN = head [x | x <- [1000000, 7658..], x `mod` 3829 == 0]
 
 
+mPNL = last [x | x <- [3829..], x `mod` 3829 == 0]
+
+mPNLOUTPUT = [x | x <- [3829..], x `mod` 3829 == 0]
+
+-- LABY NIEZROBILISMY
+
+{-
+silniaRec 0 = 1
+silniaRec n = n * silniaRec (n - 1)
+
+factorialGuards n
+    | n == 0    = 1
+    | otherwise = n * factorialGuards (n - 1)
+
+factorialIf n = 
+    if n == 0 
+        then 1
+    else 
+        n * factorialIf (n - 1)
+
+factorialCase n = case n of
+    0 -> 1
+    _ -> n * factorialCase (n - 1)
+
+
+
+
+
+fibonacciRec 0 = 0
+fibonacciRec 1 = 1
+fibonacciRec n = fibonacciRec (n - 1) + fibonacciRec (n - 2)
+
+
+
+fibonacciAcc n = fibHelper n 0 1
+
+fibHelper 0 a _ = a
+fibHelper n a b = fibHelper (n - 1) b (a + b)
+-}
