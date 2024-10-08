@@ -8,7 +8,7 @@ Square:: Square(float a1):Figure()
     cout<<"Konstruktor klasy Square"<<endl;
 }
 
-Square:: ~Square()
+Square::~Square()
 {
     cout<<"Destruktor klasy Square"<<endl;
 }

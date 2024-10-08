@@ -2,7 +2,6 @@
 #include "Circle.h"
 using namespace std;
 
-
 Circle::Circle(float r1)
 {
     r=r1;
