@@ -34,7 +34,11 @@
 # Python
 *.idea
 
+# Wlasne
 obiektowy_cpp/zaj*/build*
 build*
 podstawy_algorytmiki_cpp/zaj*/build*
 *.user
+*.docx
+*.xlsx
+PGK*
