@@ -2,15 +2,12 @@
 #define MAXBUFOR_H
 #include "bufor.h"
 
-// Klasa MaxBufor - oblicza maksymalną wartość
 class MaxBufor : public Bufor {
     public:
-        // Konstruktor dziedziczony po Buforze
         MaxBufor(int size) : Bufor(size) {}
 
-        // Nadpisuje metodę calculate, zwracając maksymalną wartość
         double calculate() override {
-            if (firstFree == 0) return 0; // Brak elementów
+            if (firstFree == 0) return 0; // Brak ele
             int maxVal = tab[0];
             for (int i = 1; i < firstFree; ++i) {
                 maxVal = std::max(maxVal, tab[i]);
@@ -18,10 +15,9 @@ class MaxBufor : public Bufor {
             return maxVal;
         }
 
-        // Nadpisuje metodę add - sprawdza, czy jest miejsce
         void add(int value) override {
             if (firstFree < size) {
-                Bufor::add(value);  // Wywołanie podstawowej metody add
+                Bufor::add(value);
             } else {
                 std::cout << "Brak miejsca w MaxBufor!" << std::endl;
             }

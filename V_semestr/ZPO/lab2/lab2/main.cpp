@@ -52,8 +52,8 @@ int howManyEarnLessThanMeanSalary(Employee** employees, int size, int bonusValue
 int main()
 {
     //LAB 1 1/2
-    /*
-    Figure* f1=new Square(4);
+
+    /*Figure* f1=new Square(4);
     Figure* f2=new Circle(2);
     f1->calculateArea();
     f1->show();
@@ -65,7 +65,8 @@ int main()
     f3=&s1;
     f3->calculateArea();
     f3->show();
-
+    */
+    /*
     Figure* tab[3];
     tab[0]=new Square(4);
     tab[1]=new Square(2);
@@ -74,12 +75,16 @@ int main()
     for(int i=0;i<3;i++)
     {
         tab[i]->calculateArea();
+        tab[i]->calculatePerimeter();
+        tab[i]->show();
         delete tab[i];
     }
-
-    delete f1;
-    delete f2;
     */
+    //niedzialalo bo byl wczesniejszy kod ktory nie ywzglednial pol i obwodow a nowszy nie pojazywal wszystkiego xD
+
+    //delete f1;
+    //delete f2;
+
 
     //LAB 1 2/2
     /*
@@ -105,8 +110,8 @@ int main()
     tl.show();
 
     // Obliczanie bonusów
-    std::cout << "Developer bonus: " << dev.calculateBonus(5000) << " PLN\n";
-    std::cout << "Team Leader bonus: " << tl.calculateBonus(5000) << " PLN\n";
+    std::cout << "Developer bonus: " << dev.calculateBonus(10) << " PLN\n";
+    std::cout << "Team Leader bonus: " << tl.calculateBonus(5) << " PLN\n";
 
     std::cout << "+==========================================================+";
     const int size = 4;
@@ -126,7 +131,6 @@ int main()
     int count = howManyEarnLessThanMeanSalary(employees, size, bonusValue);
     std::cout << "Liczba pracowników, którzy otrzymali premię niższą niż średnia: " << count << std::endl;
 
-    // Zwolnienie pamięci
     for (int i = 0; i < size; ++i) {
         delete employees[i];
     }
