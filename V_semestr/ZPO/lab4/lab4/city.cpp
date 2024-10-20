@@ -33,11 +33,11 @@ void City::addCitizen(Citizen citizen)
 void City::deleteCitizen(std::string name, std::string surname)
 {
     this->citizens.erase(std::remove_if(this->citizens.begin(), this->citizens.end(), [name, surname](const Citizen& c)
-        {
-            return c.getName() == name && c.getSurname() == surname;
-        }),
-    citizens.end()
-    );
+    {
+        return c.getName() == name && c.getSurname() == surname;
+    }),
+                         citizens.end()
+                         );
     return;
 }
 
@@ -51,7 +51,7 @@ void City::show_citizens() const
     } else {
         std::cout << "Wektor jest pusty!" << std::endl;
     }
-/*
+    /*
     for(const auto& citizen : citizens)
     {
         citizen.show();
@@ -117,21 +117,29 @@ void City::postal_codes() const
 
     std::cout << "Zestawienie adresów i liczby osób mieszkających pod nimi:\n";
 
-   // Iterowanie przez multimapę
-   std::string lastAddress = "";  // Zmienna do śledzenia ostatniego unikatowego adresu
-   for (auto it = postal_codes.begin(); it != postal_codes.end(); ) {
-       // Obecny adres
-       std::string currentAddress = it->first;
 
-       // Liczenie osób mieszkających pod danym adresem
-       int count = postal_codes.count(currentAddress);
+    std::string lastAddress = "";
+    for (auto it = postal_codes.begin(); it != postal_codes.end(); )
+    {
+        std::string currentAddress = it->first;
 
-       // Wyświetlenie adresu i liczby osób
-       std::cout << currentAddress << ": " << count << " osoby" << std::endl;
+        int count = postal_codes.count(currentAddress);
 
-       // Przejście do pierwszego elementu o innym adresie
-       it = postal_codes.upper_bound(currentAddress);
-   }
+        std::cout << currentAddress << ": " << count << " osoby" << std::endl;
+        it = postal_codes.upper_bound(currentAddress);
+    }
 
     return;
+}
+
+int City::uniquePostalCodes() const
+{
+    std::set <std::string> tmp;
+    for(int i=0; i<this->getCityCitizens(); i++)
+    {
+        tmp.insert(this->citizens.at(i).getPostalCode());
+    }
+    //std::cout<<"Badam miasto: "; this->show_city();
+    //std::cout<<"Liczba kodow: "<<tmp.size()<<"\n";
+    return tmp.size();
 }

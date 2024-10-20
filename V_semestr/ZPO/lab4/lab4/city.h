@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <set>
 
 class City
 {
@@ -21,6 +22,7 @@ class City
         int getCityCitizens() const;
         int getAdults() const;
         void postal_codes() const; //std::multimap<std::string, std::string> postal_codes;
+        int uniquePostalCodes() const;
 };
 
 #endif // CITY_H

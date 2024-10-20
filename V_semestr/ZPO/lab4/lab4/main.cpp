@@ -8,6 +8,7 @@
 #include "even.h"
 #include "compare.h"
 #include "city.h"
+#include "set"
 
 int sumaCyfr(int liczba)
 {
@@ -59,6 +60,69 @@ bool isEven(int x)
 void showMark(Student &s)
 {
     cout<<s.getMark()<<" ";
+}
+
+void showCities(const std::vector<City>& cities)
+{
+    for (const auto& city : cities)
+    {
+        std::cout << "City: ";
+        city.show_city();
+        std::cout << "Population: " << city.getCityCitizens() << std::endl;
+    }
+}
+
+void sort_cities(std::vector<City> &cities)
+{
+    std::sort(cities.begin(), cities.end(),[](const City& a, const City& b)
+    {
+        return a.getCityCitizens() < b.getCityCitizens();
+    });
+}
+
+void the_most( std::vector<City>& cities, int mode) {
+    if (cities.empty())
+    {
+        std::cout << "No cities to search." << std::endl;
+        return;
+    }
+    if (mode == 1)
+    {
+        std::cout<<"MODE 1"<<std::endl;
+        City tmp = cities.at(0);
+        for(int i=1; i<cities.size(); i++)
+        {
+            if(cities.at(i).uniquePostalCodes()>tmp.uniquePostalCodes())
+                tmp = cities.at(i);
+        }
+        tmp.show_city();
+    }
+    else if (mode == 2)
+    {
+        sort_cities(cities);
+        std::cout<<"MODE 2"<<std::endl;
+        cities.at(0).show_city();
+        std::cout<<"Liczba mieszkancow: "<<cities.at(0).getCityCitizens();
+    }
+    else
+    {
+        std::cout << "Invalid mode selected." << std::endl;
+    }
+}
+
+
+void statistic(const std::vector<City>& cities) {
+    for (const auto& city : cities) {
+        int maleCount = city.getMen();
+        int femaleCount = city.getWomen();
+        int adultCount = city.getAdults();
+
+        std::cout << "City: "; city.show_city();
+        std::cout << "Total Citizens: " << city.getCityCitizens() << std::endl;
+        std::cout << "Males: " << maleCount << ", Females: " << femaleCount << std::endl;
+        std::cout << "Adults: " << adultCount << std::endl;
+        std::cout << "----------------------------" << std::endl;
+    }
 }
 
 
@@ -209,6 +273,7 @@ void zad2()
 
 void zad3()
 {
+    /*
     City Lublin("Lublin");
     // 200 2m 1f 2a
     Lublin.addCitizen(Citizen("Jan","Kowalksi",30,'m',"20-200"));//dom 1
@@ -233,6 +298,26 @@ void zad3()
     //Lublin.show_citizens();
     std::cout<<"Mieszkancy: "<<Lublin.getCityCitizens()<<std::endl;
     std::cout<<"M: "<<Lublin.getMen()<<" W: "<<Lublin.getWomen()<<" A: "<<Lublin.getAdults()<<std::endl;
+    */
+    vector <City> cities;
+    cities.push_back(City("Lublin")); //2
+    cities.push_back(City("Krakow")); //1
+    cities.push_back(City("Warszawa")); //0
+    cities.at(0).addCitizen(Citizen("Jan","Kowalksi",30,'m',"20-200"));
+    cities.at(0).addCitizen(Citizen("Jan","Kowalksi",2,'f',"20-200"));
+    cities.at(0).addCitizen(Citizen("Jan","Kowalksi",30,'m',"20-200"));
+    cities.at(2).addCitizen(Citizen("Jan","Kowalksi",10,'f',"20-200"));
+    cities.at(2).addCitizen(Citizen("Jan","Kowalksi",30,'m',"20-200"));
+    cities.at(1).addCitizen(Citizen("Jan","Kowalksi",30,'m',"20-300"));
+    showCities(cities);
+
+    the_most(cities, 1);
+    the_most(cities, 2);
+
+    sort_cities(cities);
+    showCities(cities);
+
+    statistic(cities);
 
     return;
 }
