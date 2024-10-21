@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <map>
 
+#include "dictionary.h"
+
 using namespace std;
 
 void show( set <int> s)
@@ -208,7 +210,27 @@ void zad3()
 
 void zad4()
 {
+    Dictionary dict;
 
+    // Dodawanie słów
+    dict.addWord("kot", "cat");
+    dict.addWord("pies", "dog");
+    dict.addWord("dom", "house");
+
+    // Wyświetlenie słownika
+    dict.displayDictionary();
+
+    // Wyświetlenie tłumaczenia dla słowa
+    dict.translate("kot");
+
+    // Usunięcie słowa
+    dict.removeWord("kot");
+
+    // Wyświetlenie słownika po usunięciu słowa
+    dict.displayDictionary();
+
+    // Wyświetlenie słownika posortowanego alfabetycznie względem tłumaczenia (od Z do A)
+    dict.displaySortedByTranslation();
     return;
 }
 
@@ -221,9 +243,9 @@ int main()
 
     //zad2();
 
-    zad3();
+    //zad3();
 
-    //zad4();
+    zad4();
 
     return 0;
 

@@ -4,4 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        dictionary.cpp \
         main.cpp
+
+HEADERS += \
+    dictionary.h
