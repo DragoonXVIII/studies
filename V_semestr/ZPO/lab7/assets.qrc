@@ -2,5 +2,7 @@
     <qresource prefix="/icons">
         <file>assets/iconmonstr-sort-14.svg</file>
         <file>assets/iconmonstr-sort-19.svg</file>
+        <file>assets/iconmonstr-sort-5.svg</file>
+        <file>assets/iconmonstr-sort-7.svg</file>
     </qresource>
 </RCC>

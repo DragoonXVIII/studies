@@ -5,6 +5,7 @@
 #include <QList>
 #include <QString>
 #include <QDebug>
+#include <QMessageBox>
 
 #include <algorithm>
 
@@ -16,12 +17,14 @@ private:
 public:
     CountryTable();
     ~CountryTable();
-    bool addCountry();
-    bool deleteCountry();
-    void searchCountries(int range1, int range2);
-    void sortPopulationAscending();
-    void sortPopulationDescending();
-    void reloadTable();
+    bool addCountry(QString name, int population);
+    bool deleteCountry(QString name);
+    QVector<QPair<QString, int>> sortPopulationAscending();
+    QVector<QPair<QString, int>> sortPopulationDescending();
+    QMap <QString, int> reload(int mode);
+    QMap <QString, int> reload(int range1, int range2);
+
+
 };
 
 #endif // COUNTRYTABLE_H

@@ -7,50 +7,99 @@ CountryTable::CountryTable() {};
 
 CountryTable::~CountryTable() {};
 
-void CountryTable::sortPopulationAscending() {
-    // Tworzymy listę par (kraj, populacja) z mapy
-    QList<QPair<QString, int>> countryList = countries.toList();
-
-    // Sortujemy listę według wartości (populacja) rosnąco
-    std::sort(countryList.begin(), countryList.end(),
-              [](const QPair<QString, int>& a, const QPair<QString, int>& b) {
-                  return a.second < b.second;
-              });
-
-    // Wyświetlamy posortowaną listę (opcjonalnie)
-    for (const auto& country : countryList) {
-        qDebug() << country.first << ": " << country.second;
+QVector<QPair<QString, int>> CountryTable::sortPopulationAscending()
+{
+    QVector<QPair<QString, int>> sortedCountries;
+    // z qmap do qvector
+    for (auto it = countries.begin(); it != countries.end(); ++it)
+    {
+        sortedCountries.append(qMakePair(it.key(), it.value()));
     }
+
+    std::sort(sortedCountries.begin(), sortedCountries.end(),
+              [](const QPair<QString, int> &a, const QPair<QString, int> &b)
+    {
+        return a.second < b.second;
+    });
+
+    return sortedCountries;
 }
 
-void CountryTable::sortPopulationDescending() {
-    // Tworzymy listę par (kraj, populacja) z mapy
-    QList<QPair<QString, int>> countryList = countries.toList();
-
-    // Sortujemy listę według wartości (populacja) malejąco
-    std::sort(countryList.begin(), countryList.end(),
-              [](const QPair<QString, int>& a, const QPair<QString, int>& b) {
-                  return a.second > b.second;
-              });
-
-    // Wyświetlamy posortowaną listę (opcjonalnie)
-    for (const auto& country : countryList) {
-        qDebug() << country.first << ": " << country.second;
+QVector<QPair<QString, int>> CountryTable::sortPopulationDescending()
+{
+    QVector<QPair<QString, int>> sortedCountries;
+    // z qmap do qvector
+    for (auto it = countries.begin(); it != countries.end(); ++it)
+    {
+        sortedCountries.append(qMakePair(it.key(), it.value()));
     }
+
+    std::sort(sortedCountries.begin(), sortedCountries.end(),
+              [](const QPair<QString, int> &a, const QPair<QString, int> &b)
+    {
+        return a.second > b.second;
+    });
+
+    return sortedCountries;
 }
 
-void searchCountries(int range1, int range2) {
-    // Sprawdzamy, który zakres jest dolny, a który górny, by uniknąć problemów
+bool CountryTable::addCountry(QString name, int population)
+{
+    if (countries.contains(name))
+    {
+        return false;
+    }
+
+    countries.insert(name, population);
+    return true;
+}
+
+bool CountryTable::deleteCountry(QString name)
+{
+    if (!countries.contains(name))
+    {
+        return false;
+    }
+    countries.remove(name);
+    return true;
+}
+
+QMap <QString, int> CountryTable::reload(int mode)
+{
+    switch(mode)
+    {
+    case 0:         //just for adding or deleting;
+        return this->countries;
+
+    case 1:         //for sortingAscending
+        sortPopulationAscending();
+        return this->countries;
+
+    case 2:         //for sortingDescending
+        sortPopulationDescending();
+        return this->countries;
+    }
+    return this->countries;
+}
+
+QMap <QString, int> CountryTable::reload(int range1, int range2)
+{
+    QMap<QString, int> countries2 = this->countries;
     int lowerBound = qMin(range1, range2);
     int upperBound = qMax(range1, range2);
 
-    // Iterujemy przez mapę krajów
-    for (auto it = countries.begin(); it != countries.end(); ++it) {
+    for (auto it = countries2.begin(); it != countries2.end(); )
+    {
         int population = it.value();
-
-        // Sprawdzamy, czy populacja kraju mieści się w zakresie
-        if (population >= lowerBound && population <= upperBound) {
-            qDebug() << it.key() << ": " << population;
+        if (population < lowerBound || population > upperBound)
+        {
+            it = countries2.erase(it);
+        }
+        else
+        {
+            ++it;
         }
     }
+
+    return countries2;  // zwraca przefiltrowaną mapę
 }
