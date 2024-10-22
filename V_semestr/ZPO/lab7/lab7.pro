@@ -11,12 +11,14 @@ CONFIG += c++17
 SOURCES += \
     car.cpp \
     catalog.cpp \
+    countrytable.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     car.h \
     catalog.h \
+    countrytable.h \
     mainwindow.h
 
 FORMS += \
