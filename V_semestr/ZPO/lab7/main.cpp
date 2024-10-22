@@ -12,18 +12,13 @@
 bool isPangram(const QString& text)
 {
     QSet<char> uniqueLetters;
-
-    // Przechodzimy przez każdy znak napisu
-    for (const QChar& ch : text)
+    for(const QChar &ch : text)
     {
-        if (ch.isLetter())
+        if(std::tolower(ch.toLatin1()) >= 97 &&  std::tolower(ch.toLatin1()) <= 122)
         {
-            // Konwertujemy na małą literę i dodajemy do zbioru
             uniqueLetters.insert(std::tolower(ch.toLatin1()));
         }
     }
-
-    // Jeśli zbiór ma 26 elementów, oznacza to, że mamy wszystkie litery alfabetu
     return uniqueLetters.size() == 26;
 }
 
@@ -35,12 +30,9 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-
-    // Przykładowy test dla funkcji isPangram
     QString test1 = "The quick brown fox jumps over the lazy dog";
     QString test2 = "Hello World!";
 
-    // Sprawdzanie czy napisy są pangramami
     if (isPangram(test1))
     {
         std::cout << "\"" << test1.toStdString() << "\" jest pangramem." << std::endl;
@@ -58,7 +50,6 @@ int main(int argc, char *argv[])
     {
         std::cout << "\"" << test2.toStdString() << "\" nie jest pangramem." << std::endl;
     }
-
 
     return a.exec();
 }
