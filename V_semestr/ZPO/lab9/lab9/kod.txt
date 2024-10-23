@@ -1,0 +1,6 @@
+#include <iostream>  // To jest nagłówek
+int main() {
+    // To jest komentarz do kodu
+    std::cout << "Hello, World!" << std::endl;  // Wyświetlenie tekstu
+    return 0;  // Zakończenie programu
+}
