@@ -355,9 +355,9 @@ int main()
 
     //zad2();
 
-    zad3();
+    //zad3();
 
-    //zad4();
+    zad4();
 
     return 0;
 }

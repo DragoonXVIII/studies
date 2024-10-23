@@ -27,36 +27,6 @@ using namespace boost::multi_index;
 using namespace std;
 namespace fusion = boost::fusion;
 
-/*
-using FusionVector = fusion::vector<bool, int, double, float, char>;
-struct TypeCounter
-{
-    map<string, int> typeCount;
-    // Operator () do zliczania
-    template <typename T>
-    void operator()(T)
-    {
-        const string typeName = typeid(T).name(); // Zbieramy nazwę typu
-        typeCount[typeName]++;
-    }
-};
-map<string, int> countTypes(const FusionVector& fusionVector)
-{
-    TypeCounter counter;
-    fusion::for_each(fusionVector, counter);
-    return counter.typeCount;
-}*/
-
-//using namespace boost::fusion;
-
-/*template <typename T>
-void count_types(T& vec, std::map<std::string, int>& type_count) {
-    for_each(vec, [&](auto& elem) {
-        std::string type_name = typeid(elem).name();
-        type_count[type_name]++;
-    });
-}*/
-
 typedef multi_index_container<Person,indexed_by<
 hashed_non_unique<member<Person, string, &Person::name>>,
 hashed_non_unique<member<Person, int, &Person::age>>
@@ -85,7 +55,7 @@ typedef person_multi_2::nth_index<0>::type name_type2;
 typedef person_multi_2::nth_index<1>::type age_type2;
 
 template <typename T>
-void processVector(const vector<T>& vec)
+void processVector(const vector<T>& vec) //templatka na akceptowanie vectorow o różnej sygnaturze
 {
     if (vec.empty())
     {
@@ -108,7 +78,6 @@ void processVector(const vector<T>& vec)
     }
     else //do liczenia miediany to 2 jak parzyste albo jedne jak nie cvhyba dlatego tak
     {
-
         median = sortedVec[size / 2];
     }
 
@@ -177,12 +146,10 @@ void firstArgMod(int& x, int y)
 }
 void printF(int x)
 {
-
     cout<<x<<" ";
 }
 void contatination(int i1,int i2)
 {
-
     cout << i1 << i2<< endl;;
 }
 class Operation
@@ -194,7 +161,6 @@ class Operation
             return a - b;
         }
 
-
         int operator()(char a)
         {
             return (int)a-32;
@@ -202,7 +168,6 @@ class Operation
 };
 int addition(int a, int b)
 {
-
     return a + b;
 }
 
@@ -376,18 +341,18 @@ void zad3()
     vector<int> numbers = {5, -2, 9, 0, 4, 8, -1, 7, 3};
     processVector(numbers);
 }
-
+/*
 struct TypeCounter
 {
     std::map<std::string, int> typeCount;
 
     // Operator funkcyjny do zliczania typów
     template <typename T>
-    void operator()(const T& t) {
+    void operator()(const T& t)
+    {
         std::string typeName = typeid(T).name();  // Poprawne przypisanie typu do stringa
 
-        // Debug: Wyświetlanie typu aktualnego elementu
-        std::cout << "Przetwarzam element typu: " << typeName << std::endl;
+        //std::cout << "Przetwarzam element typu: " << typeName << std::endl;
 
         // Zliczanie typów
         if(typeCount.find(typeName) == typeCount.end()) {
@@ -398,32 +363,51 @@ struct TypeCounter
 
         // Debug: Wyświetlanie mapy po każdym kroku
         std::cout << "Mapa po zliczeniu typu: " << typeName << std::endl;
-        for(const auto& pair : typeCount) {
-            std::cout << "Typ: " << pair.first << ", Liczba wystąpień: " << pair.second << std::endl;
+        for(const auto& pair : typeCount)
+        {
+            std::cout << "Typ: " << pair.first << ", Liczba wystapien: " << pair.second << std::endl;
         }
         std::cout << "-----------------------------" << std::endl;
     }
 };
+
 // Funkcja do zliczania typów w kontenerze Fusion
     template <typename FusionVector>
-    std::map<std::string, int> countTypes(const FusionVector& fusionVector) {
+    std::map<std::string, int> countTypes( FusionVector& fusionVector) {
         TypeCounter counter;
 
         // Zastosowanie for_each do zliczenia typów w kontenerze Fusion
         boost::fusion::for_each(fusionVector, counter);
 
         // Debug: Wyświetlanie zliczonych typów i ich liczby
-        std::cout << "Zliczone typy i liczby wystąpień:" << std::endl;
-        for(const auto& pair : counter.typeCount)
+        std::cout << "Zliczone typy i liczby wystapien:" << std::endl;
+        std::map<std::string, int> test = counter.typeCount;
+        for( auto& pair : counter.typeCount)
         {
             std::cout << "Typ: " << pair.first << ", Liczba wystąpień: " << pair.second << std::endl;
         }
 
         // Zwracamy zliczone typy jako mapa
-        return counter.typeCount;
+        return test;
     }
+*/
+template<typename T>
+std::string getTypeName() {
+    return typeid(T).name();  // Możesz użyć demangle, aby zdemanglować nazwy w systemach z GCC
+}
+template<typename FusionVector>
+map<string, int> test(const FusionVector& vec)
+{
+    map<string, int> m;  // Mapa do zliczania typów
 
+    // Używamy lambdy zamiast dodatkowej struktury
+    fusion::for_each(vec, [&m](const auto& element) {
+        std::string typeName = getTypeName<decltype(element)>();
+        ++m[typeName];  // Zwiększamy licznik dla danego typu
+    });
 
+    return m;
+}
 void zad4()
 {
     /*vector<boost::fusion::vector<int, double, float, bool, char>> fusionVector =
@@ -440,21 +424,25 @@ void zad4()
     {
         cout << "Typ: " << pair.first << ", Liczba wystapien: " << pair.second << endl;
     }*/
+
     fusion::vector<int, string, bool, double> vec{10, "C++", true, 3.14};
 
         // Dodanie elementów do kontenera Fusion
     auto vec2 = fusion::push_back(vec, 'M');
     auto vec3 = fusion::push_back(vec2, 'N');
-    cout<<"test1"<<endl;
+    auto vec4 = fusion::push_back(vec3, 5);
+
+    //cout<<"test1"<<endl;
     // Zliczanie typów w vec3
-    map<string, int> result = countTypes(vec3);
+    map<string, int> result = test(vec4);
+    //cout<<result.size()<<endl;
 
     // Wyświetlenie liczby wystąpień typów
     for(const auto& pair : result)
     {
-        std::cout<<"Typ: "<< pair.first<<", Liczba wystąpień: "<<pair.second <<std::endl;
+        std::cout<<"Typ: "<< pair.first<<", Liczba wystapien: "<<pair.second <<std::endl;
     }
-    cout<<"test1"<<endl;
+    //cout<<"test1"<<endl;
 }
 
 int main()

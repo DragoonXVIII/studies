@@ -11,8 +11,9 @@ SOURCES += \
         print.cpp
 
 # Ustaw ścieżkę do Boost
-BOOST_ROOT = D:/_workspace/libraries/Addon_CPP_Libraries/boost_1_86_0  # Upewnij się, że to jest poprawna ścieżka
-
+# zalezy od komputera mainPC : laptop
+# BOOST_ROOT = D:/_workspace/libraries/Addon_CPP_Libraries/boost_1_86_0  # Upewnij się, że to jest poprawna ścieżka
+BOOST_ROOT = C:/libraries/Addon_CPP_Libraries/boost_1_86_0
 INCLUDEPATH += $$BOOST_ROOT
 LIBS += -L$$BOOST_ROOT/stage/lib # Dodaj inne potrzebne biblioteki
 

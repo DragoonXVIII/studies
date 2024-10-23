@@ -196,7 +196,7 @@ void zad2()
 void zad3()
 {
     std::string str1 = "W main nalezy przetestowac funkcje";
-    std::string str2 = "W main nalezy, przetestowac funkcje";
+    std::string str2 = "W main nalezy, funkcje przetestowac";
 
     char addedChar = findAddedCharacter(str1, str2); // Wywołanie funkcji
 
