@@ -1,0 +1,4 @@
+Jan;Nowak;25;123456789;jan.nowak@example.com
+Anna;Kowalska;30;987654321;anna.kowalska@domain.com
+Adam;Nowak-Kowalski;28;123123124;adam.nk@example.org
+Ewa;Kowal;45;987654328;ewa.kowal@domain.com
