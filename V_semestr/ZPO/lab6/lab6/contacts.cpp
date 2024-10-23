@@ -21,7 +21,7 @@ bool Contacts::removeContact(const std::string& phone)
         phone_index.erase(it);
         return true;
     }
-    return false; // Kontakt nie znaleziony
+    return false; // Kontakt nie ms
 }
 
 // Wyszukaj osoby na tej samej ulicy

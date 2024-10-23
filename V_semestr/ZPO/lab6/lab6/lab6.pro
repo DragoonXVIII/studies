@@ -7,7 +7,8 @@ SOURCES += \
         contact.cpp \
         contacts.cpp \
         main.cpp \
-        person.cpp
+        person.cpp \
+        print.cpp
 
 # Ustaw ścieżkę do Boost
 BOOST_ROOT = D:/_workspace/libraries/Addon_CPP_Libraries/boost_1_86_0  # Upewnij się, że to jest poprawna ścieżka
@@ -18,4 +19,5 @@ LIBS += -L$$BOOST_ROOT/stage/lib # Dodaj inne potrzebne biblioteki
 HEADERS += \
     contact.h \
     contacts.h \
-    person.h
+    person.h \
+    print.h

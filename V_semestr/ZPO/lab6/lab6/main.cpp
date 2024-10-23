@@ -21,6 +21,7 @@
 #include "person.h"
 #include "contact.h"
 #include "contacts.h"
+#include "print.h"
 
 using namespace boost::multi_index;
 using namespace std;
@@ -48,13 +49,13 @@ map<string, int> countTypes(const FusionVector& fusionVector)
 
 //using namespace boost::fusion;
 
-template <typename T>
+/*template <typename T>
 void count_types(T& vec, std::map<std::string, int>& type_count) {
     for_each(vec, [&](auto& elem) {
         std::string type_name = typeid(elem).name();
         type_count[type_name]++;
     });
-}
+}*/
 
 typedef multi_index_container<Person,indexed_by<
 hashed_non_unique<member<Person, string, &Person::name>>,
@@ -145,7 +146,7 @@ void processVector(const vector<T>& vec)
     cout << endl;
 }
 
-map<string, int> countTypes(const vector<boost::fusion::vector<int, double, float, bool, char>>& fusionVector)
+/*map<string, int> countTypes(const vector<boost::fusion::vector<int, double, float, bool, char>>& fusionVector)
 {
     map<string, int> typeCount;
 
@@ -163,6 +164,46 @@ map<string, int> countTypes(const vector<boost::fusion::vector<int, double, floa
     }
 
     return typeCount;
+}*/
+
+#include <boost/bind.hpp>
+#include <iostream>
+#include<vector>
+using namespace std;
+void firstArgMod(int& x, int y)
+{
+
+    x=x+y;
+}
+void printF(int x)
+{
+
+    cout<<x<<" ";
+}
+void contatination(int i1,int i2)
+{
+
+    cout << i1 << i2<< endl;;
+}
+class Operation
+{
+    public:
+
+        int operator()(int a, int b)
+        {
+            return a - b;
+        }
+
+
+        int operator()(char a)
+        {
+            return (int)a-32;
+        }
+};
+int addition(int a, int b)
+{
+
+    return a + b;
 }
 
 void zad1()
@@ -235,6 +276,54 @@ void zad1()
     auto &rand_indexx = persons2.get<2>();
     cout << rand_indexx[0].name <<endl;
     */
+    boost::fusion::vector<int, string, bool, double> vec{10, "C++", true, 3.14};
+    cout << "Trzeci element w vec:"
+         <<boost::fusion::at<boost::mpl::int_<2>>(vec) <<endl;
+    auto vec2 = push_back(vec, 'M');
+    auto vec3 = push_back(vec, 'N');
+
+    cout <<"Liczba elementow w wvec: "<< size(vec) <<endl;
+    cout << "Liczba elementow w vec2: "<<size(vec2) <<endl;
+    //cout << "Pierwszy element w vec2: "<<front(vec2) <<endl;
+    //cout << "Ostatni element w vec2: "<<back(vec2) <<endl;
+    cout<<"Cala zawartosc vec2: "<<endl;
+    boost::fusion::for_each(vec2,Print());
+
+    auto itvStart = begin(vec);
+    auto itvStop = end(vec);
+    cout<<"Pierwszy element: "<<*itvStart<<endl;
+    cout<<"Drugi element: "<<*next(itvStart)<<endl;
+    cout<<"Trzeci element: "
+       <<*advance<boost::mpl::int_<2>>(itvStart)<<endl;
+
+    /*cout<<"vec: "<<endl;
+    vector<int> vec= {1,2,3,4,5};
+    vector<int>::iterator iter1 = vec.begin();
+    vector<int>::iterator iter2 = vec.end();
+    for_each(iter1, iter2, boost::bind(printF, _1));
+    cout<<endl<<"vec - kazdy element zwiekszony o 5: ";
+    for_each(iter1, iter2, boost::bind(firstArgMod, _1, 5));
+    for_each(iter1, iter2, boost::bind(printF, _1));
+    int count=std::count_if(vec.begin(), vec.end(),
+    boost::bind(std::logical_and<bool>(),
+    boost::bind(std::greater<int>(),_1,8),
+    boost::bind(std::less_equal<int>(),_1,10)));
+
+    cout << endl<<"vec - 8<Elementy<=10  "<<count <<endl;
+
+    cout<<addition(1,2)<<endl;
+    int res=boost::bind(addition,_1,_2)(1,2);
+    cout<<res<<endl;
+
+    int i1=1,i2=2;
+    boost::bind(contatination,_2,_1)(i1,i2);
+
+    Operation ff;
+    int x = 1024;
+    cout<<"Funktor: "<<bind<int>(ff, _1, _1)(x)<<endl;
+    char y='a';
+    cout<<"Funktor: "<<bind<char>(ff, _1)(y)<<endl;*/
+
 }
 
 void zad2()
@@ -288,9 +377,56 @@ void zad3()
     processVector(numbers);
 }
 
+struct TypeCounter
+{
+    std::map<std::string, int> typeCount;
+
+    // Operator funkcyjny do zliczania typów
+    template <typename T>
+    void operator()(const T& t) {
+        std::string typeName = typeid(T).name();  // Poprawne przypisanie typu do stringa
+
+        // Debug: Wyświetlanie typu aktualnego elementu
+        std::cout << "Przetwarzam element typu: " << typeName << std::endl;
+
+        // Zliczanie typów
+        if(typeCount.find(typeName) == typeCount.end()) {
+            typeCount[typeName] = 1;  // Jeżeli nie istnieje, dodajemy nowy typ
+        } else {
+            typeCount[typeName]++;  // Jeżeli istnieje, zwiększamy licznik
+        }
+
+        // Debug: Wyświetlanie mapy po każdym kroku
+        std::cout << "Mapa po zliczeniu typu: " << typeName << std::endl;
+        for(const auto& pair : typeCount) {
+            std::cout << "Typ: " << pair.first << ", Liczba wystąpień: " << pair.second << std::endl;
+        }
+        std::cout << "-----------------------------" << std::endl;
+    }
+};
+// Funkcja do zliczania typów w kontenerze Fusion
+    template <typename FusionVector>
+    std::map<std::string, int> countTypes(const FusionVector& fusionVector) {
+        TypeCounter counter;
+
+        // Zastosowanie for_each do zliczenia typów w kontenerze Fusion
+        boost::fusion::for_each(fusionVector, counter);
+
+        // Debug: Wyświetlanie zliczonych typów i ich liczby
+        std::cout << "Zliczone typy i liczby wystąpień:" << std::endl;
+        for(const auto& pair : counter.typeCount)
+        {
+            std::cout << "Typ: " << pair.first << ", Liczba wystąpień: " << pair.second << std::endl;
+        }
+
+        // Zwracamy zliczone typy jako mapa
+        return counter.typeCount;
+    }
+
+
 void zad4()
 {
-    vector<boost::fusion::vector<int, double, float, bool, char>> fusionVector =
+    /*vector<boost::fusion::vector<int, double, float, bool, char>> fusionVector =
     {
         boost::fusion::vector<int, double, float, bool, char>(1, 7.8, 3.14f, true, 'a'),
         boost::fusion::vector<int, double, float, bool, char>(2, 3.0, 1.2f, false, 'b'),
@@ -303,7 +439,22 @@ void zad4()
     for (const auto& pair : result)
     {
         cout << "Typ: " << pair.first << ", Liczba wystapien: " << pair.second << endl;
+    }*/
+    fusion::vector<int, string, bool, double> vec{10, "C++", true, 3.14};
+
+        // Dodanie elementów do kontenera Fusion
+    auto vec2 = fusion::push_back(vec, 'M');
+    auto vec3 = fusion::push_back(vec2, 'N');
+    cout<<"test1"<<endl;
+    // Zliczanie typów w vec3
+    map<string, int> result = countTypes(vec3);
+
+    // Wyświetlenie liczby wystąpień typów
+    for(const auto& pair : result)
+    {
+        std::cout<<"Typ: "<< pair.first<<", Liczba wystąpień: "<<pair.second <<std::endl;
     }
+    cout<<"test1"<<endl;
 }
 
 int main()
@@ -317,74 +468,5 @@ int main()
 
     zad4();
 
-
-    /*
-    person_multi persons;
-    persons.insert({"Ala", 40});
-    persons.insert({"Piotr", 10});
-    persons.insert({"Ola", 18});
-    persons.insert({"Ala", 46});
-    persons.insert({"Ula", 46});
-
-    cout<< "Liczba osob o imieniu Ala: "<<persons.count("Ala")<< endl;
-    cout<<"Liczba osob o imieniu Ala: " <<persons.get<0>().count("Ala")<<endl;
-    age_type &age_index = persons.get<1>();
-    cout<< "Liczba osob z wiekiem 18 lat: "<<age_index.count(18)<< endl;
-
-    for(age_type::iterator it=persons.get<1>().begin();
-        it != persons.get<1>().end(); ++it) it->show();
-
-    auto &age_indexx = persons.get<1>();
-    auto it = age_indexx.find(46);
-    cout<<"Znaleziona osoba, ktora ma 46 lat "<<it->name<<endl;
-
-    auto &name_indexx = persons.get<0>();
-    auto itt = name_indexx.find("Ula");
-    name_indexx.modify(itt, boost::bind(UlaToUrszula,_1));
-
-    cout<<"Przed modyfikacja: "<<endl;
-    vector<name_type::iterator> elements;
-
-    for(name_type::iterator it=persons.get<0>().begin(); it  != persons.get<0>().end(); ++it)
-    {
-        it->show();
-        elements.push_back(it);
-    }
-
-    for(int i = 0; i<elements.size();i++)
-        name_indexx.modify(elements[i], boost::bind(AlaToAlicja,_1));
-
-    cout << "Po modyfikacji"<<endl;
-    for(name_type::iterator it=persons.get<0>().begin();
-        it != persons.get<0>().end(); ++it)
-    {
-        it->show();
-    }
-
-    person_multi_2 persons2;
-    persons2.get<2>().push_back({"Ala", 40});
-    persons2.get<2>().push_back({"Ala", 45});
-    persons2.get<2>().push_back({"Piotr", 10});
-    persons2.get<2>().push_back({"Ola", 18});
-
-
-    persons2.get<2>().push_back({"Aga", 46});
-    persons2.get<2>().push_back({"Ula", 46});
-    auto &name_indexx2 = persons2.get<0>();
-    auto iterStart = name_indexx2.equal_range("Ala");
-    auto iterStop = name_indexx2.equal_range("Piotr");
-    cout <<"przedzial od Ala do Piotr - wersja 1"<<endl;
-
-    for(name_type2::iterator it=iterStart.first; it != iterStop.second; ++it)
-        it->show();
-    auto from = name_indexx2.lower_bound("Ala");
-    auto to = name_indexx2.upper_bound("Piotr");
-    cout <<"przedzial od Ala do Piotr - wersja 2"<<endl;
-    for (auto it=from; it != to; ++it)
-        it->show();
-
-    auto &rand_indexx = persons2.get<2>();
-    cout << rand_indexx[0].name <<endl;
-    */
     return 0;
 }
