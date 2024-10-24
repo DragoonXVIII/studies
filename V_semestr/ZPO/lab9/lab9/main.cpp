@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <limits>
 
+#include "files.h"
+
 using namespace std;
 
 int readNumber(int& attempts)
@@ -32,6 +34,7 @@ int readNumber(int& attempts)
 }
 
 
+
 void zad1()
 {
     ifstream file("kod.txt");
@@ -56,43 +59,114 @@ void zad1()
         }
     }
     file.close();
+    return;
 }
 
 void zad2()
 {
-    int sum = 0;       // Suma liczb
-    int attempts = 0;  // Liczba prób
+    int sum = 0;
+    int attempts = 0;  //podejscia
 
     while(sum < 21)
     {
-        int number = readNumber(attempts); // Odczytaj liczbę od użytkownika
-        sum += number; // Dodaj liczbę do sumy
+        int number = readNumber(attempts);
+        sum += number;
 
         if(sum == 21)
         {
             cout << "Suma osiagnela oczko (21). Zakonczono program." << endl;
-            break; // Zakończ program
+            break;
         }
         else if(sum > 21)
         {
             cout << "Suma przekroczyla 21. Sprobuj ponownie z suma przed przekroczeniem 21." << endl;
-            sum -= number; // Odrzuć ostatnią liczbę
+            sum -= number; // odrzuca ostatnią liczbę i znowu od ostatniego punktu
         }
     }
 
     // Wyświetlenie liczby prób
     cout << "Udalo sie osiagnac oczko po " << attempts << " probach." << endl;
+    return;
 }
 
+void zad3()
+{
+    Files files;
+    string filePath;
+    cout << "Podaj ścieżkę do pliku (dane.csv): ";
+    cin >> filePath;
+
+    files.loadFromFile(filePath);
+
+    int option;
+    while(true)
+    {
+        cout << "\n1. Wyświetlenie książki adresowej\n"
+             << "2. Zapisanie do książki adresowej kolejnej osoby\n"
+             << "3. Wyświetlenie osób o podanym nazwisku\n"
+             << "4. Stworzenie plików k.csv oraz m.csv\n"
+             << "5. Wyświetlenie X pierwszych studentów\n"
+             << "6. Posortowanie studentów względem oceny rosnąco\n"
+             << "7. Wyjście z programu\n"
+             << "Wybierz opcję: ";
+        cin >> option;
+
+        switch (option)
+        {
+            case 1:
+                files.displayStudents();
+                break;
+
+            case 2:
+                files.addStudent();
+                files.saveToCSV(filePath); // Zapisuje nowego studenta do pliku
+                break;
+
+            case 3:
+            {
+                string lastName;
+                cout << "Podaj nazwisko do wyszukania: ";
+                cin >> lastName;
+                files.searchByLastName(lastName);
+                break;
+            }
+
+            case 4:
+                files.createGenderFiles();
+                break;
+
+            case 5:
+            {
+                int x;
+                cout << "Podaj liczbę studentów do wyświetlenia: ";
+                cin >> x;
+                files.displayFirstXStudents(x);
+                break;
+            }
+
+            case 6:
+                files.sortStudentsByGrade();
+                break;
+
+            case 7:
+                cout << "Wyjście z programu." << endl;
+                return;
+
+            default:
+                cout << "Nieprawidłowa opcja. Spróbuj ponownie." <<endl;
+        }
+    }
+    return;
+}
 
 int main()
 {
 
     //zad1();
 
-    zad2();
+    //zad2();
 
-    //zad3();
+    zad3();
 
     return 0;
 }

@@ -4,8 +4,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        files.cpp \
         main.cpp
 
 DISTFILES +=
 
 RESOURCES +=
+
+HEADERS += \
+    files.h
