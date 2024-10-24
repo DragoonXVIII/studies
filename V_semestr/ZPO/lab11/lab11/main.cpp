@@ -1,174 +1,82 @@
 #include <iostream>
 #include <memory>
 
+#include "doublylinkedlist.h"
+#include "warehouse.h"
+#include "shop.h"
+
 using namespace std;
 
-// Klasa reprezentująca pojedynczy węzeł listy dwukierunkowej
-class Node
-{
-public:
-    int data;                      // Przechowywana wartość
-    shared_ptr<Node> next;        // Wskaźnik do następnego węzła
-    weak_ptr<Node> prev;          // Wskaźnik do poprzedniego węzła (weak_ptr zapobiega cyklom)
-
-    Node(int value) : data(value), next(nullptr)
-    {
-        cout << "Konstruktor Node: " << data << endl;
-    }
-
-    ~Node()
-    {
-        cout << "Destruktor Node: " << data << endl;
-    }
-};
-
-// Klasa reprezentująca dwukierunkową listę
-class DoublyLinkedList
-{
-private:
-    shared_ptr<Node> head;        // Wskaźnik do pierwszego węzła
-    shared_ptr<Node> tail;        // Wskaźnik do ostatniego węzła
-
-public:
-    DoublyLinkedList() : head(nullptr), tail(nullptr)
-    {
-        cout << "Konstruktor DoublyLinkedList" << endl;
-    }
-
-    ~DoublyLinkedList()
-    {
-        cout << "Destruktor DoublyLinkedList" << endl;
-        while (!isEmpty())
-        {
-            removeFront(); // Usunięcie wszystkich węzłów
-        }
-    }
-
-    // Sprawdzanie, czy lista jest pusta
-    bool isEmpty() const
-    {
-        return head == nullptr;
-    }
-
-    // Dodawanie na początek listy
-    void addFront(int value)
-    {
-        auto newNode = make_shared<Node>(value);
-        if (isEmpty())
-        {
-            head = tail = newNode; // Pierwszy węzeł
-        }
-        else
-        {
-            newNode->next = head;   // Nowy węzeł wskazuje na obecny head
-            head->prev = newNode;   // Obecny head wskazuje na nowy węzeł
-            head = newNode;         // Nowy węzeł staje się head
-        }
-    }
-
-    // Dodawanie na koniec listy
-    void addBack(int value)
-    {
-        auto newNode = make_shared<Node>(value);
-        if (isEmpty())
-        {
-            head = tail = newNode; // Pierwszy węzeł
-        }
-        else
-        {
-            tail->next = newNode;  // Obecny tail wskazuje na nowy węzeł
-            newNode->prev = tail;   // Nowy węzeł wskazuje na obecny tail
-            tail = newNode;         // Nowy węzeł staje się tail
-        }
-    }
-
-    // Usuwanie z początku listy
-    void removeFront()
-    {
-        if (isEmpty())
-        {
-            cout << "Lista jest pusta, nie można usunąć elementu." << endl;
-            return;
-        }
-        cout << "Usunięto z przodu: " << head->data << endl;
-        head = head->next; // Przesunięcie head do następnego węzła
-        if (head)
-        {
-            head->prev.reset(); // Resetowanie wskaźnika do poprzedniego węzła
-        }
-        else
-        {
-            tail.reset(); // Lista jest pusta, resetowanie tail
-        }
-    }
-
-    // Usuwanie z końca listy
-    void removeBack()
-    {
-        if (isEmpty())
-        {
-            cout << "Lista jest pusta, nie można usunąć elementu." << endl;
-            return;
-        }
-        cout << "Usunięto z tyłu: " << tail->data << endl;
-        tail = tail->prev.lock(); // Używamy weak_ptr do uzyskania poprzedniego węzła
-        if (tail)
-        {
-            tail->next.reset(); // Resetowanie wskaźnika do następnego węzła
-        }
-        else
-        {
-            head.reset(); // Lista jest pusta, resetowanie head
-        }
-    }
-
-    // Wyświetlanie zawartości listy
-    void display() const
-    {
-        if (isEmpty()) {
-            cout << "Lista jest pusta." << endl;
-            return;
-        }
-        cout << "Zawartość listy: ";
-        shared_ptr<Node> current = head;
-        while (current)
-        {
-            cout << current->data << " ";
-            current = current->next;
-        }
-        cout << endl;
-    }
-};
-
-// Funkcja main do testowania
-int main()
+void zad1()
 {
     DoublyLinkedList list;
 
-    // Dodawanie elementów
     list.addFront(10);
     list.addFront(20);
     list.addBack(30);
     list.addBack(40);
 
-    // Wyświetlanie zawartości listy
     list.display();
 
-    // Usuwanie elementów
     list.removeFront();
     list.removeBack();
 
-    // Wyświetlanie zawartości listy
     list.display();
 
-    // Usuwanie wszystkich elementów
     list.removeFront();
     list.removeFront();
 
-    // Wyświetlanie zawartości listy
     list.display();
+    return;
+}
 
-    return 0;
+void zad2()
+{
+    auto warehouse1 = make_shared<Warehouse>("Książki", 50);
+    auto warehouse2 = make_shared<Warehouse>("Komputery", 30);
+    auto warehouse3 = make_shared<Warehouse>("Łóżka", 15);
+
+    vector<shared_ptr<Shop>> shops;
+    shops.push_back(make_shared<Shop>("Sklep 1"));
+    shops.push_back(make_shared<Shop>("Sklep 2"));
+
+    shops[0]->addWarehouse(warehouse1);
+    shops[0]->addWarehouse(warehouse2);
+    shops[1]->addWarehouse(warehouse2); // ten sam magazyn
+    shops[1]->addWarehouse(warehouse3);
+
+    for (const auto& shop : shops)
+    {
+        shop->displayWarehouses();
+    }
+
+    shops[0]->sellProduct("Książki", 10);
+    shops[1]->sellProduct("Komputery", 5);
+    shops[0]->sellProduct("Łóżka", 20); // za duzo sztuk
+
+    cout << endl << "Stan magazynów po sprzedaży:" << endl;
+    for (const auto& shop : shops)
+    {
+        shop->displayWarehouses();
+    }
+    return;
+}
+
+void zad3()
+{
+
+    return;
+}
+
+int main()
+{
+
+    //zad1();
+
+    zad2();
+
+    //zad3();
+
 }
 
 /*
