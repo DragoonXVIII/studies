@@ -5,11 +5,13 @@ CONFIG -= qt
 
 SOURCES += \
         files.cpp \
-        main.cpp
+        main.cpp \
+        student.cpp
 
 DISTFILES +=
 
 RESOURCES +=
 
 HEADERS += \
-    files.h
+    files.h \
+    student.h

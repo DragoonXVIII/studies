@@ -16,24 +16,21 @@ int readNumber(int& attempts)
         cout << "Podaj dodatnia liczbe calkowita: ";
         cin >> number;
 
-        // Sprawdzenie, czy podano liczbę
         if (cin.fail() || number <= 0)
         {
-            cin.clear(); // Oczyść flagę błędu
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoruj błędne wejście
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //  bledne wejscie
             cout << "Bledne dane. Proszę sprobowac ponownie." << endl;
-            attempts++; // Zwiększ liczbę prób
+            attempts++;
         }
         else
         {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Oczyść bufor
-            attempts++; // Zwiększ liczbę prób
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            attempts++;
             return number;
         }
     }
 }
-
-
 
 void zad1()
 {
@@ -41,7 +38,7 @@ void zad1()
     if (!file.is_open())
     {
         cerr << "Nie mozna otworzyc pliku kod.txt" << endl;
-        return;  // if blad end
+        return;
     }
 
     string line;
@@ -55,7 +52,7 @@ void zad1()
         }
         if (!line.empty())
         {
-            cout << line << endl;  // Wyświetl zmodyfikowaną linię
+            cout << line << endl;  // pokazuje zmodyfikowaną
         }
     }
     file.close();
@@ -84,7 +81,6 @@ void zad2()
         }
     }
 
-    // Wyświetlenie liczby prób
     cout << "Udalo sie osiagnac oczko po " << attempts << " probach." << endl;
     return;
 }
@@ -93,7 +89,7 @@ void zad3()
 {
     Files files;
     string filePath;
-    cout << "Podaj ścieżkę do pliku (dane.csv): ";
+    cout << "Podaj sciezke do pliku (dane.csv): ";
     cin >> filePath;
 
     files.loadFromFile(filePath);
@@ -101,14 +97,14 @@ void zad3()
     int option;
     while(true)
     {
-        cout << "\n1. Wyświetlenie książki adresowej\n"
-             << "2. Zapisanie do książki adresowej kolejnej osoby\n"
-             << "3. Wyświetlenie osób o podanym nazwisku\n"
-             << "4. Stworzenie plików k.csv oraz m.csv\n"
-             << "5. Wyświetlenie X pierwszych studentów\n"
-             << "6. Posortowanie studentów względem oceny rosnąco\n"
-             << "7. Wyjście z programu\n"
-             << "Wybierz opcję: ";
+        cout << "\n1. Wyswietlenie ksiazki adresowej\n"
+             << "2. Zapisanie do ksiazki adresowej kolejnej osoby\n"
+             << "3. Wyswietlenie osob o podanym nazwisku\n"
+             << "4. Stworzenie plikow k.csv oraz m.csv\n"
+             << "5. Wyswietlenie X pierwszych studentow\n"
+             << "6. Posortowanie studentow wzgledem oceny rosnaco\n"
+             << "7. Wyjscie z programu\n"
+             << "Wybierz opcje: ";
         cin >> option;
 
         switch (option)
@@ -119,7 +115,7 @@ void zad3()
 
             case 2:
                 files.addStudent();
-                files.saveToCSV(filePath); // Zapisuje nowego studenta do pliku
+                files.saveToCSV(filePath);
                 break;
 
             case 3:
@@ -138,7 +134,7 @@ void zad3()
             case 5:
             {
                 int x;
-                cout << "Podaj liczbę studentów do wyświetlenia: ";
+                cout << "Podaj liczbe studentow do wyswietlenia: ";
                 cin >> x;
                 files.displayFirstXStudents(x);
                 break;
@@ -149,11 +145,11 @@ void zad3()
                 break;
 
             case 7:
-                cout << "Wyjście z programu." << endl;
+                cout << "Wyjscie z programu." << endl;
                 return;
 
             default:
-                cout << "Nieprawidłowa opcja. Spróbuj ponownie." <<endl;
+                cout << "Nieprawidlowa opcja. Sprobuj ponownie." <<endl;
         }
     }
     return;
@@ -161,12 +157,30 @@ void zad3()
 
 int main()
 {
+    while(true)
+    {
+        int choice;
+        std::cout<<"Wybierz: "<<std::endl;
+        std::cout<<"Zadanie 9.1. Kod programu ."<<std::endl
+                <<"Zadanie 9.2. Oczko."<<std::endl
+                <<"Zadanie 9.3.  Kartoteka studentow."<<std::endl;
+        std::cin>>choice;
+        switch(choice)
+        {
+        case 1:
+            zad1();
+            break;
 
-    //zad1();
+        case 2:
+            zad2();
+            break;
 
-    //zad2();
+        case 3:
+            zad3(); //!!!!!!!!!!! pokazac w z cmd bo qt jest upo lekko i nie ogarnie wczytania pliku ze sciezki
+            break;
+        }
+    }
 
-    zad3();
 
     return 0;
 }
