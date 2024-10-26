@@ -14,63 +14,16 @@ class Shop
 {
 private:
     string shopName;
-    vector<shared_ptr<Warehouse>> warehouses; // Lista magazynów
+    vector<shared_ptr<Warehouse>> warehouses;
 
 public:
-    Shop(const string& name) : shopName(name)
-    {
-        cout << "Konstruktor Shop: " << shopName << endl;
-    }
+    Shop(const string& name);
+    ~Shop();
 
-    ~Shop()
-    {
-        cout << "Destruktor Shop: " << shopName << endl;
-    }
-
-    // Metoda dodająca magazyn do listy
-    void addWarehouse(shared_ptr<Warehouse> warehouse)
-    {
-        warehouses.push_back(warehouse);
-    }
-
-    // Metoda sprzedająca towar
-    void sellProduct(const string& productName, int qty)
-    {
-        for (auto& warehouse : warehouses)
-        {
-            if (warehouse->getProductName() == productName)
-            {
-                if (warehouse->getQuantity() >= qty)
-                {
-                    warehouse->setQuantity(warehouse->getQuantity() - qty);
-                    cout << "Sprzedano " << qty << " sztuk " << productName << " z magazynu." << endl;
-                    return;
-                }
-                else
-                {
-                    cout << "Brak wystarczającej ilości " << productName << " w magazynie." << endl;
-                    return;
-                }
-            }
-        }
-        cout << "Towar " << productName << " nie znaleziony w żadnym magazynie." << endl;
-    }
-
-    // Metoda wyświetlająca informacje o magazynach
-    void displayWarehouses() const
-    {
-        cout << "Magazyny dla sklepu " << shopName << ":" << endl;
-        for (const auto& warehouse : warehouses)
-        {
-            warehouse->displayInfo();
-        }
-    }
-
-    // Metoda wyświetlająca nazwę sklepu
-    string getShopName() const
-    {
-        return shopName;
-    }
+    void addWarehouse(shared_ptr<Warehouse> warehouse);
+    void sellProduct(const string& productName, int qty);
+    void displayWarehouses() const;
+    string getShopName() const;
 };
 
 #endif // SHOP_H

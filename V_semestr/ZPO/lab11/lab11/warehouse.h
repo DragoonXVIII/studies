@@ -13,38 +13,14 @@ private:
     int quantity;
 
 public:
-    Warehouse(const string& name, int qty) : productName(name), quantity(qty)
-    {
-        cout << "Konstruktor Warehouse: " << productName << ", Ilość: " << quantity << endl;
-    }
+    Warehouse(const string& name, int qty);
+    ~Warehouse();
 
-    ~Warehouse()
-    {
-        cout << "Destruktor Warehouse: " << productName << endl;
-    }
+    string getProductName() const;
+    int getQuantity() const;
+    void setQuantity(int qty);
 
-    // Gettery
-    string getProductName() const
-    {
-        return productName;
-    }
-
-    int getQuantity() const
-    {
-        return quantity;
-    }
-
-    // Settery
-    void setQuantity(int qty)
-    {
-        quantity = qty;
-    }
-
-    // Metoda wyświetlająca informacje o magazynie
-    void displayInfo() const
-    {
-        cout << "Towar: " << productName << ", Ilość: " << quantity << endl;
-    }
+    void displayInfo() const;
 };
 
 

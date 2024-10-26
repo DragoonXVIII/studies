@@ -4,6 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        buffer.cpp \
+        bufferarr.cpp \
+        bufferfile.cpp \
         doublylinkedlist.cpp \
         main.cpp \
         node.cpp \
@@ -11,6 +14,9 @@ SOURCES += \
         warehouse.cpp
 
 HEADERS += \
+    buffer.h \
+    bufferarr.h \
+    bufferfile.h \
     doublylinkedlist.h \
     node.h \
     shop.h \
