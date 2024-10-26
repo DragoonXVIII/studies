@@ -7,7 +7,6 @@
 #include <boost/fusion/include/at.hpp>
 #include <boost/fusion/include/vector.hpp>
 #include <boost/fusion/include/size.hpp>
-//#include <boost/fusion/include/variant.hpp>
 #include <boost/fusion/include/transform.hpp>
 #include <boost/fusion/include/accumulate.hpp>
 #include <iostream>
@@ -76,7 +75,7 @@ void processVector(const vector<T>& vec) //templatka na akceptowanie vectorow o 
     {
         median = (sortedVec[size / 2 - 1] + sortedVec[size / 2]) / static_cast<T>(2);
     }
-    else //do liczenia miediany to 2 jak parzyste albo jedne jak nie cvhyba dlatego tak
+    else //do liczenia miediany to 2 jak parzyste albo jedne jak nie, matma chyba tak dzialala xd
     {
         median = sortedVec[size / 2];
     }
@@ -114,34 +113,15 @@ void processVector(const vector<T>& vec) //templatka na akceptowanie vectorow o 
     });
     cout << endl;
 }
-
-/*map<string, int> countTypes(const vector<boost::fusion::vector<int, double, float, bool, char>>& fusionVector)
-{
-    map<string, int> typeCount;
-
-    // Funkcja pomocnicza do zliczania typów
-    auto countType = [&typeCount](const auto& element)
-    {
-        const string typeName = typeid(element).name(); // Zbieramy nazwę typu
-        typeCount[typeName]++; // Zwiększamy licznik dla danego typu
-    };
-
-    // Iterujemy przez elementy wektora
-    for (const auto& elem : fusionVector)
-    {
-        boost::fusion::for_each(elem, countType);
-    }
-
-    return typeCount;
-}*/
-
+//z jakiegoś dziwnego powodu jak to tu jest to dziala a jak wyzej to nie xDDDDDDDDDDDDDD
+//nwm dziwny jest ten boost
 #include <boost/bind.hpp>
 #include <iostream>
-#include<vector>
+#include <vector>
 using namespace std;
+
 void firstArgMod(int& x, int y)
 {
-
     x=x+y;
 }
 void printF(int x)
@@ -173,7 +153,7 @@ int addition(int a, int b)
 
 void zad1()
 {
-    /*
+
     person_multi persons;
     persons.insert({"Ala", 40});
     persons.insert({"Piotr", 10});
@@ -240,7 +220,7 @@ void zad1()
 
     auto &rand_indexx = persons2.get<2>();
     cout << rand_indexx[0].name <<endl;
-    */
+
     boost::fusion::vector<int, string, bool, double> vec{10, "C++", true, 3.14};
     cout << "Trzeci element w vec:"
          <<boost::fusion::at<boost::mpl::int_<2>>(vec) <<endl;
@@ -341,93 +321,32 @@ void zad3()
     vector<int> numbers = {5, -2, 9, 0, 4, 8, -1, 7, 3};
     processVector(numbers);
 }
-/*
-struct TypeCounter
-{
-    std::map<std::string, int> typeCount;
 
-    // Operator funkcyjny do zliczania typów
-    template <typename T>
-    void operator()(const T& t)
-    {
-        std::string typeName = typeid(T).name();  // Poprawne przypisanie typu do stringa
-
-        //std::cout << "Przetwarzam element typu: " << typeName << std::endl;
-
-        // Zliczanie typów
-        if(typeCount.find(typeName) == typeCount.end()) {
-            typeCount[typeName] = 1;  // Jeżeli nie istnieje, dodajemy nowy typ
-        } else {
-            typeCount[typeName]++;  // Jeżeli istnieje, zwiększamy licznik
-        }
-
-        // Debug: Wyświetlanie mapy po każdym kroku
-        std::cout << "Mapa po zliczeniu typu: " << typeName << std::endl;
-        for(const auto& pair : typeCount)
-        {
-            std::cout << "Typ: " << pair.first << ", Liczba wystapien: " << pair.second << std::endl;
-        }
-        std::cout << "-----------------------------" << std::endl;
-    }
-};
-
-// Funkcja do zliczania typów w kontenerze Fusion
-    template <typename FusionVector>
-    std::map<std::string, int> countTypes( FusionVector& fusionVector) {
-        TypeCounter counter;
-
-        // Zastosowanie for_each do zliczenia typów w kontenerze Fusion
-        boost::fusion::for_each(fusionVector, counter);
-
-        // Debug: Wyświetlanie zliczonych typów i ich liczby
-        std::cout << "Zliczone typy i liczby wystapien:" << std::endl;
-        std::map<std::string, int> test = counter.typeCount;
-        for( auto& pair : counter.typeCount)
-        {
-            std::cout << "Typ: " << pair.first << ", Liczba wystąpień: " << pair.second << std::endl;
-        }
-
-        // Zwracamy zliczone typy jako mapa
-        return test;
-    }
-*/
 template<typename T>
-std::string getTypeName() {
-    return typeid(T).name();  // Możesz użyć demangle, aby zdemanglować nazwy w systemach z GCC
+std::string getTypeName()
+{
+    return typeid(T).name();
 }
+
 template<typename FusionVector>
 map<string, int> test(const FusionVector& vec)
 {
-    map<string, int> m;  // Mapa do zliczania typów
+    map<string, int> m;
 
-    // Używamy lambdy zamiast dodatkowej struktury
-    fusion::for_each(vec, [&m](const auto& element) {
-        std::string typeName = getTypeName<decltype(element)>();
-        ++m[typeName];  // Zwiększamy licznik dla danego typu
+    fusion::for_each(vec, [&m](const auto& element)
+    {
+        std::string typeName = getTypeName<decltype(element)>(); //zjakiegos powodu jak robilem po typeid w innych konfigureachjach tro sie wywalal za 0
+        ++m[typeName];
     });
 
     return m;
 }
+
 void zad4()
 {
-    /*vector<boost::fusion::vector<int, double, float, bool, char>> fusionVector =
-    {
-        boost::fusion::vector<int, double, float, bool, char>(1, 7.8, 3.14f, true, 'a'),
-        boost::fusion::vector<int, double, float, bool, char>(2, 3.0, 1.2f, false, 'b'),
-        boost::fusion::vector<int, double, float, bool, char>(3, 4.5, 2.1f, true, 'c'),
-    };
-
-    // Wywołanie funkcji i wyświetlenie wyników
-    map<string, int> result = countTypes(fusionVector);
-
-    for (const auto& pair : result)
-    {
-        cout << "Typ: " << pair.first << ", Liczba wystapien: " << pair.second << endl;
-    }*/
-
     fusion::vector<int, string, bool, double> vec{10, "C++", true, 3.14};
 
-        // Dodanie elementów do kontenera Fusion
+    // Dodanie elementów do kontenera Fusion
     auto vec2 = fusion::push_back(vec, 'M');
     auto vec3 = fusion::push_back(vec2, 'N');
     auto vec4 = fusion::push_back(vec3, 5);
@@ -448,13 +367,13 @@ void zad4()
 int main()
 {
 
-    //zad1();
+    zad1();
 
     //zad2();
 
     //zad3();
 
-    zad4();
+    //zad4();
 
     return 0;
 }

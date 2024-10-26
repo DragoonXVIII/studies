@@ -5,7 +5,8 @@ bool Contacts::addContact(const Contact& contact)
 {
     auto& phone_index = contacts.get<0>();
     auto it = phone_index.find(contact.phone);
-    if (it != phone_index.end()) {
+    if(it != phone_index.end())
+    {
         return false;  // Numer istniej, przerwij
     }
     contacts.insert(contact);
@@ -17,7 +18,8 @@ bool Contacts::removeContact(const std::string& phone)
 {
     auto& phone_index = contacts.get<0>();
     auto it = phone_index.find(phone);
-    if (it != phone_index.end()) {
+    if(it != phone_index.end())
+    {
         phone_index.erase(it);
         return true;
     }
@@ -29,7 +31,7 @@ std::vector<Contact> Contacts::findByStreet(const std::string& street)
 {
     std::vector<Contact> result;
     auto& street_index = contacts.get<1>();
-    for (auto it = street_index.lower_bound(street);
+    for(auto it = street_index.lower_bound(street);
          it != street_index.upper_bound(street);
          ++it)
     {
@@ -43,9 +45,10 @@ std::vector<Contact> Contacts::findByAgeRange(int minAge, int maxAge)
 {
     std::vector<Contact> result;
     auto& age_index = contacts.get<2>();
-    for (auto it = age_index.lower_bound(minAge);
+    for(auto it = age_index.lower_bound(minAge);
          it != age_index.upper_bound(maxAge);
-         ++it) {
+         ++it)
+    {
         result.push_back(*it);
     }
     return result;
@@ -56,9 +59,9 @@ Contact* Contacts::findByPhone(const std::string& phone)
 {
     auto& phone_index = contacts.get<0>();
     auto it = phone_index.find(phone);
-    if (it != phone_index.end())
+    if(it != phone_index.end())
     {
-        return const_cast<Contact*>(&(*it)); // Zwróć wskaźnik do kontaktu
+        return const_cast<Contact*>(&(*it)); // wskaźnik do kontaktu
     }
     return nullptr; // Nie znaleziono
 }

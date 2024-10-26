@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 
-class Contact {
+class Contact
+{
 public:
     std::string name;
     int age;
