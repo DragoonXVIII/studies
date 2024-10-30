@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user>
+    <userName>admin</userName>
+    <passwd>admin</passwd>
+    <fullName>Administrator</fullName>
+    <email>admin@gmail.com</email>
+    <date>2018-09-10</date>
+    <status>2</status>
+  </user>
+  <user>
+    <userName>beatap</userName>
+    <passwd>beatap</passwd>
+    <fullName>Beata P.</fullName>
+    <email>beatap@gmail.com</email>
+    <date>2018-10-10</date>
+    <status>1</status>
+  </user>
+  <user>
+    <userName>TEST1</userName>
+    <passwd>$2y$10$vfl8MBifrUK.hDs7oOktZer8fS2B1fwQO6MDLdeaEGvke4jWgm.kW</passwd>
+    <fullName>Elo Zelo</fullName>
+    <email>elozelo@tarakieta.com</email>
+    <date>2024-10-27</date>
+    <status>1</status>
+  </user>
+</users>

@@ -1,0 +1,27 @@
+[
+    {
+        "userName": "admin",
+        "passwd": "admin",
+        "fullName": "Administrator",
+        "email": "admin@gmail.com",
+        "date": "2018-09-10",
+        "status": 2
+    },
+    {
+        "userName": "kubus",
+        "passwd": "kubus",
+        "fullName": "Kubu\u015b Puchatek",
+        "email": "kubus@stumilowylas.com",
+        "date": "2019-10-30",
+        "status": 1
+    },
+    {
+        "userName": "TEST1",
+        "passwd": "$2y$10$vfl8MBifrUK.hDs7oOktZer8fS2B1fwQO6MDLdeaEGvke4jWgm.kW",
+        "fullName": "Elo Zelo",
+        "email": "elozelo@tarakieta.com",
+        "date": "2024-10-27",
+        "status": 1
+    }
+    
+]
