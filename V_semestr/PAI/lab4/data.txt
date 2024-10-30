@@ -1,0 +1,8 @@
+Sylwia 22 Niemcy Java sylwia.krzyszon@pollub.edu.pl blik 
+Sylwiadd 24 Polska Java sylwia.krzyszon@pollub.edu.pl blik 
+Sylwia 15 Polska Java sylwia.krzyszon@pollub.edu.pl blik 
+Sylwia 63 Niemcy Java sylwia.krzyszon@pollub.edu.pl blik 
+tech:Array
+Krzystzon 15 Niemcy C# jfghjdfsh@wp.pl blik 
+Elozelo 17 Polska CPP elo@zelo.com eurocard 
+Elozelo 88 Polska C CPP Java C# HTML CSS XML PHP JavaScript elo@zelo.com eurocard 
