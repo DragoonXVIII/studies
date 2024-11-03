@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS `klienci` ( 
+`Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, 
+`Nazwisko` varchar(40) NOT NULL , 
+`Wiek` tinyint(3) UNSIGNED NOT NULL, 
+`Panstwo` enum('Polska','Niemcy','Wielka Brytania','Czechy') NOT NULL 
+DEFAULT 'Polska', 
+`Email` varchar(50) NOT NULL, 
+`Zamowienie` set('Java','PHP','CPP') NOT NULL DEFAULT 'PHP', 
+`Platnosc` enum('Visa','Master Card','Przelew') NOT NULL DEFAULT 
+'Visa', 
+PRIMARY KEY (`Id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
