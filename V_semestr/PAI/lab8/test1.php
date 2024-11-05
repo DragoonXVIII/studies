@@ -10,9 +10,9 @@
     $_SESSION['status'] = 'ADMIN';
 
     echo "<b>Dane uzytkownika:</b><br>";
-    $user = new User("sylwia","Sylwia Krzyszton","email@wp.pl","dfdfhfhg");
+    $user = new User("temp","Temp Test","email@temp.pl","temporary");
     $user->show();
-    $_SESSION["u1"] = serialize($user);
+    $_SESSION["u1"] = serialize($user); //do session
 
     echo "<hr>";
     echo "<b>Session ID: </b>".session_id();

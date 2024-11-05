@@ -25,8 +25,9 @@
 			$l++;
 			if($l==4)
 			{
-				$l=0;
+				$l=0; //zeby formatowac tekst, 4 pierwsze dane i reszta potemxd
 				echo "<br>";
+				# echo "NOWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALININAAAA";
 			}
 		}
 	}
