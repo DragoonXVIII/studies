@@ -78,7 +78,7 @@ bool isValidEmail(const std::string& input)
 
 void saveToFile(const std::string& firstName, const std::string& lastName, const std::string& age, const std::string& phoneNumber, const std::string& email) {
     std::ofstream file;
-    file.open("dane.txt", std::ios::app); // Otwarcie pliku w trybie dopisywania
+    file.open("dane.txt", std::ios::app); // appendem otwarcie
     if (file.is_open()) {
         file << firstName << ";" << lastName << ";" << age << ";" << phoneNumber << ";" << email << std::endl;
         file.close();
@@ -99,7 +99,7 @@ void displayUniqueDomains(const std::vector<std::string>& emails)
         std::smatch match;
         if (std::regex_search(email, match, domainRegex))
         {
-            uniqueDomains.insert(match[1]); // Dodaj domenę do unikatow
+            uniqueDomains.insert(match[1]); // dodwania do uniqatow
         }
     }
 
@@ -140,7 +140,7 @@ void displayFirstNameStatistics(const std::vector<std::string>& firstNames)
 
     for (const auto& firstName : firstNames)
     {
-        nameCount[firstName]++; // Zliczaj imiona
+        nameCount[firstName]++; // zliczanie imioan
     }
 
     std::cout << "Statystyka imion:" << std::endl;

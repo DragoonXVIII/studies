@@ -37,11 +37,3 @@ std::string Citizen::getPostalCode() const
     return this->postalCode;
 }
 
-/*void show(); //metodę show wyświetlającą informację o mieszkańcu;
-
-std::string getName();
-std::string getSurname();
-int getAge();
-char getSex();
-std::string getPostalCode();*/
-

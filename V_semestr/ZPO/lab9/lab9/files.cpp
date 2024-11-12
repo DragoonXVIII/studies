@@ -84,7 +84,7 @@ void Files::addStudent()
     cout << "Podaj email: ";
     cin >> email;
 
-    // Walidacja danych
+    // walidowanie danych
     if(!isValidName(firstName) || !isValidName(lastName) ||
         !isValidGender(gender) || !isValidEmail(email))
     {

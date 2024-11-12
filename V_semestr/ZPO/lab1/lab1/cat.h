@@ -10,14 +10,12 @@ private:
     int mice[5];              // tablica przechowująca liczbę upolowanych myszy w ciągu 5 lat
 
 public:
-    // Konstruktor bezparametrowy
     Cat() : Animal(), levelOfMouseHunting(0) {
         for (int i = 0; i < 5; i++) {
             mice[i] = 0;
         }
     }
 
-    // Konstruktor inicjalizujący tylko składowe klasy Animal
     Cat(int limbNr, string name, bool protectedAnimal)
         : Animal(limbNr, name, protectedAnimal), levelOfMouseHunting(0) {
         for (int i = 0; i < 5; i++) {
@@ -25,7 +23,6 @@ public:
         }
     }
 
-    // Metoda initMice – inicjalizuje wartościami tablicę mice
     void initMice(int m1, int m2, int m3, int m4, int m5) {
         mice[0] = m1;
         mice[1] = m2;
@@ -34,15 +31,12 @@ public:
         mice[4] = m5;
     }
 
-    // Metoda initCat – inicjalizuje wszystkie składowe klasy Cat
     void initCat(int limbNr, string name, bool protectedAnimal, int levelOfHunting, int m1, int m2, int m3, int m4, int m5) {
-        // Inicjalizacja klasy bazowej Animal za pomocą konstruktora
         *this = Cat(limbNr, name, protectedAnimal);
         setLevelOfMouseHunting(levelOfHunting);
         initMice(m1, m2, m3, m4, m5);
     }
 
-    // Setter dla poziomu umiejętności łowienia myszy
     void setLevelOfMouseHunting(int value) {
         if (value >= 1 && value <= 10) {
             levelOfMouseHunting = value;
@@ -51,12 +45,10 @@ public:
         }
     }
 
-    // Getter dla poziomu umiejętności łowienia myszy
     int getLevelOfMouseHunting() {
         return levelOfMouseHunting > 0 ? levelOfMouseHunting : 0;
     }
 
-    // Getter dla liczby upolowanych myszy w danym roku
     int getMice(int index) {
         if (index >= 1 && index <= 5) {
             return mice[index - 1];
@@ -66,12 +58,10 @@ public:
         }
     }
 
-    // Przesłonięcie metody giveVoice() z klasy Animal
     void giveVoice() override {
         cout << "Miau miau" << endl;
     }
 
-    // Przesłonięcie metody info() z klasy Animal
     void info() override {
         Animal::info();  // Wywołanie metody bazowej
         cout << "Level of mouse hunting: " << getLevelOfMouseHunting() << endl;

@@ -188,7 +188,7 @@ void zad2()
     std::set<int> set1 = {1, 2, 3, 4, 5};
     std::set<int> set2 = {4, 5, 6, 7, 8};
 
-    displaySymmetricDifference(set1, set2); // Wywołanie funkcji
+    displaySymmetricDifference(set1, set2); 
 
     return;
 }
@@ -198,7 +198,7 @@ void zad3()
     std::string str1 = "W main nalezy przetestowac funkcje";
     std::string str2 = "W main nalezy, funkcje przetestowac";
 
-    char addedChar = findAddedCharacter(str1, str2); // Wywołanie funkcji
+    char addedChar = findAddedCharacter(str1, str2); 
 
     if (addedChar != '\0') {
         std::cout << "Dodany znak: " << addedChar << std::endl;
@@ -212,24 +212,24 @@ void zad4()
 {
     Dictionary dict;
 
-    // Dodawanie słów
+    // Dod
     dict.addWord("kot", "cat");
     dict.addWord("pies", "dog");
     dict.addWord("dom", "house");
 
-    // Wyświetlenie słownika
+    // show
     dict.displayDictionary();
 
-    // Wyświetlenie tłumaczenia dla słowa
+    // show trans
     dict.translate("kot");
 
-    // Usunięcie słowa
+    // del
     dict.removeWord("kot");
 
-    // Wyświetlenie słownika po usunięciu słowa
+    // show
     dict.displayDictionary();
 
-    // Wyświetlenie słownika posortowanego alfabetycznie względem tłumaczenia (od Z do A)
+    //show sorted
     dict.displaySortedByTranslation();
     return;
 }

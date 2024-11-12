@@ -46,7 +46,7 @@ public:
         } else if (type == 2) {
             return levelOfTrackerSkills;
         } else {
-            return 0;  // Invalid skill type
+            return 0;  //blad
         }
     }
 
@@ -54,9 +54,8 @@ public:
         cout << "Hau, hau" << endl;
     }
 
-    // Przesłonięcie metody info() z klasy Animal
     void info() override {
-        Animal::info();  // Wywołanie metody bazowej, aby wyświetlić dane z klasy Animal
+        Animal::info();  
         cout << "Breed: " << breed << endl;
         cout << "Guide skills level: " << levelOfGuideSkills << endl;
         cout << "Tracker skills level: " << levelOfTrackerSkills << endl;

@@ -46,7 +46,7 @@ void City::show_citizens() const
     std::cout<<this->citizens.size()<<std::endl;
     if (!citizens.empty()) {
         for (const auto& citizen : citizens) {
-            citizen.show(); // lub inna operacja na obywatelu
+            citizen.show();
         }
     } else {
         std::cout << "Wektor jest pusty!" << std::endl;
@@ -139,7 +139,7 @@ int City::uniquePostalCodes() const
     {
         tmp.insert(this->citizens.at(i).getPostalCode());
     }
-    //std::cout<<"Badam miasto: "; this->show_city();
+    //std::cout<<"Miasto: "; this->show_city();
     //std::cout<<"Liczba kodow: "<<tmp.size()<<"\n";
     return tmp.size();
 }
