@@ -130,14 +130,15 @@ class User {
         echo "Status: ".$this->status."<br>";
     }
 
-
+    //nowa
     public function saveToDB($bd)
     {
         $sql = "INSERT INTO users VALUES (NULL, '".$this->getUserName()."','".$this->getFullName()."','".$this->getEmail()."','".$this->getPassword()."', '1', '".$this->getDate()->format("Y-m-d")."');";
         echo $sql;
         $bd->insert($sql);
     }
-
+    
+    //nowa
     static public function getAllUsersFromDB($db)
     {
         $sql = "SELECT * FROM `users`";
