@@ -7,9 +7,8 @@ for i in tab {
 }
 
 //2
-import Foundation 
 
-var tab: [Int] = (1...10).map { _ in Int.random(in: 1...100) }
+tab = (1...10).map { _ in Int.random(in: 1...100) }
 print("Początkowa tablica: \(tab)")
 
 print("Podaj liczbę całkowitą do dodania na zerowy indeks:")
@@ -30,16 +29,13 @@ tab[randomIndex] = secondNumber
 print("Tablica po modyfikacjach: \(tab)")
 
 //3
-import Foundation
-
 print("Podaj liczbę elementów tablicy:")
 guard let countInput = readLine(), let count = Int(countInput), count > 0 else {
     print("Nieprawidłowa liczba elementów. Musi być liczbą dodatnią.")
     exit(0)
 }
 
-var tab: [Int] = []
-
+tab = []
 for i in 0...count-1 {
     print("Podaj element \(i):")
     guard let elementInput = readLine(), let element = Int(elementInput) else {
@@ -84,7 +80,6 @@ print("Średnia harmoniczna: \(harmonicMean)")
 
 //5
 import Foundation
-
 print("Podaj liczbę elementów tablicy (dodatnia liczba całkowita):")
 guard let countInput = readLine(), let elementCount = Int(countInput), elementCount > 0 else {
     print("Nieprawidłowa liczba elementów. Musi być liczbą dodatnią.")
@@ -105,8 +100,7 @@ if areIdentical {
     print("Tablice nie zawierają identycznych elementów.")
 }
 
-//6
-let matrix: [[Int]] = [
+let matrix = [
     [10, 20, 30],
     [40, 50, 60],
     [70, 80, 90]
@@ -118,4 +112,3 @@ for i in 0..<matrix.count {
     }
     print() 
 }
-
