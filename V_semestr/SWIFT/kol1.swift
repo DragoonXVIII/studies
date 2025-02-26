@@ -38,6 +38,15 @@ func obliczOdchylenieStd(punkty: [(Int, Int)], srednie: (Double, Double)) -> (Do
 let odchylenieStd = obliczOdchylenieStd(punkty: points, srednie: srednie)
 print("Odchylenie standardowe X: \(odchylenieStd.0), Odchylenie standardowe Y: \(odchylenieStd.1)")
 
-/*Napisz funkcje obliczWspolczynnikR która przyjmujem tablice danych zwroconych przez funkcje wylosuj dane i zwroci czynnik R wyznaczonye wedlug kroków:
-a) wyznaczy n SumX i SumY, SumX2 i SumY2 SumXY cyzli kolejno: liczba elementow tablicy,  suma wszystkich X, suma wszystkich Y, suma wszystkich x^2, suma wszystkich y^2, i sumą wszystkich iloczynów x*y.
-Polcizy R według wzoru = n*Su
+
+let formatter = DateFormatter()
+formatter.dateFormat = "yyyy/MM/dd"
+if let date = formatter.date(from: "2021/12/20") {
+    var i = date.distance(to: date)
+} else {
+    print("Invalid date format")
+}
+//jak wyswitlic w swift pole z obiektu ?
+/*
+mam string z peselem osoby powyzej 200 roku (oznacza ze do liczby miesiaca dodawane jest liczba 20), jak npaisac funkcje w swift która zwóci mi wiek na podstawie tego peselu?
+*/
