@@ -1,0 +1,4 @@
+- php artisan install:api
+- php artisan require czy cos tam jak w labach larave sanctum
+- [api...] przeklejone do pliku conf sanctuma
+- uzupelnienie metod logoin register i logout przed proba requestow strzezonych inaczej to bez sensu, pdf wprowadza w vład
