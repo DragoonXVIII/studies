@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function store(Request $request) 
     { 
         $validator = Validator::make($request->all(), [ 
-            'name' => 'required|regex:/^[A-Za-z]{1-30}$/i', 
+            'name' => 'required|regex:/^[A-Za-z]{1,30}$/i', 
             'price' => 'required|numeric|min:0|max:999999' 
         ]);
         if ($validator->fails()) { 
@@ -71,6 +71,13 @@ class ProductController extends Controller
         $product = Product::find($id);
         if ($product !== null) 
         {
+            $validator = Validator::make($request->all(), [ 
+                'name' => 'required|regex:/^[A-Za-z0-9 ]{1,30}$/i',/*'required|regex:/^[A-Za-z]{1,30}$/i', */
+                'price' => 'required|numeric|min:0|max:999999' 
+            ]);
+            if ($validator->fails()) { 
+                return response()->json(['error'=>$validator->errors()], 401);            
+            }
             $product->update($request->all());
             return $product;
         }
