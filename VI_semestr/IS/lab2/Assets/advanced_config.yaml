@@ -1,0 +1,16 @@
+paths:
+  source_folder: "Assets/"
+  json_source_file: "data.json"
+  json_destination_file: "data_mod.json"
+  yaml_destination_file: "data_mod.yaml"
+
+serialization:
+  source: "file"  # Może być "file" lub "object"
+  operations:
+    - "somestats"
+    - "serialize_json"
+    - "convert_json_to_yaml"
+  order:
+    - "somestats"
+    - "serialize_json"
+    - "convert_json_to_yaml"
