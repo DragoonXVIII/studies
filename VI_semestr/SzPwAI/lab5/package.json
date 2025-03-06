@@ -1,0 +1,21 @@
+{
+    "name": "express-serwer",
+    "description": "Prosta aplikacja serwerowa oparta na szkielecie Express.js",
+    "main": "zad_01.js",
+    "keywords": [
+        "express",
+        "serwer"
+    ],
+    "author": "Jan Kowalski",
+    "dependencies": {
+        "express": "^4.21.2",
+        "express-react-views": "^0.11.0",
+        "express-validator": "^7.2.1",
+        "hbs": "^4.2.0",
+        "nodemon": "^3.1.9"
+    },
+    "scripts": {
+        "start": "node zad_01.js",
+        "dev": "nodemon zad_01.js"
+    }
+}
