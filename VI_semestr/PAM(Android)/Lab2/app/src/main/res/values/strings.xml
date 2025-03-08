@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Lab1</string>
-    <string name="Activity2Name">Activity 2</string>
+    <string name="activity2_name">Activity 2</string>
 
     <string name="t_name">Imię:</string>
     <string name="t_lastname">Nazwisko:</string>

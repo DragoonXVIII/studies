@@ -10,13 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import java.io.Console;
 
 public class Activity2 extends AppCompatActivity {
 
     private EditText editFirstName, editLastName, editGradesCount;
     private Button btnGrades;
-    private LinearLayout activity2Layout;
+    private ConstraintLayout activity2Layout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,10 @@ public class Activity2 extends AppCompatActivity {
         editGradesCount = findViewById(R.id.editGradesCount);
         btnGrades = findViewById(R.id.btnGrades);
         activity2Layout = findViewById(R.id.activity2layout);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
             @Override
@@ -49,6 +59,12 @@ public class Activity2 extends AppCompatActivity {
             }
         });
 
+        editGradesCount.setOnEditorActionListener((v, actionId, event) -> {
+            hideKeyboard();
+            validateFields();
+            return false;
+        });
+
         editFirstName.setOnFocusChangeListener(focusChangeListener);
         editLastName.setOnFocusChangeListener(focusChangeListener);
         editGradesCount.setOnFocusChangeListener(focusChangeListener);
@@ -62,6 +78,29 @@ public class Activity2 extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("firstName", editFirstName.getText().toString());
+        outState.putString("lastName", editLastName.getText().toString());
+        outState.putString("gradesCount", editGradesCount.getText().toString());
+        outState.putBoolean("btnGradesVisible", btnGrades.getVisibility() == Button.VISIBLE);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        editFirstName.setText(savedInstanceState.getString("firstName"));
+        editLastName.setText(savedInstanceState.getString("lastName"));
+        editGradesCount.setText(savedInstanceState.getString("gradesCount"));
+
+        boolean isBtnVisible = savedInstanceState.getBoolean("btnGradesVisible");
+        btnGrades.setVisibility(isBtnVisible ? Button.VISIBLE : Button.GONE);
+    }
+
 
     private void validateFields() {
         boolean isValid = true;
