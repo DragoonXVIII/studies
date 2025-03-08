@@ -14,9 +14,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To jest Activity 2"/>
+        android:text="@string/Activity2Name"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:text="Imię:"
+            android:text="@string/t_name"
             android:textSize="20sp"
             android:textAlignment="center" />
 
@@ -35,12 +35,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/textViewName"
-            android:hint="Podaj imię"
+            android:hint="@string/et_name_hint"
             android:inputType="textPersonName"
             android:layout_centerVertical="true"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:text="Nazwisko:"
+            android:text="@string/t_lastname"
             android:textSize="20sp"
             android:textAlignment="center" />
 
@@ -59,12 +59,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/textViewLastName"
-            android:hint="Podaj nazwisko"
+            android:hint="@string/et_lastname_hint"
             android:inputType="textPersonName"
             android:layout_centerVertical="true"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:text="Liczba ocen:"
+            android:text="@string/t_numberofgrades"
             android:textSize="20sp"
             android:textAlignment="center" />
 
@@ -83,22 +83,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/textViewGradesCount"
-            android:hint="Liczba ocen (5-15)"
-            android:inputType="number"
+            android:hint="@string/et_numberofgrades_hint"
+            android:inputType="numberDecimal"
             android:layout_centerVertical="true"/>
-    </RelativeLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnGrades"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Oceny"
+        android:text="@string/btn_grades_text"
         android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnBack2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cofnij"/>
+        android:text="@string/btn_back_text"/>
 
 </LinearLayout>

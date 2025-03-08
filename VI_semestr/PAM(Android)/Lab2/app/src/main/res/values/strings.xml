@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Lab1</string>
+    <string name="Activity2Name">Activity 2</string>
+
+    <string name="t_name">Imię:</string>
+    <string name="t_lastname">Nazwisko:</string>
+    <string name="t_numberofgrades">Liczba ocen:</string>
+
+    <string name="et_name_hint">Podaj imię</string>
+    <string name="et_lastname_hint">Podaj nazwisko</string>
+    <string name="et_numberofgrades_hint">Podaj liczbę ocen</string>
+
+    <string name="btn_back_text">Cofnij</string>
+    <string name="btn_grades_text">Oceny</string>
 </resources>
