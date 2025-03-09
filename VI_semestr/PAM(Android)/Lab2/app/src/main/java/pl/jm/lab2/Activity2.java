@@ -2,12 +2,14 @@ package pl.jm.lab2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,13 +22,21 @@ import java.io.Console;
 public class Activity2 extends AppCompatActivity {
 
     private EditText editFirstName, editLastName, editGradesCount;
-    private Button btnGrades;
+    private Button btnGrades, btnResult;
     private ConstraintLayout activity2Layout;
+
+    private boolean isBtnResultVisible = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String firstName = prefs.getString("firstName", "");
+        String lastName = prefs.getString("lastName", "");
+        String gradesCount = prefs.getString("gradesCount", "");
+
         setContentView(R.layout.activity_2);
 
         Button btnBack2 = findViewById(R.id.btnBack2);
@@ -34,11 +44,71 @@ public class Activity2 extends AppCompatActivity {
         editLastName = findViewById(R.id.editLastName);
         editGradesCount = findViewById(R.id.editGradesCount);
         btnGrades = findViewById(R.id.btnGrades);
+        btnResult = findViewById(R.id.btnResult);
         activity2Layout = findViewById(R.id.activity2layout);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        //custom kod do uzupleniania a2
+        editFirstName.setText(firstName);
+        editLastName.setText(lastName);
+        editGradesCount.setText(gradesCount);
+
+        //handlowanie ekstu z srednia studenta tez jest yu xD
+        TextView textViewA2 = findViewById(R.id.textViewA2);
+        //handlowanie widocznosci przycisku result
+        double gradesAverage  = getIntent().getDoubleExtra("GRADES_AVERAGE", 0.0);
+        isBtnResultVisible = gradesAverage > 2.0;
+        //ustawienie tekstu przycisku przed wyswietleniem
+        if(gradesAverage >= 3.0) {
+            btnResult.setText(R.string.btn_result_succes);
+        }
+        else {
+            btnResult.setText(R.string.btn_result_fail);
+        }
+
+        //wyswietlenie przycisku
+        btnResult.setVisibility(isBtnResultVisible ? Button.VISIBLE : Button.GONE);
+        if(isBtnResultVisible) {
+            String buttonText = getString(R.string.activity2nameAverage, gradesAverage);
+            textViewA2.setText(buttonText);
+        }
+        else {
+            textViewA2.setText(R.string.activity2_name);
+        }
+
+        //handlowanie zakonczenia aplikajci
+        btnResult.setOnClickListener(view -> {
+            if(gradesAverage >= 3.0){
+                Toast.makeText(this, "Gratulacje! Średnia ocen wynosi: " + gradesAverage, Toast.LENGTH_SHORT).show();
+            }
+            else if(gradesAverage < 3.0){
+                Toast.makeText(this, "Niestety średnia ocen wynosi: " + gradesAverage, Toast.LENGTH_SHORT).show();
+            }
+            finishAffinity();
+        });
+
+        btnGrades.setOnClickListener(view -> {
+            String input = editGradesCount.getText().toString();
+
+            // wlasny kod zeby niue usuwal w a2 dane
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("firstName", editFirstName.getText().toString());
+            editor.putString("lastName", editLastName.getText().toString());
+            editor.putString("gradesCount", editGradesCount.getText().toString());
+            editor.apply();
+
+            if (!input.isEmpty()) {
+                int gradesCountVal = Integer.parseInt(input); // Zamiana na liczbę
+                Intent intent = new Intent(Activity2.this, Activity3.class);
+                intent.putExtra("GRADES_COUNT", gradesCountVal); // Przekazanie wartości
+                startActivity(intent);
+            } else {
+                Toast.makeText(Activity2.this, "Podaj liczbę ocen!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
             @Override
@@ -50,14 +120,14 @@ public class Activity2 extends AppCompatActivity {
         };
 
         // nie wiem czy to tak mozna zostawic ale dziaa XD
-        activity2Layout.setOnTouchListener(new View.OnTouchListener() {
+        /*activity2Layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 hideKeyboard();
                 validateFields();
                 return false;
             }
-        });
+        });*/
 
         editGradesCount.setOnEditorActionListener((v, actionId, event) -> {
             hideKeyboard();
@@ -87,6 +157,7 @@ public class Activity2 extends AppCompatActivity {
         outState.putString("lastName", editLastName.getText().toString());
         outState.putString("gradesCount", editGradesCount.getText().toString());
         outState.putBoolean("btnGradesVisible", btnGrades.getVisibility() == Button.VISIBLE);
+
     }
 
     @Override
@@ -99,6 +170,11 @@ public class Activity2 extends AppCompatActivity {
 
         boolean isBtnVisible = savedInstanceState.getBoolean("btnGradesVisible");
         btnGrades.setVisibility(isBtnVisible ? Button.VISIBLE : Button.GONE);
+
+        double gradesAverage  = getIntent().getDoubleExtra("GRADES_AVERAGE", 0.0);
+        isBtnResultVisible = gradesAverage > 2.0;
+        btnResult.setVisibility(isBtnResultVisible ? Button.VISIBLE : Button.GONE);
+
     }
 
 

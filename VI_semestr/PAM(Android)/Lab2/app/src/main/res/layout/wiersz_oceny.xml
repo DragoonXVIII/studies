@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+    <!-- TextView z nazwą przedmiotu -->
+    <TextView
+        android:id="@+id/nazwa_oceny_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="placeholder:"
+        android:textSize="18sp"
+        android:layout_marginEnd="16dp" />
+
+    <RadioGroup
+        android:id="@+id/grupa_oceny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton android:id="@+id/ocena2Button" android:text="@string/_2" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <RadioButton android:id="@+id/ocena3Button" android:text="@string/_3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <RadioButton android:id="@+id/ocena4Button" android:text="@string/_4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <RadioButton android:id="@+id/ocena5Button" android:text="@string/_5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+
+</LinearLayout>

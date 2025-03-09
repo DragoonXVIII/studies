@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
+
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:gravity="center"
@@ -13,7 +14,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewA2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
@@ -108,18 +109,31 @@
         app:layout_constraintStart_toEndOf="@+id/textViewGradesCount"
         app:layout_constraintTop_toBottomOf="@+id/editLastName" />
 
-
     <Button
         android:id="@+id/btnGrades"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="13dp"
         android:text="@string/btn_grades_text"
         android:visibility="gone"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editGradesCount" />
+
+    <Button
+        android:id="@+id/btnResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="placeholder"
+        android:visibility="gone"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGrades" />
 
     <Button
         android:id="@+id/btnBack2"
@@ -128,7 +142,9 @@
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
         android:text="@string/btn_back_text"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/editGradesCount"
         app:layout_constraintTop_toBottomOf="@+id/editGradesCount" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

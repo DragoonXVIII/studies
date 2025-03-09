@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab1</string>
+    <string name="app_name">Lab2</string>
     <string name="activity2_name">Activity 2</string>
 
     <string name="t_name">Imię:</string>
@@ -12,4 +12,35 @@
 
     <string name="btn_back_text">Cofnij</string>
     <string name="btn_grades_text">Oceny</string>
+
+
+    <!-- lab 2 -->
+    <string-array name="oceny_array">
+        <item>Assembler</item>
+        <item>C</item>
+        <item>C++</item>
+        <item>C#</item>
+        <item>Python</item>
+        <item>Java</item>
+        <item>Laravel</item>
+        <item>React</item>
+        <item>PHP</item>
+        <item>Cobolt</item>
+        <item>Scratch</item>
+        <item>R</item>
+        <item>Prolog</item>
+        <item>Haskell</item>
+        <item>Bash</item>
+    </string-array>
+
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="oblicz_redni">Oblicz średnią</string>
+
+    <string name="btn_result_succes">Super :)</string>
+    <string name="btn_result_fail">Wysyłam podanie o zaliczenie warunkowe :(</string>
+    <string name="activity2nameAverage">Średnia ocen: %1$.2f</string>
+
 </resources>
