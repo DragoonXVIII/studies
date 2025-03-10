@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="producent_column_name">Producent</string>
+    <string name="model_column_name">Model</string>
+</resources>
