@@ -1,15 +1,19 @@
 package pl.jm.lab3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +35,32 @@ public class MainActivity extends AppCompatActivity {
                 updateTable(phones);
             }
         });
+
+        // FAB
+        FloatingActionButton fabMain = findViewById(R.id.fabMain);
+        fabMain.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddPhoneActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String extra_manufacturer  = getIntent().getStringExtra("EXTRA_MANUFACTURER");
+        String extra_model  = getIntent().getStringExtra("EXTRA_MODEL");
+        String extra_android_version  = getIntent().getStringExtra("EXTRA_ANDROID_VERSION");
+        String extra_website  = getIntent().getStringExtra("EXTRA_WEBSITE");
+
+        //if(extra_manufacturer != null && extra_model != null && extra_android_version != null && extra_website != null) {
+            Phone phone = new Phone(extra_manufacturer, extra_model, extra_android_version, extra_website);
+            mPhoneViewModel.insert(phone);
+            Log.d("TAG", "puste o nie wszyscy zginiemy");
+        //}
+
+        Log.d("TAG", "onResume: dodanoMODEL");
+        mPhoneViewModel.getAllPhones().observe(this, this::updateTable);
+
     }
 
     private void updateTable(List<Phone> phones) {
@@ -66,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
             row.addView(modelTextView);
 
             mTableLayout.addView(row);
-
             index++;
         }
 

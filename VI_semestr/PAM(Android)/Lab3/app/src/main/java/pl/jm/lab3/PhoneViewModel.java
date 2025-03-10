@@ -20,6 +20,10 @@ public class PhoneViewModel extends AndroidViewModel {
         mRepository.addSampleData();
     }
 
+    void insert(Phone phone) {
+        mRepository.insertPhone(phone);
+    }
+
     LiveData<List<Phone>> getAllPhones() {
         return mAllPhones;
     }

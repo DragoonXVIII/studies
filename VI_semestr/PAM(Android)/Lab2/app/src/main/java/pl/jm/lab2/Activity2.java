@@ -174,7 +174,6 @@ public class Activity2 extends AppCompatActivity {
         double gradesAverage  = getIntent().getDoubleExtra("GRADES_AVERAGE", 0.0);
         isBtnResultVisible = gradesAverage > 2.0;
         btnResult.setVisibility(isBtnResultVisible ? Button.VISIBLE : Button.GONE);
-
     }
 
 
