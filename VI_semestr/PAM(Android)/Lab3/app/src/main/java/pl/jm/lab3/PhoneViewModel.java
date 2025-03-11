@@ -16,12 +16,19 @@ public class PhoneViewModel extends AndroidViewModel {
         super(application);
         mRepository = new PhoneRepository(application);
         mAllPhones = mRepository.getAllPhones();
-        // dodanie sample daty
         mRepository.addSampleData();
     }
 
     void insert(Phone phone) {
         mRepository.insertPhone(phone);
+    }
+
+    public void update(Phone phone) {
+        mRepository.updatePhone(phone);
+    }
+
+    public void delete(Phone phone) {
+        mRepository.deletePhone(phone);
     }
 
     LiveData<List<Phone>> getAllPhones() {
@@ -33,9 +40,7 @@ public class PhoneViewModel extends AndroidViewModel {
     }
 
 
-    public void update(Phone phone) {
-        mRepository.updatePhone(phone);
-    }
+
 
 
 

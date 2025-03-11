@@ -27,6 +27,13 @@ public class PhoneRepository {
         });
     }
 
+    // zad 3.3
+    void deletePhone(Phone phone) {
+        databaseWriteExecutor.execute(() -> {
+            mPhoneDao.deletePhone(phone);
+        });
+    }
+
     //zad3.2
     void insertPhone(Phone phone) {
         databaseWriteExecutor.execute(() -> {
@@ -35,6 +42,11 @@ public class PhoneRepository {
     }
 
     //zad 3.3
+    public void updatePhone(Phone phone) {
+        databaseWriteExecutor.execute(()->{
+            mPhoneDao.updatePhone(phone);
+        });
+    }
 
     public void addSampleData() {
         databaseWriteExecutor.execute(() -> {
@@ -50,12 +62,6 @@ public class PhoneRepository {
             } else {
                 Log.d("PhoneRepository", "Baza danych nie jest pusta – nie dodaję nowych telefonów.");
             }
-        });
-    }
-
-    public void updatePhone(Phone phone) {
-        databaseWriteExecutor.execute(()->{
-            mPhoneDao.updatePhone(phone);
         });
     }
 

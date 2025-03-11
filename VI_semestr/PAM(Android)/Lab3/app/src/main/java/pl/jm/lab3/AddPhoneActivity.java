@@ -72,18 +72,21 @@ public class AddPhoneActivity extends AppCompatActivity {
         });
 
         btnSave.setOnClickListener(view -> {
-            //EditText etProducer = findViewById(R.id.etProducer);
-            //EditText etModel = findViewById(R.id.etModel);
-            //EditText etAndroidVersion = findViewById(R.id.etAndroidVersion);
-            //EditText etWebsite  = findViewById(R.id.etWebsite);
+
+            Intent resultIntent = new Intent();
+
+            if (phoneId != -1) {  // Jeśli edytujemy istniejący telefon
+                resultIntent.putExtra("EXTRA_ID", phoneId);
+            }
+
 
             String manufacturer = etProducer.getText().toString();
             String model = etModel.getText().toString();
             String androidVersion = etAndroidVersion.getText().toString();
             String www = etWebsite.getText().toString();
 
+            // zad 3.3 wymaga innej walidacji wiec zegnamy sie z toastami :<<<<
             boolean isValid = true;
-
             if (manufacturer.isEmpty()) {
                 etProducer.setError("Wprowadź producenta");
                 isValid = false;
@@ -106,16 +109,6 @@ public class AddPhoneActivity extends AppCompatActivity {
 
             if (!isValid) return;
 
-            // zad 3.3 wymaga innej walidacji wiec zegnamy sie z toastami :<<<<
-            /*
-            if (manufacturer.isEmpty() || model.isEmpty() || androidVersion.isEmpty() || www.isEmpty()) {
-                Toast toast = Toast.makeText(this, "Wprowadź poprawnie wszystkie dane", Toast.LENGTH_SHORT);
-                toast.show();
-                return;
-            }
-            */
-
-            Intent resultIntent = new Intent(AddPhoneActivity.this, MainActivity.class);
             resultIntent.putExtra("EXTRA_MANUFACTURER", manufacturer);
             resultIntent.putExtra("EXTRA_MODEL", model);
             resultIntent.putExtra("EXTRA_ANDROID_VERSION", androidVersion);
