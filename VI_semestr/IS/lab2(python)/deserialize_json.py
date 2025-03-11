@@ -8,7 +8,7 @@ from collections import defaultdict
 class DeserializeJson:
 
     def __init__(self, filename):
-        print("let's deserialize something")
+        print("let's deserialize something from file")
         tempdata = open(filename, encoding="utf8")
         self.data = json.load(tempdata)
         # zeby to wgl dzialalo to trzeba wczytac odpowiednio ksiazke xd
@@ -29,7 +29,7 @@ class DeserializeJson:
         stats = defaultdict(lambda: defaultdict(int))  # Słownik zagnieżdżony województwo -> typ JST -> liczba
 
         for dep in self.data:
-            wojewodztwo = dep["Województwo"]
+            wojewodztwo = dep["Województwo"].strip().title()
             typ_jst = dep["typ_JST"]
             stats[wojewodztwo][typ_jst] += 1  # Zwiększamy licznik dla danego województwa i typu JST
 

@@ -55,12 +55,14 @@ with open('Assets/advanced_config.yaml', encoding="utf8") as tempconffile:
 source_file_path = confdata['paths']['source_folder'] + confdata['paths']['json_source_file']
 output_json_path = confdata['paths']['source_folder'] + confdata['paths']['json_destination_file']
 output_yaml_path = confdata['paths']['source_folder'] + confdata['paths']['yaml_destination_file']
+fromfile = confdata['serialization']['convert_json_to_yaml']['from_file']
+fromobject = confdata['serialization']['convert_json_to_yaml']['from_object']
 
 
-if confdata['serialization']['source'] == "file":
-    newDeserializator = DeserializeJson(source_file_path)
-elif confdata['serialization']['source'] == "object":
-    newDeserializator = DeserializeJson(confdata['paths']['json_source_file'])  # Zastąp to odpowiednim obiektem
+print(fromfile)
+print(fromobject)
+
+newDeserializator = DeserializeJson(source_file_path)
 
 operations = confdata['serialization']['operations']
 for operation in confdata['serialization']['order']:
@@ -69,7 +71,15 @@ for operation in confdata['serialization']['order']:
     elif operation == "serialize_json" and "serialize_json" in operations:
         SerializeJson.run(newDeserializator, output_json_path)
     elif operation == "convert_json_to_yaml" and "convert_json_to_yaml" in operations:
-        ConvertJsonToYaml.runJtoY(source_file_path, output_yaml_path)
+        if fromfile:
+            print("from file")
+            ConvertJsonToYaml.runJtoY(source_file_path, output_yaml_path)
+        if fromobject:
+            print("from object")
+            ConvertJsonToYaml.runBtoY(newDeserializator.data, output_yaml_path)
+
+        # ConvertJsonToYaml.runJtoY(source_file_path, output_yaml_path)
+
 
 
 # dodatkowe na 5

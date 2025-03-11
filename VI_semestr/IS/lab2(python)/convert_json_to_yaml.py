@@ -9,7 +9,7 @@ import json
 class ConvertJsonToYaml:
     @staticmethod
     def runBtoY(deserializeddata, destinationfilelocaiton):
-        print("let's convert something")
+        print("Loading JSON from object...")
         with open(destinationfilelocaiton, 'w', encoding='utf8') as f:
             yaml.dump(deserializeddata, f, allow_unicode=True)
         print("it is done")
