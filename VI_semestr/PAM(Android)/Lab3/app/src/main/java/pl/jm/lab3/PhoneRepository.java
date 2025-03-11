@@ -34,6 +34,8 @@ public class PhoneRepository {
         });
     }
 
+    //zad 3.3
+
     public void addSampleData() {
         databaseWriteExecutor.execute(() -> {
             mPhoneDao.deleteAllPhones();
@@ -48,6 +50,12 @@ public class PhoneRepository {
             } else {
                 Log.d("PhoneRepository", "Baza danych nie jest pusta – nie dodaję nowych telefonów.");
             }
+        });
+    }
+
+    public void updatePhone(Phone phone) {
+        databaseWriteExecutor.execute(()->{
+            mPhoneDao.updatePhone(phone);
         });
     }
 

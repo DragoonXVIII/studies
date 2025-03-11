@@ -32,5 +32,12 @@ public class PhoneViewModel extends AndroidViewModel {
         mRepository.deleteAll();
     }
 
+
+    public void update(Phone phone) {
+        mRepository.updatePhone(phone);
+    }
+
+
+
 }
 

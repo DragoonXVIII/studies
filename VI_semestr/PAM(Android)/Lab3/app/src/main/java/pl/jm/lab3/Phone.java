@@ -1,6 +1,7 @@
 package pl.jm.lab3;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "phones")
@@ -13,6 +14,15 @@ public class Phone {
     private String website;
 
     public Phone(String manufacturer, String model, String androidVersion, String website) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.androidVersion = androidVersion;
+        this.website = website;
+    }
+
+    @Ignore
+    public Phone(int id, String manufacturer, String model, String androidVersion, String website) {
+        this.id = id;
         this.manufacturer = manufacturer;
         this.model = model;
         this.androidVersion = androidVersion;
