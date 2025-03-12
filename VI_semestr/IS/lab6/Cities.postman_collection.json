@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "18a18fe5-7fe0-4a11-9733-6236b0def4cc",
+		"name": "Cities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42698904"
+	},
+	"item": [
+		{
+			"name": "get{id}",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/lab6/cities/read/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab6",
+						"cities",
+						"read",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/lab6/cities/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab6",
+						"cities",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create with json data",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"elozelo\",\r\n    \"CountryCode\": \"USA\",\r\n    \"District\": \"XD\",\r\n    \"Population\": \"4444\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/lab6/cities/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab6",
+						"cities",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update{id}",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"elozelo\",\r\n    \"CountryCode\": \"USA\",\r\n    \"District\": \"XD\",\r\n    \"Population\": \"4444\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost/lab6/cities/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab6",
+						"cities",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete{id}",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ID",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Name",
+							"value": "afaafafw",
+							"type": "text"
+						},
+						{
+							"key": "CountryCode",
+							"value": "XD",
+							"type": "text"
+						},
+						{
+							"key": "Population",
+							"value": "4444",
+							"type": "text"
+						},
+						{
+							"key": "District",
+							"value": "aega",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/lab6/cities/delete/4082",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"lab6",
+						"cities",
+						"delete",
+						"4082"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
