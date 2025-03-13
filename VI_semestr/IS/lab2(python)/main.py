@@ -23,7 +23,7 @@ from convert_json_to_yaml import ConvertJsonToYaml
 
 print("hey, it's me - Python!")
 
-# Odczyt danych konfiguracyjnych z pliku YAML
+
 with open('Assets/basic_config.yaml', encoding="utf8") as tempconffile:
     confdata = yaml.load(tempconffile, Loader=yaml.FullLoader)
 

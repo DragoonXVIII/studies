@@ -26,12 +26,12 @@ class DeserializeJson:
     """
 
     def somestats(self):
-        stats = defaultdict(lambda: defaultdict(int))  # Słownik zagnieżdżony województwo -> typ JST -> liczba
+        stats = defaultdict(lambda: defaultdict(int))  
 
         for dep in self.data:
             wojewodztwo = dep["Województwo"].strip().title()
             typ_jst = dep["typ_JST"]
-            stats[wojewodztwo][typ_jst] += 1  # Zwiększamy licznik dla danego województwa i typu JST
+            stats[wojewodztwo][typ_jst] += 1  
 
         # Wypisanie wyników
         for woj, typy in stats.items():
