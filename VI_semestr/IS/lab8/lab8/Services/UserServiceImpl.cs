@@ -61,7 +61,7 @@ namespace lab8.Sevices.Users
         // Z.8.4.3
         public int GetUsersCount()
         {
-            return users.Count();  // Zwrócenie liczby użytkowników
+            return users.Count(); 
         }
 
 
