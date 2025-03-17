@@ -2,11 +2,11 @@ version: '3.8'
 services:
   app:
     container_name: myfirst_dockerized_rest_server
-    build:
+    build:  
       dockerfile: rest_api/Dockerfile
       context: .
-    # volumes:
-    #   - ./rest_api:/var/www/html
+    volumes:
+      - ./rest_api:/var/www/html
     ports:
       - "8000:80"
     depends_on:
@@ -14,13 +14,11 @@ services:
 
   db:
     container_name: myfirst_dockerized_database_server
-    image: mysql:8.0
+    image: mysql:8.0 
     environment:
       MYSQL_ROOT_PASSWORD: "elozelo2137"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: "world"
-      MYSQL_USER: "newuser"          # Nowy użytkownik
-      MYSQL_PASSWORD: "newpassword"  # Hasło do nowego użytkownika
     ports:
       - "3306:3306"
     volumes:
