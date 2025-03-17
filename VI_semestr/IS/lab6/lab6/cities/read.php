@@ -7,6 +7,7 @@ include_once '../config/Database.php';
 $database = new Database();
 $db = $database->getConnection();
 $cities = new Cities($db);
+
 $cities->id = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
 $result = $cities->read();
 
