@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 
 public class CityService {
 
-    private static final String BASE_URL = "http://localhost/lab6/cities";
+    private static final String BASE_URL = "http://localhost:8000/cities";
+    // private static final String BASE_URL = "http://localhost/lab6/cities";
 
     // deprecated
     /*
