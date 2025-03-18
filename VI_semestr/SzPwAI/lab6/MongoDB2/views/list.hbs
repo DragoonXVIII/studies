@@ -1,0 +1,29 @@
+<h3 style="text-align:center">Lista studentów</h3> 
+<a class="btn btn-secondary" href="/addOrEdit">Utwórz nowy</a> 
+ 
+<table class="table table-striped"> 
+    <thead> 
+        <tr> 
+            <th>Imię i nazwisko</th> 
+            <th>Email</th> 
+            <th>Telefon</th> 
+            <th>Miasto</th> 
+            <th></th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        {{#each list}} 
+        <tr> 
+            <td>{{fullName}}</td> 
+            <td>{{email}}</td> 
+            <td>{{mobile}}</td> 
+            <td>{{city}}</td> 
+            <td> 
+                <a class="btn btn-primary btn-sm" href="/{{_id}}">Edytuj</a> 
+                <a class="btn btn-danger btn-sm" href="/delete/{{_id}}" 
+                  onclick="return confirm('Czy jesteś pewien, że chcesz usunąć ten rekord?');">Usuń</a> 
+            </td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table>
