@@ -1,0 +1,4 @@
+# Deklaracja warstwy bazowej - busybox
+FROM busybox
+# komentarze o treści zawsze sa przydatne
+CMD ["echo To nie jest trudne"]

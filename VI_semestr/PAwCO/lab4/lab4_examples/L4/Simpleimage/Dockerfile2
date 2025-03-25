@@ -1,0 +1,9 @@
+# Wykorzystanie ARG oraz ENV - przykład2
+ARG BASE_VERSION=3.18.6  
+FROM alpine:${BASE_VERSION}
+
+ARG BASE_VERSION
+ENV APP_VERSION=test.${BASE_VERSION}
+
+RUN echo $APP_VERSION > release_version
+CMD [ "sh", "-c", "cat release_version" ]
