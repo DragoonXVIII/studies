@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="producent_column_name">Producent</string>
+    <string name="model_column_name">Model</string>
+    <string name="anuluj">Anuluj</string>
+    <string name="otw_rz_stron">Otwórz stronę</string>
+    <string name="zapisz">Zapisz</string>
+</resources>
