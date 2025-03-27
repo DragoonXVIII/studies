@@ -1,0 +1,12 @@
+# Deklaracja obrazu bazowego z node
+FROM node:alpine
+
+# Deklaracja katalogu roboczego
+# domyślnie jest to: /
+WORKDIR /usr/app
+
+# Instalacja niezbędnych zaleności 
+RUN npm install
+
+# Domyśle polecenie przy starcie kontenera 
+CMD ["npm", "start"]

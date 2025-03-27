@@ -1,0 +1,8 @@
+# Deklaracja obrazu bazowego z node
+FROM node:alpine
+
+# Instalacja niezbędnych zaleności 
+RUN npm install
+
+# Domyśle polecenie przy starcie kontenera 
+CMD ["npm", "start"]

@@ -1,0 +1,8 @@
+# Deklaracja obrazu bazowego
+FROM alpine
+
+# Instalacja niezbędnych zaleności 
+RUN npm install
+
+# Domyśle polecenie przy starcie kontenera 
+CMD ["npm", "start"]

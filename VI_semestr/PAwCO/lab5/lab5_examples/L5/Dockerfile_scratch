@@ -1,0 +1,3 @@
+FROM scratch
+ADD alpine-minirootfs-3.21.3-aarch64.tar /
+CMD [ "/bin/sh" ]

@@ -1,0 +1,20 @@
+# Deklaracja obrazu bazowego z node
+FROM node:alpine
+
+# Deklaracja katalogu roboczego
+WORKDIR /usr/app
+
+# # Kopiowanie niezbędnych zaleności 
+COPY ./package.json ./
+# Instalacja tych zaleności 
+RUN npm install
+
+# Kopiowanie kodu aplikacji do wewnątrz obrazu
+COPY ./index.js ./
+
+# Informacja o porcie wewnętrznym kontenera, 
+# na ktorym "nasluchuje" aplikacja
+EXPOSE 8080
+
+# Domyśle polecenie przy starcie kontenera 
+CMD ["npm", "start"]
