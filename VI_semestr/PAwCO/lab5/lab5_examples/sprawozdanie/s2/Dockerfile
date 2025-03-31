@@ -1,23 +1,27 @@
-FROM golang:1.20-alpine AS builder
+FROM alpine:latest AS builder
 
 WORKDIR /app
 
-COPY main.go .
+ARG VERSION="2.13.7"
 
-RUN go mod init myapp && go mod tidy
-
-ARG VERSION="zgodna z stage 2"
-RUN CGO_ENABLED=0 go build -ldflags "-X main.version=${VERSION}" -o app
+RUN echo '<!DOCTYPE html> \
+<html lang="pl"> \
+<head> \
+    <meta charset="UTF-8"> \
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> \
+    <title>Informacje o serwerze</title> \
+</head> \
+<body> \
+    <h1>Informacje o serwerze</h1> \
+    <p>Adres IP: '$(hostname -i)'</p> \
+    <p>Hostname: '$(hostname)'</p> \
+    <p>Wersja: '"$VERSION"'</p> \
+</body> \
+</html>' > index.html
 
 FROM nginx:alpine
 
-WORKDIR /app
-COPY --from=builder /app/app .
+COPY --from=builder /app/index.html /usr/share/nginx/html/index.html
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD curl -f http://localhost || exit 1
-
-CMD ["sh", "-c", "./app & nginx -g 'daemon off;'"]
-
-# docker build -t local/s2:1 .
-# docker run --rm -d -p 8080:8080 --name=s2 local/s2:1
+HEALTHCHECK --interval=10s --timeout=3s \
+  CMD curl -f http://localhost:80/ || exit 1

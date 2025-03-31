@@ -1,23 +1,21 @@
-FROM golang:1.20-alpine AS builder
+FROM node:alpine
 
-WORKDIR /app
+WORKDIR /usr/app
 
-COPY main.go .
+ARG VERSION="1.0.0"
 
-RUN go mod init myapp && go mod tidy
+RUN echo '{ \
+  "name": "webapp",  \
+  "version": "'"$VERSION"'", \
+  "main": "index.js", \
+  "scripts": { "start": "node index.js" }, \
+  "dependencies": { "express": "^4.18.2" } \
+}' > package.json
 
-ARG VERSION="zgodna z stage 1"
-RUN CGO_ENABLED=0 go build -ldflags "-X main.version=${VERSION}" -o app
+RUN npm install
 
-FROM alpine:latest
-
-WORKDIR /root/
-
-COPY --from=builder /app/app .
+COPY index.js .
 
 EXPOSE 8080
 
-CMD ["./app"]
-
-# docker build -t local/s1:1 .
-# docker run --rm -d -p 8080:8080 --name=s1 local/s1:1
+CMD ["npm", "start"]
