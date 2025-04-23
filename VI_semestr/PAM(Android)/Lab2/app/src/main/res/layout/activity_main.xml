@@ -19,13 +19,13 @@
             android:id="@+id/btnActivity1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zad 1.1 zrealizowane na tym ekranie" />
+            android:text="@string/zad_1_1_zrealizowane_na_tym_ekranie" />
 
         <Button
             android:id="@+id/btnActivity2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zad 1.2 zrealizowane pod tym przyciskiem"
+            android:text="@string/zad_1_2_zrealizowane_pod_tym_przyciskiem"
             android:layout_marginTop="10dp"/>
 
     </LinearLayout>

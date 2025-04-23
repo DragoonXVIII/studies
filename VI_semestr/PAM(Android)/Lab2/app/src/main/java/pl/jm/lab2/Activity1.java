@@ -7,13 +7,18 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import pl.jm.lab2.databinding.Activity1Binding;
+
 public class Activity1 extends AppCompatActivity {
+    private Activity1Binding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_1);
+        binding = Activity1Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        //setContentView(R.layout.activity_1);
 
-        Button btnBack1 = findViewById(R.id.btnBack1);
+        Button btnBack1 = binding.btnBack1;
 
         btnBack1.setOnClickListener(new View.OnClickListener() {
             @Override

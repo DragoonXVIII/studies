@@ -42,5 +42,10 @@
     <string name="btn_result_succes">Super :)</string>
     <string name="btn_result_fail">Wysyłam podanie o zaliczenie warunkowe :(</string>
     <string name="activity2nameAverage">Średnia ocen: %1$.2f</string>
+    <string name="placeholder">placeholder</string>
+    <string name="cofnij">cofnij</string>
+    <string name="to_jest_activity_1">To jest Activity 1</string>
+    <string name="zad_1_1_zrealizowane_na_tym_ekranie">Zad 1.1 zrealizowane na tym ekranie</string>
+    <string name="zad_1_2_zrealizowane_pod_tym_przyciskiem">Zad 1.2 zrealizowane pod tym przyciskiem</string>
 
 </resources>

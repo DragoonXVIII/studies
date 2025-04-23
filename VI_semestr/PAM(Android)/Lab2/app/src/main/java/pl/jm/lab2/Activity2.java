@@ -19,8 +19,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.io.Console;
 
+import pl.jm.lab2.databinding.Activity2Binding;
+
 public class Activity2 extends AppCompatActivity {
 
+    private Activity2Binding binding;
     private EditText editFirstName, editLastName, editGradesCount;
     private Button btnGrades, btnResult;
     private ConstraintLayout activity2Layout;
@@ -31,21 +34,24 @@ public class Activity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // ViewBinding
+        binding = Activity2Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String firstName = prefs.getString("firstName", "");
         String lastName = prefs.getString("lastName", "");
         String gradesCount = prefs.getString("gradesCount", "");
 
-        setContentView(R.layout.activity_2);
+        //setContentView(R.layout.activity_2);
 
-        Button btnBack2 = findViewById(R.id.btnBack2);
-        editFirstName = findViewById(R.id.editFirstName);
-        editLastName = findViewById(R.id.editLastName);
-        editGradesCount = findViewById(R.id.editGradesCount);
-        btnGrades = findViewById(R.id.btnGrades);
-        btnResult = findViewById(R.id.btnResult);
-        activity2Layout = findViewById(R.id.activity2layout);
+        Button btnBack2 = binding.btnBack2;
+        editFirstName = binding.editFirstName;
+        editLastName = binding.editLastName;
+        editGradesCount = binding.editGradesCount;
+        btnGrades = binding.btnGrades;
+        btnResult = binding.btnResult;
+        activity2Layout = binding.activity2layout;
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -82,15 +88,21 @@ public class Activity2 extends AppCompatActivity {
         //handlowanie zakonczenia aplikajci
         btnResult.setOnClickListener(view -> {
             if(gradesAverage >= 3.0){
-                Toast.makeText(this, "Gratulacje! Średnia ocen wynosi: " + gradesAverage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Gratulacje! Otrzymujesz zaliczenie!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Gratulacje! Średnia ocen wynosi: " + gradesAverage, Toast.LENGTH_SHORT).show();
             }
             else if(gradesAverage < 3.0){
-                Toast.makeText(this, "Niestety średnia ocen wynosi: " + gradesAverage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Wysyłam podanie o zaliczenie warunkowe", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Niestety średnia ocen wynosi: " + gradesAverage, Toast.LENGTH_SHORT).show();
             }
             finishAffinity();
         });
 
         btnGrades.setOnClickListener(view -> {
+            // valdiate przy kliknieciu check
+            if(!validateFields())
+                return;
+
             String input = editGradesCount.getText().toString();
 
             // wlasny kod zeby niue usuwal w a2 dane
@@ -177,7 +189,7 @@ public class Activity2 extends AppCompatActivity {
     }
 
 
-    private void validateFields() {
+    private boolean validateFields() {
         boolean isValid = true;
         //imie
         if (editFirstName.getText().toString().trim().isEmpty()) {
@@ -213,8 +225,8 @@ public class Activity2 extends AppCompatActivity {
                 editGradesCount.setError(null);
             }
         }
-
         btnGrades.setVisibility(isValid ? View.VISIBLE : View.GONE);
+        return isValid;
     }
 
     private void hideKeyboard() {

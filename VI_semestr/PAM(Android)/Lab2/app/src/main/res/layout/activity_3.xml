@@ -8,19 +8,19 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- TextView z nagłówkiem -->
+    <!-- TextView z naglowkiem -->
     <TextView
         android:id="@+id/oceny_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="placeholder:"
+        android:text="@string/placeholder"
         android:textSize="18sp"
         android:layout_marginTop="33dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- RecyclerView do wyświetlania ocen -->
+    <!-- RecyclerView do wywśietlania ocen -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_oceny"
         android:layout_width="0dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/oblicz_button"/>
 
-    <!-- Przycisk do obliczenia średniej -->
+    <!-- Przycisk do obliczenia sredniej -->
     <Button
         android:id="@+id/oblicz_button"
         android:layout_width="wrap_content"

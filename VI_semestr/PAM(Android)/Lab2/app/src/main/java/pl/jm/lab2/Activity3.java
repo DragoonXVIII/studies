@@ -11,27 +11,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import pl.jm.lab2.databinding.Activity3Binding;
 
 
 public class Activity3 extends AppCompatActivity {
 
     private RecyclerView mListaOcen;
     private List<ModelOceny> mDane;
-
     private Button btnObliczSrednia;
+    private Activity3Binding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_3);
+        binding = Activity3Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        //setContentView(R.layout.activity_3);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         // przycisk do srendiej ocen
-        btnObliczSrednia = findViewById(R.id.oblicz_button);
+        btnObliczSrednia = binding.obliczButton;
 
         // ile ocen z intenta
         int gradesCount = getIntent().getIntExtra("GRADES_COUNT", 0);
@@ -45,7 +48,7 @@ public class Activity3 extends AppCompatActivity {
         }
 
         // RecyclerView
-        mListaOcen = findViewById(R.id.recycler_view_oceny);
+        mListaOcen = binding.recyclerViewOceny;
         InteraktywnyAdapterTablicy adapter = new InteraktywnyAdapterTablicy(this, mDane, nazwyPrzedmiotow);
         mListaOcen.setAdapter(adapter);
         mListaOcen.setLayoutManager(new LinearLayoutManager(this));

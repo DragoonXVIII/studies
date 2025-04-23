@@ -6,15 +6,22 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+import pl.jm.lab2.databinding.Activity2Binding;
+import pl.jm.lab2.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        //setContentView(R.layout.activity_main);
 
-        Button btnGoToActivity1 = findViewById(R.id.btnActivity1);
-        Button btnGoToActivity2 = findViewById(R.id.btnActivity2);
+        Button btnGoToActivity1 = binding.btnActivity1;
+        Button btnGoToActivity2 = binding.btnActivity2;
 
         btnGoToActivity1.setOnClickListener(new View.OnClickListener() {
             @Override
