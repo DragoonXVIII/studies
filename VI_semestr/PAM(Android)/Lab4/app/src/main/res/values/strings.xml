@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lab4</string>
+    <string name="adres">Adres:</string>
+    <string name="https_www_w3_org_wai_er_tests_xhtml_testfiles_resources_pdf_dummy_pdf">https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf</string>
+    <string name="large_file">https://link.testfile.org/30MB</string>
+    <string name="_0">0</string>
+</resources>
