@@ -38,8 +38,15 @@ public class AddPhoneActivity extends AppCompatActivity {
         EditText etAndroidVersion = findViewById(R.id.etAndroidVersion);
         EditText etWebsite = findViewById(R.id.etWebsite);
 
-        // obsluga edycji wiersza
+        // chceck na edcje/dodawanie
         Intent er_intent = getIntent();
+        if (er_intent.hasExtra("EXTRA_ID")) {
+            setTitle("Edycja telefonu");
+        } else {
+            setTitle("Dodawanie telefonu");
+        }
+
+        // obsluga edycji wiersza
         if (er_intent.hasExtra("EXTRA_ID")) {
             phoneId = er_intent.getIntExtra("EXTRA_ID", -1);
             etProducer.setText(er_intent.getStringExtra("EXTRA_MANUFACTURER"));
