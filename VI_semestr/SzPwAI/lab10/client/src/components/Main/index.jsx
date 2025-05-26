@@ -1,23 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
 import styles from "./styles.module.css";
-import Users from "../Users/Users"; // import Users
-import User from "../User/User";   // import User (bo jedno konto to jeden user)
+import Users from "../Users/Users"; 
+import User from "../User/User";   
+import { set } from "mongoose";
 
 const Main = () => {
   const [dane, ustawDane] = useState([]);
-  const [tytul, ustawTytul] = useState(""); // dodajemy tytuł
+  const [tytul, ustawTytul] = useState(""); // tytuł
   const [userDetails, setUserDetails] = useState(null); // szczegóły zalogowanego usera
 
+  // wyloguj
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
 
+  // uzytkownicy
   const handleGetUsers = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-
+    setUserDetails(null); 
     if (token) {
       try {
         const config = {
@@ -40,23 +43,26 @@ const Main = () => {
     }
   };
 
+  // moje konto
   const handleGetMyAccount = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+    setUserDetails(null); // resetujemy szczegolow bo cos sie wywalalo inaczej (~user list w szczegolach)
 
     if (token) {
       try {
         const config = {
           method: "get",
-          url: "http://localhost:8080/api/users/me", // <- tu masz endpoint do siebie
+          url: "http://localhost:8080/api/users/me", 
           headers: { 
             "Content-Type": "application/json",
             "x-access-token": token 
           }
         };
         const { data: res } = await axios(config);
-        setUserDetails(res.data); // zapisujemy dane usera
-        ustawTytul(res.message || "Moje konto"); // ustawiamy tytuł
+        setUserDetails(res.data); // zapis danych usera
+        ustawTytul(res.message || "Moje konto"); // ustawienie tytułu
+        
       } catch (error) {
         if (error.response && error.response.status >= 400 && error.response.status <= 500) {
           localStorage.removeItem("token");
@@ -66,6 +72,7 @@ const Main = () => {
     }
   };
 
+  // usun konto
   const handleDeleteAccount = async (e) => {
     e.preventDefault();
     const confirmDelete = window.confirm("Czy na pewno chcesz usunąć swoje konto?");

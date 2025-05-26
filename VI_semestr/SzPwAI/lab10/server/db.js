@@ -6,7 +6,8 @@ module.exports = () => {
     useUnifiedTopology: true,
   };
   try {
-    mongoose.connect(process.env.DB, connectionParams);
+    //mongodb+srv://lotrofring:SOQEEjDNazqeq4Qm@szpwai.qh4kl.mongodb.net/?retryWrites=true&w=majority&appName=SzPwAI
+    mongoose.connect("mongodb+srv://lotrofring:SOQEEjDNazqeq4Qm@szpwai.qh4kl.mongodb.net/?retryWrites=true&w=majority&appName=SzPwAI");
     console.log("Connected to database successfully");
   } catch (error) {
     console.log(error);
