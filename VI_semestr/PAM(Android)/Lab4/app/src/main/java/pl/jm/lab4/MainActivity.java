@@ -22,10 +22,18 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    // do bindingu zamiast by id
     private ActivityMainBinding binding;
+
+    // do aktualizowania ui przez powiadomienia ktore odbiera z download service
     private BroadcastReceiver postepReceiver;
+
+    // do zapamietywania ostatniego stanu
     private PostepInfo lastPostepInfo;
+
+    // bool do anulowania ponownego rejestrowania broadcast receivera bo inaczje blad wywala
     private boolean isReceiverRegistered = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+        //testowo zeby zobaczyc czy fixnie opozninone pobieranie powiadomienie
+        // spoiler: dziala xDDD
+        if (!isReceiverRegistered) {
+            registerReceiver(postepReceiver, new IntentFilter("pl.jm.lab4.POSTEP"), Context.RECEIVER_NOT_EXPORTED);
+            isReceiverRegistered = true;
+        }
 
         // Uprawnienia
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -90,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // zacznij pobieranie = w tle wywolanie downloadservice
     private void startDownloadService(String url) {
         lastPostepInfo = null;
         binding.bytesDownloadedTextView.setText("0 / 0 B");
@@ -101,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
         ContextCompat.startForegroundService(this, intent);
     }
 
-    @Override
+
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -110,8 +127,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Brak uprawnień do zapisu pliku!", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
+    // zapisanie info przy obrocie itp
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -124,31 +142,27 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("maxProgress", binding.downloadProgressBar.getMax());
     }
 
-
+    // przywrocenie info po obrocie itp
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        // Przywróć dane z zapisanych stanów
+        // Przywrocenie danych z zapisanych stanów
         String fileSize = savedInstanceState.getString("fileSize");
         String fileType = savedInstanceState.getString("fileType");
         String bytesDownloaded = savedInstanceState.getString("bytesDownloaded");
         int progress = savedInstanceState.getInt("progress");
         int maxProgress = savedInstanceState.getInt("maxProgress");
 
-        // Ustaw dane w widokach
         binding.fileSizeTextView.setText(fileSize);
         binding.fileTypeTextView.setText(fileType);
         binding.bytesDownloadedTextView.setText(bytesDownloaded);
 
-        // Ustawienie ProgressBar
         binding.downloadProgressBar.setMax(maxProgress);
         binding.downloadProgressBar.setProgress(progress);
 
-        // Upewnij się, że ProgressBar jest aktywny
         binding.downloadProgressBar.setVisibility(View.VISIBLE);
 
-        // Przywróć stan pobierania
         lastPostepInfo = savedInstanceState.getParcelable("postepInfo");
         if (lastPostepInfo != null) {
             binding.bytesDownloadedTextView.setText(lastPostepInfo.mPobranychBajtow + " / " + lastPostepInfo.mRozmiar + " B");
@@ -157,8 +171,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
+    // klasa przestarzala ale dziala do asynchronicznwgo pobierania info o pliku
     private class FetchFileInfoTask extends AsyncTask<String, Void, FileInfo> {
         @Override
         protected FileInfo doInBackground(String... urls) {
@@ -190,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // klasa pomocniczna co trzyma info o pliku
     private static class FileInfo {
         int size;
         String type;

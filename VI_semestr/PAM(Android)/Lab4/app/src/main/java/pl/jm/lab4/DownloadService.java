@@ -21,23 +21,33 @@ import java.net.URL;
 
 public class DownloadService extends Service {
 
+    // nazwa kanału powiadomień, w androidzie sie wyświetla w ustawieaniach androida
     public static final String CHANNEL_ID = "DownloadChannel";
     public static final String EXTRA_URL = "file_url";
+
+    //zarzadza powiadomieniami
     private NotificationManager notificationManager;
+
+    // pole obiekt do budowania powiadomien
     private NotificationCompat.Builder notificationBuilder;
+
     private int notificationId = 1;
 
+    // jest wlaczany kiedy jest pobierane
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("DownloadService", "onStartCommand wywołany");
         createNotificationChannel();
+        // tworzy manager powiadomien
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
+        //intent powiadomienia
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
 
-        // Tworzenie powiadomienia tylko raz
+        // ustawic zeby robil powiadomienie raz, wysylal kilka zamiast aktualizowac/cos inneo
+        // buduje powiadominie
         notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Pobieranie pliku")
                 .setContentText("Trwa pobieranie...")
@@ -54,17 +64,18 @@ public class DownloadService extends Service {
         String fileUrl = intent.getStringExtra(EXTRA_URL);
         new Thread(() -> downloadFile(fileUrl)).start();
 
+        //srtart not sticky zeby nie wznawialo uslugi automatycznie po wylaczeniu apki w trakcie
         return START_NOT_STICKY;
     }
 
+    //wysylanie broadkacasta przez intent z info o postepie pobierania z parcable
     private void sendProgress(int downloaded, int total, String status) {
         Intent intent = new Intent("pl.jm.lab4.POSTEP");
         intent.putExtra("info", new PostepInfo(downloaded, total, status)); // ← NAZWA EXTRA
         sendBroadcast(intent);
     }
 
-
-
+    // pobiera plik z urla
     private void downloadFile(String fileUrl) {
         try {
             URL url = new URL(fileUrl);
@@ -74,6 +85,7 @@ public class DownloadService extends Service {
             int fileLength = conn.getContentLength();
             String fileName = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
 
+            // getexternalfiledir
             File file = new File(getExternalFilesDir(null), fileName);
             InputStream in = conn.getInputStream();
             FileOutputStream out = new FileOutputStream(file);
@@ -88,6 +100,7 @@ public class DownloadService extends Service {
                 total += bytesRead;
 
                 int progress = (int) ((total * 100L) / fileLength);
+                // co kazde 5% aktualizje powiadomineie broadcast przez send progress
                 if (progress - lastProgress >= 5 || progress == 100) {
                     lastProgress = progress;
 
@@ -123,6 +136,7 @@ public class DownloadService extends Service {
         }
     }
 
+    // stworzenie kanalu pobierania to to co w androidzie sie pokazuje w ustawnieiach
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
@@ -136,6 +150,8 @@ public class DownloadService extends Service {
         }
     }
 
+    // wymagane przy dziedziczenij po service ale nie jest wykorzsystwane
+    // 0 - brak mozliwosci polaczenie z innymi uslugami
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
