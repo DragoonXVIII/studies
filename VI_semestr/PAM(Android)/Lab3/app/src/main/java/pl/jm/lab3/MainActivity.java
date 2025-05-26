@@ -141,6 +141,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Usunięte: TableLayout i updateTable
-    // Usunięte: deprecated onResume i onActivityResult
 }

@@ -82,7 +82,7 @@ public class AddPhoneActivity extends AppCompatActivity {
 
             Intent resultIntent = new Intent();
 
-            if (phoneId != -1) {  // Jeśli edytujemy istniejący telefon
+            if (phoneId != -1) {  // Jeśli edycja istniejący telefon
                 resultIntent.putExtra("EXTRA_ID", phoneId);
             }
 
