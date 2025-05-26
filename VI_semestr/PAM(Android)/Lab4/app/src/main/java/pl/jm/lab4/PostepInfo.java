@@ -3,6 +3,7 @@ package pl.jm.lab4;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+// parcable bo nie da sie przez intenty normalnie przekazywac danych
 public class PostepInfo implements Parcelable {
 
     public int mPobranychBajtow;
@@ -15,12 +16,14 @@ public class PostepInfo implements Parcelable {
         mStatus = status;
     }
 
+    //taki konstruktor pozwala zeby uzyc i odtworzyc dane w parcel
     protected PostepInfo(Parcel in) {
         mPobranychBajtow = in.readInt();
         mRozmiar = in.readInt();
         mStatus = in.readString();
     }
 
+    //creator to wymagana androida zeby sam mogl sb tworzyc obiekty postepinfo
     public static final Creator<PostepInfo> CREATOR = new Creator<PostepInfo>() {
         @Override
         public PostepInfo createFromParcel(Parcel in) {
@@ -33,6 +36,7 @@ public class PostepInfo implements Parcelable {
         }
     };
 
+    //zapisuje dane do parcel
     @Override
     public void writeToParcel(Parcel parcel, int flags) {
         parcel.writeInt(mPobranychBajtow);
@@ -40,6 +44,7 @@ public class PostepInfo implements Parcelable {
         parcel.writeString(mStatus);
     }
 
+    // teoretycznie sie nie przyda ale na wszelki wypadek do jakicbs dziwnych plikow
     @Override
     public int describeContents() {
         return 0;
