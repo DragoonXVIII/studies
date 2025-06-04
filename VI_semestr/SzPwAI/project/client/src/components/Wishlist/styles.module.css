@@ -1,0 +1,581 @@
+:root {
+  --bg-color: #121212;
+  --section-bg: #1e1e1e;
+  --text-light: #e0e0e0;
+  --text-muted: #888;
+  --primary: #00ffae;
+  --danger: #ff4c4c;
+  --input-bg: #2c2c2c;
+  --success: #00c851;
+  --warning: #ffbb33;
+}
+
+/* Main Container */
+.wishlist_container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.wishlist_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary);
+}
+
+.wishlist_header h2 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wishlist_stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.total_items {
+  background: rgba(0, 255, 174, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 255, 174, 0.3);
+}
+
+.purchased_items {
+  background: rgba(0, 200, 81, 0.1);
+  color: var(--success);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 200, 81, 0.3);
+}
+
+/* Add Item Card */
+.add_item_card {
+  background-color: var(--section-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 174, 0.2);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.add_item_card:hover {
+  border-color: rgba(0, 255, 174, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 255, 174, 0.1);
+}
+
+.card_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  background: rgba(0, 255, 174, 0.05);
+  border-bottom: 1px solid rgba(0, 255, 174, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card_header:hover {
+  background: rgba(0, 255, 174, 0.08);
+}
+
+.card_header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card_icon {
+  font-size: 1.3rem;
+}
+
+.toggle_icon {
+  color: var(--text-muted);
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.toggle_icon.expanded {
+  transform: rotate(180deg);
+}
+
+.card_content {
+  padding: 2rem 1.75rem;
+}
+
+/* Form Styles */
+.add_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form_grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.form_item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form_item label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input, .textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 255, 174, 0.2);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text-light);
+  font-size: 1rem;
+  font-family: 'Fira Code', monospace;
+  transition: all 0.3s ease;
+}
+
+.input:focus, .textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 255, 174, 0.2);
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form_actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.cancel_btn, .submit_btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Fira Code', monospace;
+}
+
+.cancel_btn {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+}
+
+.cancel_btn:hover {
+  background: var(--input-bg);
+  border-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.submit_btn {
+  background: linear-gradient(135deg, var(--primary), #00cc8f);
+  color: var(--bg-color);
+}
+
+.submit_btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 255, 174, 0.3);
+}
+
+.submit_btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn_icon {
+  font-size: 1.1rem;
+}
+
+.error_msg {
+  color: var(--danger);
+  background: rgba(255, 76, 76, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 76, 76, 0.3);
+  font-size: 0.9rem;
+}
+
+/* Form Validation Styles */
+.char_count {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin-left: auto;
+}
+
+.form_item label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input_valid {
+  border-color: var(--success) !important;
+  box-shadow: 0 0 0 2px rgba(0, 200, 81, 0.2) !important;
+}
+
+.input_error {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 2px rgba(255, 76, 76, 0.2) !important;
+}
+
+.validation_hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.input_error + .validation_hint {
+  color: var(--danger);
+}
+
+/* Items Section */
+.items_container {
+  margin-top: 2rem;
+}
+
+.section_title {
+  margin: 0 0 1.5rem 0;
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section_icon {
+  font-size: 1.3rem;
+}
+
+.items_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Item Cards */
+.item_card {
+  background-color: var(--section-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 174, 0.2);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.item_card:hover {
+  border-color: rgba(0, 255, 174, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 255, 174, 0.15);
+}
+
+.item_card.purchased {
+  opacity: 0.7;
+  background: linear-gradient(135deg, var(--section-bg) 0%, rgba(0, 200, 81, 0.05) 100%);
+}
+
+.item_card.purchased::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--success), #00e676);
+}
+
+.item_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.item_title {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.item_status {
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.status_purchased {
+  color: var(--success);
+  font-size: 1.2rem;
+  background: rgba(0, 200, 81, 0.2);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.status_pending {
+  color: var(--warning);
+  font-size: 1.2rem;
+  background: rgba(255, 187, 51, 0.2);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.item_description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0 0 1.5rem 0;
+}
+
+.item_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 255, 174, 0.1);
+}
+
+.item_meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.item_price {
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.item_date {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.toggle_btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Fira Code', monospace;
+}
+
+.pending_btn {
+  background: linear-gradient(135deg, var(--primary), #00cc8f);
+  color: var(--bg-color);
+}
+
+.pending_btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 255, 174, 0.3);
+}
+
+.purchased_btn {
+  background: rgba(255, 187, 51, 0.2);
+  color: var(--warning);
+  border: 1px solid rgba(255, 187, 51, 0.3);
+}
+
+.purchased_btn:hover {
+  background: rgba(255, 187, 51, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Item Actions */
+.item_actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.delete_btn {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 76, 76, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(255, 76, 76, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+}
+
+.delete_btn:hover {
+  background: rgba(255, 76, 76, 0.2);
+  border-color: rgba(255, 76, 76, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty_state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--section-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 174, 0.2);
+}
+
+.empty_icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.empty_state h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-light);
+  font-size: 1.3rem;
+}
+
+.empty_state p {
+  margin: 0 0 2rem 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.empty_action_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary), #00cc8f);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Fira Code', monospace;
+}
+
+.empty_action_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 255, 174, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wishlist_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .wishlist_stats {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .form_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form_actions {
+    flex-direction: column;
+  }
+
+  .items_grid {
+    grid-template-columns: 1fr;
+  }
+  .item_footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .item_actions {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .toggle_btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .card_content {
+    padding: 1.5rem 1rem;
+  }
+
+  .item_card {
+    padding: 1rem;
+  }
+
+  .empty_state {
+    padding: 3rem 1rem;
+  }
+}

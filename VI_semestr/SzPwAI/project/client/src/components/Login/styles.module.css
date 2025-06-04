@@ -1,0 +1,120 @@
+:root {
+  --bg-color: #121212;
+  --form-bg: #1e1e1e;
+  --input-bg: #2c2c2c;
+  --primary: #00ffae;
+  --danger: #ff4c4c;
+  --text-light: #e0e0e0;
+  --text-muted: #888;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Fira Code', monospace;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-light);
+}
+
+.login_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.login_form_container {
+  display: flex;
+  width: 800px;
+  background-color: var(--form-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 255, 174, 0.1);
+}
+
+.left, .right {
+  flex: 1;
+  padding: 2rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form_container h1 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.green_btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: #121212;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.green_btn:hover {
+  background-color: #00c58e;
+}
+
+.right {
+  background-color: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-light);
+}
+
+.right h1 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.white_btn {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.white_btn:hover {
+  background-color: var(--primary);
+  color: #121212;
+}
+
+.error_msg {
+  color: var(--danger);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
