@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     // bool do anulowania ponownego rejestrowania broadcast receivera bo inaczje blad wywala
     private boolean isReceiverRegistered = false;
 
+    // do śledzenia info o pliku
+    private boolean fileInfoFetched = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +73,27 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 2);
             }
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) { // WRITE_EXTERNAL_STORAGE jest deprecated od Android 10
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
+
+        // start -przycisk pobierania nieaktywny
+        binding.downloadButton.setEnabled(false);
+
+        // zmiana url - zmiana przycisku
+        binding.urlEditText.addTextChangedListener(new android.text.TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                fileInfoFetched = false;
+                binding.downloadButton.setEnabled(false);
+            }
+            @Override
+            public void afterTextChanged(android.text.Editable s) {}
+        });
 
         binding.fetchInfoButton.setOnClickListener(v -> {
             String url = binding.urlEditText.getText().toString();
@@ -84,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         binding.downloadButton.setOnClickListener(v -> {
             String url = binding.urlEditText.getText().toString();
             startDownloadService(url);
+            // blokada przyciksu po zaczeciu pobierania zeby nie duplikowac procesu pobierania
+            fileInfoFetched = false;
+            binding.downloadButton.setEnabled(false);
         });
     }
 
@@ -117,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
         ContextCompat.startForegroundService(this, intent);
     }
 
-
     /*@Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -140,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("bytesDownloaded", binding.bytesDownloadedTextView.getText().toString());
         outState.putInt("progress", binding.downloadProgressBar.getProgress());
         outState.putInt("maxProgress", binding.downloadProgressBar.getMax());
+        outState.putBoolean("fileInfoFetched", fileInfoFetched);
     }
 
     // przywrocenie info po obrocie itp
@@ -169,6 +191,9 @@ public class MainActivity extends AppCompatActivity {
             binding.downloadProgressBar.setMax(lastPostepInfo.mRozmiar);
             binding.downloadProgressBar.setProgress(lastPostepInfo.mPobranychBajtow);
         }
+
+        fileInfoFetched = savedInstanceState.getBoolean("fileInfoFetched", false);
+        binding.downloadButton.setEnabled(fileInfoFetched);
     }
 
     // klasa przestarzala ale dziala do asynchronicznwgo pobierania info o pliku
@@ -195,15 +220,18 @@ public class MainActivity extends AppCompatActivity {
             if (fileInfo.size >= 0) {
                 binding.fileSizeTextView.setText(fileInfo.size + " B");
                 binding.fileTypeTextView.setText(fileInfo.type);
+                fileInfoFetched = true;
                 binding.downloadButton.setEnabled(true);
             } else {
                 binding.fileSizeTextView.setText("Błąd");
                 binding.fileTypeTextView.setText("Błąd");
+                fileInfoFetched = false;
+                binding.downloadButton.setEnabled(false);
             }
         }
     }
 
-    // klasa pomocniczna co trzyma info o pliku
+    // klasa pomocnicza co trzyma info o pliku
     private static class FileInfo {
         int size;
         String type;
