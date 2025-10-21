@@ -166,18 +166,16 @@ static void zad6()
         {
             Console.WriteLine($"Gratulacje! Zgadłeś w {attempts} próbach.");
 
-            // Zapytaj o imię i zapisz wynik do listy
             Console.Write("Podaj swoje imię: ");
             string? name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name))
             {
-                name = "Anonim";
+                name = "GallAnonim";
             }
 
             var hs = new HighScore { Name = name, Trials = attempts };
             highScores.Add(hs);
 
-            // Zapisz listę posortowaną rosnąco według Trials
             var sorted = highScores.OrderBy(h => h.Trials).ToList();
             try
             {
@@ -185,7 +183,7 @@ static void zad6()
             }
             catch
             {
-                // ignoruj błędy zapisu
+
             }
 
             Console.WriteLine();
