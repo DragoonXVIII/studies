@@ -13,7 +13,7 @@ namespace Lab2.Test
             Assert.StartsWith("Fruit", result);
         }
 
-        [Fact]  //to po angielsku wgl xDDD
+        [Fact]  //wy¿yny angielskiego (thank you from the mountain)
         public void Fruit_ProperFormat_ShouldMatchExpectedFormat()
         {
             var fruit = new Fruit
