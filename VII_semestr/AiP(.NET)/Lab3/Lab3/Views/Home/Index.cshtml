@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var random = ViewData["random"] is double d ? d : 0.0;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>@DateTime.Now.ToString("D", System.Globalization.CultureInfo.GetCultureInfo("pl-PL"))</p>
+    @if (random > 0.5)
+    {
+        <p style="background-color:red; color:white;">@random</p>
+    }
+    else
+    {
+        <p>@random</p>
+    }
+</div>
