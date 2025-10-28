@@ -1,0 +1,11 @@
+﻿@page
+@model Lab4.Pages.UploadModel
+@{
+}
+<form asp-page="Upload" enctype="multipart/form-data"
+      method="post">
+    <input class="form-control" asp-for="Upload" type="file"
+           accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" />
+    <input class="form-control" type="submit" value="Upload" />
+</form> 
+<div asp-validation-summary="All" class="text-danger"></div>
