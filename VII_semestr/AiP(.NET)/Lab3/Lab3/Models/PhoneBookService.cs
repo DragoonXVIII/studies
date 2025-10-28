@@ -79,4 +79,19 @@ public class PhoneBookService
     {
         return contacts;
     }
+    public void Add(Contact contact)
+    {
+        contact.Id = contacts.Max(x => x.Id) + 1;
+        contacts.Add(contact);
+    }
+
+    public void Remove(int Id)
+    {
+        var contact = contacts.FirstOrDefault(x => x.Id == Id);
+        if (contact == null)
+            throw new ArgumentException($"Contact with Id {Id} not found.");
+
+        contacts.Remove(contact);
+    }
+
 }

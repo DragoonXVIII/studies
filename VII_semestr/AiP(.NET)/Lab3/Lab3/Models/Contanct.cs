@@ -21,5 +21,6 @@ namespace Lab3.Models
 
         [DisplayName("Numer telefonu")]
         public string PhoneNumber { get; set; }
+
     }
 }
