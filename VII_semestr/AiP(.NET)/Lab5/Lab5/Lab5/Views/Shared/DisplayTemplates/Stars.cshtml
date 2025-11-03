@@ -1,0 +1,17 @@
+﻿@model int
+
+@{
+    int maxStars = 5;
+}
+@* zad 5.6. *@
+<span title="Ocena: @Model/5">
+    @for (int i = 0; i < Model; i++)
+    {
+        @Html.Raw("&#x2605;") <!-- pełne -->
+    }
+    @for (int i = Model; i < maxStars; i++)
+    {
+        @Html.Raw("&#x2606;") <!-- puste -->
+    }
+</span>
+
