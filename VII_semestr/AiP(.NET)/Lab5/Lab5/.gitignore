@@ -611,3 +611,7 @@ $RECYCLE.BIN/
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,dotnetcore,visualstudio,csharp
+
+VII_semestr/AiP(.NET)/Lab5/Lab5/Lab5/movies.db
+VII_semestr/AiP(.NET)/Lab5/Lab5/Lab5/movies.db-shm
+VII_semestr/AiP(.NET)/Lab5/Lab5/Lab5/movies.db-wal
