@@ -1,0 +1,71 @@
+@model Lab7.Models.Invoice
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h1>Order Details</h1>
+
+<div>
+    <h4>Invoice #@Model.InvoiceId</h4>
+    <hr />
+    <dl class="row">
+    <dt class="col-sm-3">
+    @Html.DisplayNameFor(model => model.InvoiceDate)
+        </dt>
+        <dd class="col-sm-9">
+    @Model.InvoiceDate.ToShortDateString()
+        </dd>
+        
+        <dt class="col-sm-3">
+   Billing Address
+     </dt>
+ <dd class="col-sm-9">
+     @Model.BillingAddress<br />
+ @Model.BillingCity@(string.IsNullOrEmpty(Model.BillingState) ? "" : $", {Model.BillingState}")<br />
+            @Model.BillingCountry @Model.BillingPostalCode
+    </dd>
+        
+        <dt class="col-sm-3">
+    @Html.DisplayNameFor(model => model.Total)
+     </dt>
+        <dd class="col-sm-9">
+      @Model.Total.ToString("C")
+    </dd>
+    </dl>
+</div>
+
+<h4>Order Items</h4>
+<table class="table">
+    <thead>
+        <tr>
+       <th>Track Name</th>
+         <th>Composer</th>
+      <th>Unit Price</th>
+            <th>Quantity</th>
+      <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.InvoiceLines)
+        {
+            <tr>
+             <td>@item.Track.Name</td>
+         <td>@(item.Track.Composer ?? "Unknown")</td>
+          <td>@item.UnitPrice.ToString("C")</td>
+          <td>@item.Quantity</td>
+       <td>@((item.UnitPrice * item.Quantity).ToString("C"))</td>
+            </tr>
+   }
+    </tbody>
+    <tfoot>
+        <tr>
+  <td colspan="4" class="text-end"><strong>Total:</strong></td>
+            <td><strong>@Model.Total.ToString("C")</strong></td>
+   </tr>
+  </tfoot>
+</table>
+
+<div>
+  <a asp-action="MyOrders" class="btn btn-primary">Back to My Orders</a>
+</div>
