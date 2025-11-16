@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>キツネのApi</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">キツネのApi</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Identity/Account/Login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Identity/Account/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Identity/Account/Manage">Account</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" role="main">
+
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="alert" role="alert" id="alert">
+
+                </div>
+
+                <table class="table" id="foxes">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>💕</th>
+                            <th>😡</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <button class="btn btn-secondary" id="refresh" type="button">Refresh foxes list</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const alert = document.getElementById('alert');
+
+        function refresh() {
+            const uri = '/api/fox';
+
+            fetch(uri)
+                .then(response => response.json())
+                .then(data => {
+                    let tbody = document.querySelector('#foxes tbody');
+
+                    tbody.innerHTML = '';
+
+                    data.forEach(item => {
+                        let row = document.createElement('tr');
+                        row.innerHTML = `<td><img src="/images/${item.id}.jpg" style="max-width: 200px" class="img-thumbnail rounded" /></td><td>${item.name}</td><td>${item.loves}</td><td>${item.hates}</td><td><button type="button" class="btn btn-info" data-id="${item.id}">Love this fox!</button><button type="button" class="btn btn-warning" data-id="${item.id}">Hate this fox!</button></td>`;
+
+                        tbody.appendChild(row);
+                    });
+
+                    document.querySelectorAll('#foxes tbody .btn-info').forEach(item => item.onclick = function () { update('love', this.dataset.id); });
+                    document.querySelectorAll('#foxes tbody .btn-warning').forEach(item => item.onclick = function () { update('hate', this.dataset.id); });
+                });
+        }
+
+        function update(type, id) {
+            fetch(`/api/fox/${type}/${id}`, {
+                method: 'PUT'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        alert.textContent = `Error: ${response.status} ${response.statusText}`;
+                        alert.classList.remove("alert-danger", "alert-success");
+                        alert.classList.add("alert-danger");
+                    } else {
+                        alert.textContent = `Fox updated!`;
+                        alert.classList.remove("alert-danger", "alert-success");
+                        alert.classList.add("alert-success");
+
+                        refresh();
+                    }
+                });
+        }
+
+        document.getElementById("refresh").onclick = refresh;
+        refresh();
+    </script>
+</body>
+
+</html>
