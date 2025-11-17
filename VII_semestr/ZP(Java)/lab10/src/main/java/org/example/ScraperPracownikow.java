@@ -10,7 +10,7 @@ import java.util.*;
 //TODO: fix br w liście pracownikoiw
 //TODO: filtr po dr itp w argumencie funkcji niech bedzie
 //10.1
-public class StaffScraper {
+public class ScraperPracownikow {
     public static void run(String url) {
         try {
             Document doc = Jsoup.connect(url).get();
