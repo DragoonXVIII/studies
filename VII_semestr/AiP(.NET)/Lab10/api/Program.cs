@@ -22,12 +22,32 @@ app.MapPost(
         "/censor",
         async (string text, Censor censor, HttpClient client) =>
         {
-            censor.Blacklist = await client.GetFromJsonAsync<List<string>>(
-                "http://localhost:5153/api/blacklist"
-            ) ?? [];
-            return text;
+            try
+            {
+                censor.Blacklist = await client.GetFromJsonAsync<List<string>>(
+                    "https://localhost:60919/api/Blacklist"
+                ) ?? [];
+                Console.Write(censor.Blacklist);
+                return Results.Ok(censor.CensorText(text));
+            }
+            catch (HttpRequestException ex)
+            {
+                return Results.Problem(
+                    detail: "Unable to fetch blacklist from API",
+                    statusCode: StatusCodes.Status503ServiceUnavailable
+                );
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: "An error occurred while processing the request",
+                    statusCode: StatusCodes.Status500InternalServerError
+                );
+            }
         }
     )
     .WithName("Censor");
+
+app.UseFileServer();
 
 app.Run();
