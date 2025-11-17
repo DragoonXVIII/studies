@@ -1,0 +1,18 @@
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 8.0.*
+
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.* 
+
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 8.0.* 
+
+dotnet add package Microsoft.AspNetCore.Identity.UI --version 8.0.* 
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 8.0.* 
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.0.* 
+
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.*
+
+dotnet aspnet-codegenerator identity -sqlite 
+
+dotnet ef migrations add Init 
+
