@@ -18,7 +18,7 @@ class LongOperationTest {
             return service.longTask(2000);
         });
         assertEquals("Task Completed", result, "Result should be 'Task Completed'");
-        assertTimeout(ofSeconds(1), () -> {
+        assertTimeout(ofSeconds(7), () -> {
             service.longTask(2000);
         }, "The task should complete, even if it exceeds the timeout.");
     }

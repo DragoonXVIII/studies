@@ -24,6 +24,13 @@ class CalculatorTest {
                 "Multiplication should work");
     }
 
+    @Test
+    @DisplayName("test1")
+    void test1() {
+        assertEquals(-3, calculator.subtract(2, 5),
+                "Multiplication should work");
+    }
+
     @RepeatedTest(10)
     @DisplayName("Ensure correct multiplication by zero")
     void testMultiplicationByZero() {
@@ -36,9 +43,9 @@ class CalculatorTest {
     @RepeatedTest(10)
     @DisplayName("Ensure correct multiplication by one")
     void testMultiplicationByOne() {
-        assertEquals(0, calculator.multiply(1, 10),
+        assertEquals(10, calculator.multiply(1, 10),
                 "Multiplication ten by one should be ten");
-        assertEquals(0, calculator.multiply(1, 5),
+        assertEquals(5, calculator.multiply(1, 5),
                 "Multiplication five by one should be five");
     }
 
